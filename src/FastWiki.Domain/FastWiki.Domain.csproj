@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FastWiki.Core\FastWiki.Core.csproj" />
+      <ProjectReference Include="..\FastWiki.Data\FastWiki.Data.csproj" />
+      <ProjectReference Include="..\FastWiki.Domain.Shared\FastWiki.Domain.Shared.csproj" />
+    </ItemGroup>
+
+</Project>

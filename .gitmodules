@@ -1,0 +1,3 @@
+[submodule "mem0.NET"]
+	path = mem0.NET
+	url = git@github.com:AIDotNet/mem0.NET.git
