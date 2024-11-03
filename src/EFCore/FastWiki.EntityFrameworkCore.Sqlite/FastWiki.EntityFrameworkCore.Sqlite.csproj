@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Gnarly.Data" Version="1.0.7" />
+      <ProjectReference Include="..\..\FastWiki.EntityFrameworkCore\FastWiki.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.10" />
     </ItemGroup>
 
 </Project>

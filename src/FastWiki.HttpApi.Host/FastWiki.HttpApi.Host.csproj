@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Gnarly" Version="1.0.7" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
@@ -17,6 +18,13 @@
         <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
         <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
         <PackageReference Include="Serilog.Sinks.Async" Version="2.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EFCore\FastWiki.EntityFrameworkCore.PostgreSql\FastWiki.EntityFrameworkCore.PostgreSql.csproj" />
+      <ProjectReference Include="..\EFCore\FastWiki.EntityFrameworkCore.Sqlite\FastWiki.EntityFrameworkCore.Sqlite.csproj" />
+      <ProjectReference Include="..\EFCore\FastWiki.EntityFrameworkCore.SqlServer\FastWiki.EntityFrameworkCore.SqlServer.csproj" />
+      <ProjectReference Include="..\FastWiki.HttpApi\FastWiki.HttpApi.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,3 @@
-using Serilog;
-
 internal static class Program
 {
     public static async Task Main(string[] args)
@@ -19,7 +17,7 @@ internal static class Program
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             
-
+            builder.Services.AddFastWiki(builder.Configuration);
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,6 +27,8 @@ internal static class Program
                 app.UseSwaggerUI();
             }
 
+            app.UseFastWiki();
+            
             await app.RunAsync();
         }
         catch (Exception ex)
