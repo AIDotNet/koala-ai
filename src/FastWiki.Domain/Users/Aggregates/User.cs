@@ -37,11 +37,29 @@ public class User : AuditEntity<string>
     /// </summary>
     public string Phone { get; private set; }
 
+    public string Introduction { get; private set; }
+
     /// <summary>
     ///     是否禁用
     /// </summary>
     public bool IsDisable { get; private set; }
 
+
+    public User(string account, string name, string password, string email, string phone, string introduction)
+    {
+        Account = account;
+        Name = name;
+        SetPassword(password);
+        SetEmail(email);
+        Phone = phone;
+        Introduction = introduction;
+        Avatar = "\ud83e\udd9d";
+        IsDisable = false;
+    }
+    
+    protected User()
+    {
+    }
 
     public void Disable()
     {

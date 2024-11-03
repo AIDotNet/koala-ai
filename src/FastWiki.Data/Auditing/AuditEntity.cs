@@ -21,4 +21,15 @@ public abstract class AuditEntity<TKey> : IAuditEntity<TKey>
     }
 
     protected virtual DateTimeOffset GetCurrentTime() => DateTime.UtcNow;
+    
+    public void SetCreator(string creator)
+    {
+        this.Creator = creator;
+    }
+    
+    public void SetModifier(string modifier)
+    {
+        this.Modifier = modifier;
+    }
+    
 }

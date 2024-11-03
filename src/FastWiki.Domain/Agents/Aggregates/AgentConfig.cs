@@ -50,6 +50,8 @@ public class AgentConfig : AuditEntity<long>
     /// 当前智能体的提示词
     /// </summary>
     public string? Prompt { get; private set; }
+    
+    public Agent Agent { get; set; } = null!;
 
     public AgentConfig(string agentId, string model, double temperature, double topP, int maxResponseToken, string outputFormat, int contextSize, string? opening, bool suggestUserQuestion, string? prompt)
     {

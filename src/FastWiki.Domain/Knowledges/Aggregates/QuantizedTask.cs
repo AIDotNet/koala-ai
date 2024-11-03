@@ -20,6 +20,10 @@ public class QuantizedTask : AuditEntity<long>
     /// </summary>
     public DateTimeOffset ProcessTime { get; private set; }
 
+    public KnowledgeItem KnowledgeItem { get; set; }
+    
+    public Knowledge Knowledge { get; set; }
+    
     public QuantizedTask(string knowledgeId, long knowledgeItemId)
     {
         KnowledgeId = knowledgeId;

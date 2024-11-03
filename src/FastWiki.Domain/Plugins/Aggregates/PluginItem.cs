@@ -1,7 +1,14 @@
-﻿namespace FastWiki.Domain.Plugins.Aggregates;
+﻿using FastWiki.Domain.WorkSpaces.Aggregates;
+
+namespace FastWiki.Domain.Plugins.Aggregates;
 
 public class PluginItem : AuditEntity<long>
 {
+    /// <summary>
+    /// 冗余字段
+    /// </summary>
+    public long WorkSpaceId { get; set; }
+
     public long PluginId { get; set; }
 
     /// <summary>
@@ -24,10 +31,15 @@ public class PluginItem : AuditEntity<long>
     /// </summary>
     public List<PluginItemOutputParameter> OutputParameters { get; set; } = new List<PluginItemOutputParameter>();
 
-    public PluginItem(string name, string description)
+    public Plugin Plugin { get; set; }
+
+    public WorkSpace WorkSpace { get; set; }
+
+    public PluginItem(string name, string description, long workSpaceId)
     {
         SetName(name);
         SetDescription(description);
+        WorkSpaceId = workSpaceId;
     }
 
     public void SetName(string name)
@@ -37,10 +49,12 @@ public class PluginItem : AuditEntity<long>
         {
             throw new ArgumentException("工具名称不能为空");
         }
+
         if (name.Length > 20)
         {
             throw new ArgumentException("工具名称长度不能超过20");
         }
+
         Name = name;
     }
 
@@ -51,10 +65,12 @@ public class PluginItem : AuditEntity<long>
         {
             throw new ArgumentException("工具描述不能为空");
         }
+
         if (description.Length > 200)
         {
             throw new ArgumentException("工具描述长度不能超过200");
         }
+
         Description = description;
     }
 
@@ -94,8 +110,6 @@ public class PluginItemParameter
     /// 插件源码
     /// </summary>
     public string Code { get; set; }
-
-
 }
 
 /// <summary>
@@ -107,6 +121,7 @@ public class PluginItemOutputParameter
     /// 工具名称
     /// </summary>
     public string Name { get; set; } = null!;
+
     /// <summary>
     /// 工具描述
     /// </summary>

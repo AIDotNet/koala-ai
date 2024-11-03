@@ -33,12 +33,18 @@ public class ChatHistory : AuditEntity<long>
     public bool SendMessage { get; set; }
 
 
-    public ChatHistory(string content, string userId, string ip, string agentId)
+    public ChatHistory(string sessionId, string content, string userId, string ip, string agentId)
     {
+        SessionId = sessionId;
         Content = content;
         UserId = userId;
         IP = ip;
         AgentId = agentId;
+    }
+
+    public void SetSendMessage(bool sendMessage)
+    {
+        SendMessage = sendMessage;
     }
 
     protected ChatHistory()

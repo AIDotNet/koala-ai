@@ -38,7 +38,7 @@ public class Agent : AuditEntity<long>
     /// </summary>
     public long? WorkSpaceId { get; set; }
 
-    public WorkSpace.Aggregates.WorkSpace WorkSpace { get; set; }
+    public WorkSpaces.Aggregates.WorkSpace WorkSpace { get; set; }
 
     public Agent(string name, string introduction, string avatar)
     {

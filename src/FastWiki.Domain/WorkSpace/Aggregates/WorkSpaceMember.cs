@@ -15,7 +15,7 @@ public class WorkSpaceMember : AuditEntity<long>
 
     public User User { get; set; }
 
-    public WorkSpace.Aggregates.WorkSpace WorkSpace { get; set; }
+    public WorkSpaces.Aggregates.WorkSpace WorkSpace { get; set; }
 
     public WorkSpaceMember(long workSpaceId, string userId, WorkSpaceRoleType roleType)
     {

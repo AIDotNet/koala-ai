@@ -1,6 +1,6 @@
 ﻿using FastWiki.Domain.Shared.WorkSpace;
 
-namespace FastWiki.Domain.WorkSpace.Aggregates;
+namespace FastWiki.Domain.WorkSpaces.Aggregates;
 
 public class WorkSpace : AuditEntity<long>
 {

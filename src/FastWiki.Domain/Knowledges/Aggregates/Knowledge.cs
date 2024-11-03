@@ -8,6 +8,8 @@ public class Knowledge : AuditEntity<string>
 
     public string? Description { get; private set; }
 
+    public string? CategoryId { get; private set; }
+
     public KnowledgeRagType RagType { get; private set; }
 
     public string Avatar { get; private set; } = null!;
@@ -26,10 +28,16 @@ public class Knowledge : AuditEntity<string>
     /// 工作空间Id
     /// 可空
     /// </summary>
-    public string? WorkSpaceId { get; set; }
+    public long? WorkSpaceId { get; set; }
 
-    public Knowledge(string name, string description, string avatar, string embeddingModel, string chatModel)
+    public Category Category { get; set; }
+    
+    public WorkSpaces.Aggregates.WorkSpace WorkSpace { get; set; }
+
+    public Knowledge(string name, string description, string avatar, string embeddingModel, string chatModel,
+        string? categoryId)
     {
+        CategoryId = categoryId;
         SetName(name);
         SetDescription(description);
         SetAvatar(avatar);
@@ -44,10 +52,12 @@ public class Knowledge : AuditEntity<string>
         {
             throw new ArgumentException("知识库名称不能为空");
         }
+
         if (name.Length > 20)
         {
             throw new ArgumentException("知识库名称长度不能超过20");
         }
+
         Name = name;
     }
 
@@ -58,10 +68,12 @@ public class Knowledge : AuditEntity<string>
         {
             throw new ArgumentException("知识库描述不能为空");
         }
+
         if (description.Length > 200)
         {
             throw new ArgumentException("知识库描述长度不能超过200");
         }
+
         Description = description;
     }
 
@@ -72,10 +84,12 @@ public class Knowledge : AuditEntity<string>
         {
             throw new ArgumentException("知识库向量模型不能为空");
         }
+
         if (embeddingModel.Length > 200)
         {
             throw new ArgumentException("知识库向量模型长度不能超过200");
         }
+
         EmbeddingModel = embeddingModel;
     }
 
@@ -86,10 +100,12 @@ public class Knowledge : AuditEntity<string>
         {
             throw new ArgumentException("知识库对话处理模型不能为空");
         }
+
         if (chatModel.Length > 200)
         {
             throw new ArgumentException("知识库对话处理模型长度不能超过200");
         }
+
         ChatModel = chatModel;
     }
 
@@ -101,6 +117,7 @@ public class Knowledge : AuditEntity<string>
         {
             throw new ArgumentException("知识库 Avatar不能为空");
         }
+
         Avatar = avatar;
     }
 
@@ -108,7 +125,7 @@ public class Knowledge : AuditEntity<string>
     /// 绑定工作空间
     /// </summary>
     /// <param name="workSpaceId"></param>
-    public void BindingWorkSpace(string workSpaceId)
+    public void BindingWorkSpace(long workSpaceId)
     {
         WorkSpaceId = workSpaceId;
     }
