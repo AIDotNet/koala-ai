@@ -8,27 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64af81bd-1684-4cc3-b4ce-a1ff685c1603" name="更改" comment="增加数据库支持&#10;增加项目依赖设计">
-      <change afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/FastWiki.EntityFrameworkCore.PostgreSql.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlEntityFrameworkCoreExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.SqlServer/SqlServerDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.SqlServer/SqlServerEntityFrameworkCoreExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.Sqlite/SqliteEntityFrameworkCoreExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Core/Model/PagingModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Core/Model/ResponseModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Extensions/ServiceExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/GlobalUsing.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/Middleware/HandlingExceptionMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fast-wiki.sln" beforeDir="false" afterPath="$PROJECT_DIR$/fast-wiki.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application/FastWiki.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application/FastWiki.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Core/FastWiki.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Core/FastWiki.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/FastWiki.HttpApi.Host.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/FastWiki.HttpApi.Host.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/WebApplication1.http" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/appsettings.json" afterDir="false" />
-    </list>
+    <list default="true" id="64af81bd-1684-4cc3-b4ce-a1ff685c1603" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +88,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730669027036</updated>
-      <workItem from="1730669028697" duration="4623000" />
+      <workItem from="1730669028697" duration="4761000" />
     </task>
     <task id="LOCAL-00001" summary="初始化前端项目&#10;设计表数据库字段&#10;增加初始化数据">
       <option name="closed" value="true" />
@@ -118,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730672247126</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="增加数据库支持&#10;增加项目依赖设计">
+      <option name="closed" value="true" />
+      <created>1730673722055</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730673722055</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
