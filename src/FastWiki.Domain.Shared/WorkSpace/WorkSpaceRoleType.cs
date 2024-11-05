@@ -1,4 +1,4 @@
-﻿namespace FastWiki.Domain.Shared.WorkSpace;
+﻿namespace FastWiki.Domain.Shared.WorkSpaces;
 
 /// <summary>
 /// 工作空间角色枚举

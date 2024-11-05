@@ -1,4 +1,4 @@
-﻿namespace FastWiki.Domain.Shared.WorkSpace;
+﻿namespace FastWiki.Domain.Shared.WorkSpaces;
 
 public enum WorkSpaceState : byte
 {

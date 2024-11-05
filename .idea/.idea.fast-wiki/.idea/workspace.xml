@@ -9,53 +9,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64af81bd-1684-4cc3-b4ce-a1ff685c1603" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Authorization/IAuthorizationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Authorization/Input/TokenInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Notification/Dto/VerificationDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Notification/INotificationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Users/Dto/UserDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Users/Input/CreateUserInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Users/Input/UpdateUserInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/Authorization/AuthorizationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/GlobalUsing.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/Notification/NotificationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/ServiceExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/Users/UserService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Core/Exceptions/UserFriendlyException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Core/IUserContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Powers/Repositories/IRoleRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Users/Repositories/IUserRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/RoleRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/UserRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/ServiceExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/Filter/ResultFilter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/UserContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/framework/FastWiki.Jwt/JwtService.cs" afterDir="false" />
+    <list default="true" id="64af81bd-1684-4cc3-b4ce-a1ff685c1603" name="更改" comment="增加登录功能&#10;增加验证码接口&#10;增加用户接口">
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Powers/Dto/RoleDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Powers/IPowersService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Powers/Input/RoleInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/WorkSpaces/Dto/WorkSpaceDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/WorkSpaces/IWorkSpacesService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/WorkSpaces/Input/WorkSpacesInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/Powers/PowersService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/WorkSpaces/WorkSpacesService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Data/Repositories/IRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpaces/Repositories/IWorkSpaceRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/Repository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/WorkSpaceRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fast-wiki.sln" beforeDir="false" afterPath="$PROJECT_DIR$/fast-wiki.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fast-wiki.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/fast-wiki.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlEntityFrameworkCoreExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlEntityFrameworkCoreExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.SqlServer/SqlServerEntityFrameworkCoreExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.SqlServer/SqlServerEntityFrameworkCoreExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.Sqlite/SqliteEntityFrameworkCoreExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.Sqlite/SqliteEntityFrameworkCoreExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FastWiki.Application.Contract/FastWiki.Application.Contract.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/FastWiki.Application.Contract.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application/FastWiki.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application/FastWiki.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Core/Model/PagingModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Core/Model/PagedResultDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Data/Auditing/AuditEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Data/Auditing/AuditEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Data/Auditing/ICreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Data/Auditing/ICreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Data/Auditing/IModifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Data/Auditing/IModifier.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Agents/Aggregates/Agent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Agents/Aggregates/Agent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Agents/Aggregates/AgentConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Agents/Aggregates/AgentConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Users/Aggregates/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Users/Aggregates/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Data/FastWiki.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Data/FastWiki.Data.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/WorkSpace/WorkSpaceRoleType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/WorkSpace/WorkSpaceRoleType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/WorkSpace/WorkSpaceState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/WorkSpace/WorkSpaceState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Plugins/Aggregates/Plugin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Plugins/Aggregates/Plugin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Plugins/Aggregates/PluginItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Plugins/Aggregates/PluginItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Powers/Repositories/IRoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Powers/Repositories/IRoleRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Users/Repositories/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Users/Repositories/IUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpace/Aggregates/WorkSpace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpaces/Aggregates/WorkSpace.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpace/Aggregates/WorkSpaceMember.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpaces/Aggregates/WorkSpaceMember.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/FastWikiContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/FastWikiContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Extensions/ServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Extensions/ServiceExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/FastWiki.HttpApi.Host.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/FastWiki.HttpApi.Host.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Logs/log-20241104.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/IContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/IContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/RoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/RoleRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/UserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/ServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/ServiceExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi/Extensions/ServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/Extensions/ServiceExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi/FastWiki.HttpApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/FastWiki.HttpApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi/Middleware/HandlingExceptionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/Middleware/HandlingExceptionMiddleware.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +150,7 @@
       <updated>1730669027036</updated>
       <workItem from="1730669028697" duration="4761000" />
       <workItem from="1730704533970" duration="2134000" />
-      <workItem from="1730824437408" duration="7025000" />
+      <workItem from="1730824437408" duration="14017000" />
     </task>
     <task id="LOCAL-00001" summary="初始化前端项目&#10;设计表数据库字段&#10;增加初始化数据">
       <option name="closed" value="true" />
@@ -185,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730673722055</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="增加登录功能&#10;增加验证码接口&#10;增加用户接口">
+      <option name="closed" value="true" />
+      <created>1730831715818</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730831715818</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +188,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="初始化前端项目&#10;设计表数据库字段&#10;增加初始化数据" />
     <MESSAGE value="增加数据库支持&#10;增加项目依赖设计" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加数据库支持&#10;增加项目依赖设计" />
+    <MESSAGE value="增加登录功能&#10;增加验证码接口&#10;增加用户接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加登录功能&#10;增加验证码接口&#10;增加用户接口" />
   </component>
 </project>

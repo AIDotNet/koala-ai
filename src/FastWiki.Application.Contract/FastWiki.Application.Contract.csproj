@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FastWiki.Core\FastWiki.Core.csproj" />
+      <ProjectReference Include="..\FastWiki.Domain.Shared\FastWiki.Domain.Shared.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,8 @@
-﻿namespace FastWiki.Domain.Users.Repositories;
+﻿using FastWiki.Data.Repositories;
 
-public interface IUserRepository
+namespace FastWiki.Domain.Users.Repositories;
+
+public interface IUserRepository : IRepository<User>
 {
     Task<User> GetAsync(string userName);
 

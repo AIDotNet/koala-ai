@@ -1,6 +1,4 @@
-﻿using FastWiki.Domain.WorkSpaces.Aggregates;
-
-namespace FastWiki.Domain.Plugins.Aggregates;
+﻿namespace FastWiki.Domain.Plugins.Aggregates;
 
 public class PluginItem : AuditEntity<long>
 {
@@ -33,7 +31,7 @@ public class PluginItem : AuditEntity<long>
 
     public Plugin Plugin { get; set; }
 
-    public WorkSpace WorkSpace { get; set; }
+    public WorkSpaces.Aggregates.WorkSpace WorkSpace { get; set; }
 
     public PluginItem(string name, string description, long workSpaceId)
     {

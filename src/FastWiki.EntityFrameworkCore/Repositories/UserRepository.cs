@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FastWiki.EntityFrameworkCore.Repositories;
 
-public class UserRepository(IContext context) : IUserRepository
+public class UserRepository(IContext context) : Repository<User>(context),IUserRepository
 {
     public async Task<User> GetAsync(string userName)
     {

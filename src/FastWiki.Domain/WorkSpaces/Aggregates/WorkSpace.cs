@@ -1,4 +1,4 @@
-﻿using FastWiki.Domain.Shared.WorkSpace;
+﻿using FastWiki.Domain.Shared.WorkSpaces;
 
 namespace FastWiki.Domain.WorkSpaces.Aggregates;
 
@@ -30,6 +30,17 @@ public class WorkSpace : AuditEntity<long>
         SetState(WorkSpaceState.Activate);
     }
 
+    public void SetName(string name)
+    {
+        Name = name;
+    }
+
+    public void SetDescription(string? description)
+    {
+        Description = description;
+    }
+
+
     public void SetState(WorkSpaceState state)
     {
         State = state;
@@ -37,6 +48,5 @@ public class WorkSpace : AuditEntity<long>
 
     protected WorkSpace()
     {
-
     }
 }

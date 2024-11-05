@@ -1,6 +1,8 @@
-﻿namespace FastWiki.Domain.Powers.Repositories;
+﻿using FastWiki.Data.Repositories;
 
-public interface IRoleRepository 
+namespace FastWiki.Domain.Powers.Repositories;
+
+public interface IRoleRepository : IRepository<Role>
 {
     /// <summary>
     /// 获取指定用户的角色
@@ -36,4 +38,19 @@ public interface IRoleRepository
     /// <param name="keyword">关键字</param>
     /// <returns></returns>
     Task<List<Role>> GetListAsync(string? keyword);
+    
+    /// <summary>
+    /// 删除用户绑定的角色
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
+    Task DeleteUserRolesAsync(string userId);
+
+    /// <summary>
+    /// 绑定用户角色
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="roleIds"></param>
+    /// <returns></returns>
+    Task BindUserRoleAsync(string userId, List<string> roleIds);
 }

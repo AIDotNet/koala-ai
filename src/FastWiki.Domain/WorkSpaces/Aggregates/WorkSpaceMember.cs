@@ -1,4 +1,4 @@
-﻿using FastWiki.Domain.Shared.WorkSpace;
+﻿using FastWiki.Domain.Shared.WorkSpaces;
 
 namespace FastWiki.Domain.WorkSpaces.Aggregates;
 

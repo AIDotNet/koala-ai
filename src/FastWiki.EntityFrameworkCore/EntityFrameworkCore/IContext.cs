@@ -8,6 +8,8 @@ namespace FastWiki.EntityFrameworkCore.EntityFrameworkCore;
 
 public interface IContext
 {
+    DbSet<TEntity> Set<TEntity>() where TEntity : class;
+    
     DbSet<Agent> Agents { get; set; }
 
     DbSet<AgentConfig> AgentConfigs { get; set; }

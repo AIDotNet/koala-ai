@@ -1,7 +1,7 @@
 ﻿using FastWiki.Domain.Agents.Aggregates;
 using FastWiki.Domain.Knowledges.Aggregates;
 using FastWiki.Domain.Powers.Aggregates;
-using FastWiki.Domain.Shared.WorkSpace;
+using FastWiki.Domain.Shared.WorkSpaces;
 using FastWiki.Domain.Users.Aggregates;
 using FastWiki.Domain.WorkSpaces.Aggregates;
 using Microsoft.Extensions.DependencyInjection;

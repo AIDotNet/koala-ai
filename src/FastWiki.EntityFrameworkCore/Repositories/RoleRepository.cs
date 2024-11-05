@@ -4,7 +4,7 @@ using FastWiki.EntityFrameworkCore.EntityFrameworkCore;
 
 namespace FastWiki.EntityFrameworkCore.Repositories;
 
-public class RoleRepository(IContext context) : IRoleRepository
+public class RoleRepository(IContext context) : Repository<Role>(context), IRoleRepository
 {
     public async Task<List<Role>> GetRolesAsync(string userId)
     {
@@ -44,5 +44,21 @@ public class RoleRepository(IContext context) : IRoleRepository
         return await context.Roles
             .Where(r => string.IsNullOrEmpty(keyword) || r.Name.Contains(keyword))
             .ToListAsync();
+    }
+
+    public async Task DeleteUserRolesAsync(string userId)
+    {
+        await context.UserRoles
+            .Where(ur => ur.UserId == userId)
+            .ExecuteDeleteAsync();
+    }
+
+    public Task BindUserRoleAsync(string userId, List<string> roleIds)
+    {
+        var userRoles = roleIds.Select(roleId => new UserRole(userId, roleId)).ToList();
+        
+        context.UserRoles.AddRange(userRoles);
+        
+        return context.SaveChangesAsync();
     }
 }

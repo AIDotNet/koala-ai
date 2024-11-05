@@ -6,4 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="FastWiki.Data">
+        <HintPath>..\FastWiki.HttpApi.Host\bin\Debug\net8.0\FastWiki.Data.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
