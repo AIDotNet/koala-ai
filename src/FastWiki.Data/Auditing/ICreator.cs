@@ -2,7 +2,7 @@
 
 public interface ICreator
 {
-    string Creator { get; }
+    string? Creator { get; }
 
-    DateTimeOffset CreationTime { get; }
+    DateTimeOffset? CreationTime { get; }
 }

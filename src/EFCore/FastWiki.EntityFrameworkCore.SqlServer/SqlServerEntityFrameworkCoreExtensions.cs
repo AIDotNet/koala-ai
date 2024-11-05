@@ -14,6 +14,8 @@ public static class SqlServerEntityFrameworkCoreExtensions
             builder.UseSqlServer(configuration.GetConnectionString("Default"));
         }));
 
+        services.AddFastWikiDbContext();
+        
         services.AddScoped<IContext, SqlServerDbContext>();
 
         return services;

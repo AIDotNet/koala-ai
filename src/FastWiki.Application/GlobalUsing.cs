@@ -1,0 +1,12 @@
+﻿global using FastWiki.Application.Contract.Users;
+global using FastWiki.Application.Contract.Users.Dto;
+global using FastWiki.Application.Contract.Users.Input;
+global using FastWiki.Core.Model;
+global using Gnarly.Data;
+global using System.Security.Claims;
+global using FastWiki.Application.Contract.Authorization;
+global using FastWiki.Application.Contract.Authorization.Input;
+global using FastWiki.Core.Exceptions;
+global using FastWiki.Domain.Powers.Repositories;
+global using FastWiki.Domain.Users.Repositories;
+global using FastWiki.Jwt;

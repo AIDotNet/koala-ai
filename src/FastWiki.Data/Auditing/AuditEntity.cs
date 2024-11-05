@@ -4,13 +4,13 @@ public abstract class AuditEntity<TKey> : IAuditEntity<TKey>
 {
     public TKey Id { get; protected set; }
 
-    public string Creator { get; protected set; } = default!;
+    public string? Creator { get; protected set; } = default!;
 
-    public DateTimeOffset CreationTime { get; protected set; }
+    public DateTimeOffset? CreationTime { get; protected set; }
 
-    public string Modifier { get; protected set; } = default!;
+    public string? Modifier { get; protected set; } = default!;
 
-    public DateTimeOffset ModificationTime { get; set; }
+    public DateTimeOffset? ModificationTime { get; set; }
 
     protected AuditEntity() => Initialize();
 

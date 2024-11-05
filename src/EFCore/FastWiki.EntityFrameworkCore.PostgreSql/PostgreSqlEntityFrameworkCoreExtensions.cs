@@ -14,6 +14,8 @@ public static class PostgreSqlEntityFrameworkCoreExtensions
             builder.UseNpgsql(configuration.GetConnectionString("Default"));
         }));
 
+        services.AddFastWikiDbContext();
+        
         services.AddScoped<IContext, PostgreSqlDbContext>();
 
         return services;

@@ -1,4 +1,7 @@
-﻿using FastWiki.HttpApi.Extensions;
+﻿using FastWiki.Application;
+using FastWiki.EntityFrameworkCore.EntityFrameworkCore;
+using FastWiki.HttpApi.Extensions;
+using FastWiki.HttpApi.Middleware;
 
 namespace FastWiki.HttpApi.Host.Extensions;
 
@@ -8,21 +11,13 @@ public static class ServiceExtensions
 
     public static IServiceCollection AddFastWiki(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddAutoGnarly();
+        services.AddSingleton<HandlingExceptionMiddleware>();
+
         services.AddHttpApi();
 
-        services.AddResponseCompression();
+        services.AddApplication(configuration);
 
-        services.AddCors(options =>
-        {
-            options.AddPolicy(CorsPolicy, builder =>
-            {
-                builder.AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials()
-                    .AllowAnyOrigin();
-            });
-        });
+        services.AddResponseCompression();
 
         var dbType = configuration["DbType"];
         if (dbType.Equals("Sqlite", StringComparison.OrdinalIgnoreCase))
@@ -46,9 +41,11 @@ public static class ServiceExtensions
         return services;
     }
 
-    public static IApplicationBuilder UseFastWiki(this IApplicationBuilder builder)
+    public static async Task<IApplicationBuilder> UseFastWiki(this IApplicationBuilder builder,
+        IConfiguration configuration)
     {
         builder.UseHttpApi();
+
 
         builder.UseAuthentication();
         builder.UseAuthorization();
@@ -57,7 +54,18 @@ public static class ServiceExtensions
 
         builder.UseResponseCompression();
 
-        builder.UseCors(CorsPolicy);
+        // 启动时自动迁移数据库
+        var startMigrate = configuration["StartRunMigrations"];
+        if (startMigrate?.Equals("true", StringComparison.OrdinalIgnoreCase) == true)
+        {
+            var scopeFactory = builder.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+
+            using var scope = scopeFactory.CreateScope();
+
+            var context = scope.ServiceProvider.GetRequiredService<IContext>();
+
+            await context.RunMigrationsAsync(scope.ServiceProvider);
+        }
 
         return builder;
     }

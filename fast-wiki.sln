@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastWiki.EntityFrameworkCor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastWiki.HttpApi", "src\FastWiki.HttpApi\FastWiki.HttpApi.csproj", "{D682DD2A-5E5F-448A-B5C0-612A4BCDB4D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastWiki.Jwt", "src\framework\FastWiki.Jwt\FastWiki.Jwt.csproj", "{72C93FC4-A354-431F-A657-54F7BC6A8E8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,7 @@ Global
 		{90D00138-0614-4B9A-B4EA-CDBD9E1D8CEE} = {3B65F02F-0188-46A2-A0B8-57F437268750}
 		{93B4335C-98C0-4F33-A3AA-E2348DB2808D} = {3B65F02F-0188-46A2-A0B8-57F437268750}
 		{D682DD2A-5E5F-448A-B5C0-612A4BCDB4D3} = {91C9B036-E4E8-4F8A-BF7B-24FFF8B001CC}
+		{72C93FC4-A354-431F-A657-54F7BC6A8E8F} = {2D3C7EE1-B706-47C7-8DAF-B8705F76BBDB}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0E73D595-E492-4DC4-BFBE-D402FF3FBFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -100,5 +103,9 @@ Global
 		{D682DD2A-5E5F-448A-B5C0-612A4BCDB4D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D682DD2A-5E5F-448A-B5C0-612A4BCDB4D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D682DD2A-5E5F-448A-B5C0-612A4BCDB4D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C93FC4-A354-431F-A657-54F7BC6A8E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C93FC4-A354-431F-A657-54F7BC6A8E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C93FC4-A354-431F-A657-54F7BC6A8E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C93FC4-A354-431F-A657-54F7BC6A8E8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

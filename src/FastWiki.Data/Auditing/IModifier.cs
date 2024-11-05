@@ -2,7 +2,7 @@
 
 public interface IModifier
 {
-    string Modifier { get; }
+    string? Modifier { get; }
 
-    DateTimeOffset ModificationTime { get; }
+    DateTimeOffset? ModificationTime { get; }
 }

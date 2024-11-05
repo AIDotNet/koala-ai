@@ -4,7 +4,7 @@ using Gnarly.Data;
 
 namespace FastWiki.HttpApi.Middleware;
 
-public class HandlingExceptionMiddleware(ILogger<HandlingExceptionMiddleware> logger) : IMiddleware, ISingletonDependency
+public class HandlingExceptionMiddleware(ILogger<HandlingExceptionMiddleware> logger) : IMiddleware
 {
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {

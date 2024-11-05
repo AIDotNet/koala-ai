@@ -48,15 +48,15 @@ public class User : AuditEntity<string>
     public User(string account, string name, string password, string email, string phone, string introduction)
     {
         Account = account;
-        Name = name;
+        SetName(name);
         SetPassword(password);
         SetEmail(email);
-        Phone = phone;
-        Introduction = introduction;
+        SetPhone(phone);
+        SetIntroduction(introduction);
         Avatar = "\ud83e\udd9d";
         IsDisable = false;
     }
-    
+
     protected User()
     {
     }
@@ -86,6 +86,25 @@ public class User : AuditEntity<string>
         Email = email;
     }
 
+    public void SetPhone(string phone)
+    {
+        // 使用正则表达式验证手机号
+        var regex = new Regex(@"^1[3456789]\d{9}$");
+        if (!regex.IsMatch(phone)) throw new ArgumentException("手机号格式不正确");
+
+        Phone = phone;
+    }
+
+    public void SetIntroduction(string introduction)
+    {
+        Introduction = introduction;
+    }
+
+    public void SetName(string name)
+    {
+        Name = name;
+    }
+
     /// <summary>
     ///     校验密码
     /// </summary>
@@ -93,8 +112,6 @@ public class User : AuditEntity<string>
     /// <returns></returns>
     public bool CheckCipher(string password)
     {
-        if (Password == Md5Helper.HashPassword(password, Salt)) return true;
-
-        return false;
+        return Password == Md5Helper.HashPassword(password, Salt);
     }
 }

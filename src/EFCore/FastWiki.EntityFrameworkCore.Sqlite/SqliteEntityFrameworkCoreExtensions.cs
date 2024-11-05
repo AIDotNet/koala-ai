@@ -13,6 +13,8 @@ public static class SqliteEntityFrameworkCoreExtensions
         {
             builder.UseSqlite(configuration.GetConnectionString("Default"));
         }));
+        
+        services.AddFastWikiDbContext();
 
         services.AddScoped<IContext, SqliteDbContext>();
 

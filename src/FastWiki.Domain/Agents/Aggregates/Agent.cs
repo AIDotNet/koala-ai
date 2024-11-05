@@ -1,6 +1,4 @@
-﻿using FastWiki.Domain.Plugins.Aggregates;
-
-namespace FastWiki.Domain.Agents.Aggregates;
+﻿namespace FastWiki.Domain.Agents.Aggregates;
 
 public class Agent : AuditEntity<long>
 {

@@ -60,6 +60,9 @@ public class FastWikiContext<TContext>(DbContextOptions<TContext> options) : DbC
                 return;
             }
 
+            // 启动事务
+            await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
+
             // 初始化数据
             var user = new User("admin", "AIDotNet", "Aa123456.", "239573049@qq.com", "13049809673",
                 "AIDotNet FastWiki 管理员账号");
@@ -69,6 +72,7 @@ public class FastWikiContext<TContext>(DbContextOptions<TContext> options) : DbC
             #region 初始化角色
 
             var role = new Role("管理员", "系统管理员", "admin");
+            role.SetCreator(user.Id);
             await context.Roles.AddAsync(role, cancellationToken);
 
             var userRole = new UserRole(user.Id, role.Id);
@@ -80,15 +84,16 @@ public class FastWikiContext<TContext>(DbContextOptions<TContext> options) : DbC
 
             var workSpace = new WorkSpace("默认个人空间", "默认的个人空间");
             workSpace.SetCreator(user.Id);
-            await context.WorkSpaces.AddAsync(workSpace, cancellationToken);
+            workSpace = (await context.WorkSpaces.AddAsync(workSpace, cancellationToken)).Entity;
+
+            await context.SaveChangesAsync(cancellationToken);
 
             var workSpaceMember = new WorkSpaceMember(workSpace.Id, user.Id, WorkSpaceRoleType.Create);
             await context.WorkSpaceMembers.AddAsync(workSpaceMember, cancellationToken);
 
             #endregion
 
-
-            await context.SaveChangesAsync(cancellationToken);
+            await transaction.CommitAsync(cancellationToken);
         }
     }
 }

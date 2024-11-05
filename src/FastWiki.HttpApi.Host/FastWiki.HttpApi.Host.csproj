@@ -7,8 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Gnarly" Version="1.0.7" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
 
@@ -25,6 +32,10 @@
       <ProjectReference Include="..\EFCore\FastWiki.EntityFrameworkCore.Sqlite\FastWiki.EntityFrameworkCore.Sqlite.csproj" />
       <ProjectReference Include="..\EFCore\FastWiki.EntityFrameworkCore.SqlServer\FastWiki.EntityFrameworkCore.SqlServer.csproj" />
       <ProjectReference Include="..\FastWiki.HttpApi\FastWiki.HttpApi.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Logs\" />
     </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 
 public class AgentConfig : AuditEntity<long>
 {
-    public string AgentId { get; set; }
+    public long AgentId { get; set; }
 
     /// <summary>
     /// 智能体模型
@@ -53,7 +53,7 @@ public class AgentConfig : AuditEntity<long>
     
     public Agent Agent { get; set; } = null!;
 
-    public AgentConfig(string agentId, string model, double temperature, double topP, int maxResponseToken, string outputFormat, int contextSize, string? opening, bool suggestUserQuestion, string? prompt)
+    public AgentConfig(long agentId, string model, double temperature, double topP, int maxResponseToken, string outputFormat, int contextSize, string? opening, bool suggestUserQuestion, string? prompt)
     {
         AgentId = agentId;
         SetModel(model);
