@@ -1,4 +1,7 @@
 using FastWiki.HttpApi.Extensions;
+using Scalar.AspNetCore;
+
+namespace FastWiki.HttpApi.Host;
 
 internal static class Program
 {
@@ -17,7 +20,13 @@ internal static class Program
             log.Information("Fast Wiki API Host is starting...");
 
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddOpenApi((options =>
+            {
+                
+                options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+
+            }));
+
 
             builder.Services.AddFastWiki(builder.Configuration);
 
@@ -26,8 +35,15 @@ internal static class Program
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.MapOpenApi();
+                app.MapScalarApiReference((options =>
+                {
+                    options.Title = "Fast Wiki API";
+                    options.Authentication = new ScalarAuthenticationOptions()
+                    {
+                        PreferredSecurityScheme = "Bearer",
+                    };
+                })); 
             }
 
             await app.UseFastWiki(builder.Configuration);

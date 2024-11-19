@@ -92,6 +92,6 @@ public class Repository<TEntity>(IContext context) : IRepository<TEntity>
     public Task DeleteAsync(Expression<Func<TEntity, bool>> expression, CancellationToken cancellationToken = default)
     {
         return _dbSet.Where(expression)
-            .ExecuteDeleteAsync(cancellationToken: cancellationToken);
+            .ExecuteDeleteAsync(cancellationToken);
     }
 }

@@ -10,35 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64af81bd-1684-4cc3-b4ce-a1ff685c1603" name="更改" comment="增加登录功能&#10;增加验证码接口&#10;增加用户接口">
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Powers/Dto/RoleDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Powers/IPowersService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Powers/Input/RoleInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/WorkSpaces/Dto/WorkSpaceDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/WorkSpaces/IWorkSpacesService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/WorkSpaces/Input/WorkSpacesInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/Powers/PowersService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Application/WorkSpaces/WorkSpacesService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Data/Repositories/IRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpaces/Repositories/IWorkSpaceRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/Repository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/WorkSpaceRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Extensions/BearerSecuritySchemeTransformer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/FastWiki.EntityFrameworkCore.PostgreSql.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/FastWiki.EntityFrameworkCore.PostgreSql.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.SqlServer/FastWiki.EntityFrameworkCore.SqlServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.SqlServer/FastWiki.EntityFrameworkCore.SqlServer.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.Sqlite/FastWiki.EntityFrameworkCore.Sqlite.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.Sqlite/FastWiki.EntityFrameworkCore.Sqlite.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FastWiki.Application.Contract/FastWiki.Application.Contract.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/FastWiki.Application.Contract.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application/FastWiki.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application/FastWiki.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Core/FastWiki.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Core/FastWiki.Core.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FastWiki.Data/FastWiki.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Data/FastWiki.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/WorkSpace/WorkSpaceRoleType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/WorkSpace/WorkSpaceRoleType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/WorkSpace/WorkSpaceState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/WorkSpace/WorkSpaceState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Plugins/Aggregates/Plugin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Plugins/Aggregates/Plugin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Plugins/Aggregates/PluginItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Plugins/Aggregates/PluginItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Powers/Repositories/IRoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Powers/Repositories/IRoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/Users/Repositories/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/Users/Repositories/IUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpace/Aggregates/WorkSpace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpaces/Aggregates/WorkSpace.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpace/Aggregates/WorkSpaceMember.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/WorkSpaces/Aggregates/WorkSpaceMember.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/FastWikiContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/FastWikiContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/IContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/IContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/RoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/RoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/ServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/ServiceExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/FastWiki.Domain.Shared.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain.Shared/FastWiki.Domain.Shared.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Domain/FastWiki.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Domain/FastWiki.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/FastWiki.EntityFrameworkCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/FastWiki.EntityFrameworkCore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/Repository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/FastWiki.HttpApi.Host.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/FastWiki.HttpApi.Host.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi/Extensions/ServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/Extensions/ServiceExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi/FastWiki.HttpApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/FastWiki.HttpApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/framework/FastWiki.Jwt/FastWiki.Jwt.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/framework/FastWiki.Jwt/FastWiki.Jwt.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,17 +44,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/SourceGeneratedDocuments/36D4C6FF2F7F14A9D1FCB4A9/Gnarly/Gnarly.ServiceRegistrationGenerator/GnarlyExtensions.g.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/SourceGeneratedDocuments/76A968E15DF3441748FC43D0/Gnarly/Gnarly.ServiceRegistrationGenerator/GnarlyExtensions.g.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2c9a834339734971a26ff4809ce820ac16930/8d/66cc7023/CorsPolicyBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/40fea8124c8f4917b61403980bb273321e6648/28/d6342e2b/RelationalEntityTypeBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bdd42fb465564691b27ef5ba6af3d6e4cca00/02/fe8ad006/DefaultCaptcha.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bdd42fb465564691b27ef5ba6af3d6e4cca00/ea/78997881/CaptchaData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bdd42fb465564691b27ef5ba6af3d6e4cca00/ec/ac8c9ac0/ICaptcha.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c82c9767b4b94ee2852939a4390913881b928/66/c75d1953/WebApplication.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f8dbf2e4204a4497b2061a48f87ada3626aa20/2a/e055402e/CoreLoggerExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f8dbf2e4204a4497b2061a48f87ada3626aa20/2f/be5eccbe/ModelBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f8dbf2e4204a4497b2061a48f87ada3626aa20/bf/774f8bc1/DbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0aad9c0e254f489bb0b0e2747d386ca62acc00/05/55c303f0/ScalarOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0aad9c0e254f489bb0b0e2747d386ca62acc00/50/c323672d/OperationSorter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3e286f5bc98449449892808c6bd12b212000/ff/f9a53d52/ServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b8eacc2566304491bce9f5f6cc6e08a5b5910/ca/57c1b543/EndpointSummaryAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlEntityFrameworkCoreExtensions.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -83,6 +68,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET 启动设置配置文件.FastWiki.HttpApi.Host: http.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "v2.0.0",
     "node.js.detected.package.eslint": "true",
@@ -91,6 +77,13 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\token\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\token\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\token\\AppData\\Local\\Symbols\\src"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected=".NET 启动设置配置文件.FastWiki.HttpApi.Host: http">
@@ -151,6 +144,7 @@
       <workItem from="1730669028697" duration="4761000" />
       <workItem from="1730704533970" duration="2134000" />
       <workItem from="1730824437408" duration="14017000" />
+      <workItem from="1731998586938" duration="3721000" />
     </task>
     <task id="LOCAL-00001" summary="初始化前端项目&#10;设计表数据库字段&#10;增加初始化数据">
       <option name="closed" value="true" />
