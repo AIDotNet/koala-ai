@@ -1,13 +1,29 @@
-﻿namespace FastWiki.Application.Authorization;
+﻿using Lazy.Captcha.Core;
+
+namespace FastWiki.Application.Authorization;
 
 public class AuthorizationService(
     JwtService jwtService,
     IUserRepository userRepository,
+    ICaptcha captcha,
     IRoleRepository roleRepository)
     : IAuthorizationService, IScopeDependency
 {
     public async Task<string> TokenAsync(TokenInput input)
     {
+        // 校验验证码
+        if (!string.IsNullOrWhiteSpace(input.Captcha) && !string.IsNullOrWhiteSpace(input.CaptchaKey))
+        {
+            if (!captcha.Validate(input.CaptchaKey, input.Captcha))
+            {
+                throw new UserFriendlyException("验证码错误");
+            }
+        }
+        else
+        {
+            throw new UserFriendlyException("验证码不能为空");
+        }
+
         var user = await userRepository.GetAsync(input.UserName);
 
         if (user == null)

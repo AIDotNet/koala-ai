@@ -26,7 +26,7 @@ public class JwtService(IConfiguration configuration)
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
-            issuer: "FastWiki",
+            issuer: "AIDotNet",
             audience: "FastWiki",
             claims: claims,
             expires: expires,
@@ -48,7 +48,7 @@ public class JwtService(IConfiguration configuration)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "FastWiki",
+            ValidIssuer = "AIDotNet",
             ValidAudience = "FastWiki",
             IssuerSigningKey = key
         };

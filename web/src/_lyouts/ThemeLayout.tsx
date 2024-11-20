@@ -11,6 +11,10 @@ const ThemeLayout = memo<ILayout>(({ children }) => {
 
     return (
         <ThemeProvider
+            style={{
+                height: '100vh',
+                width: '100%',
+            }}
             themeMode={theme}
             onThemeModeChange={switchTheme}
         >

@@ -9,6 +9,7 @@ import Terms from "@/app/welcome/terms";
 import Contact from "@/app/welcome/contact";
 import PanelLayout from "@/app/panel/_layout";
 import WelcomePanel from "@/app/panel/welcome";
+import LoginPage from "@/app/login";
 
 const routes = [
     {
@@ -44,6 +45,10 @@ const routes = [
                 element: <WelcomePanel />
             }
         ]
+    },
+    {
+        path:'/login',
+        element: <LoginPage />
     }
 ];
 

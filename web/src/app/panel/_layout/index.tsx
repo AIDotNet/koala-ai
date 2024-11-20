@@ -1,22 +1,27 @@
-import { memo } from "react";
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import { Outlet } from "react-router-dom";
+import { memo, useEffect } from "react";
 import { Flexbox } from 'react-layout-kit';
-import { SideNav } from "@lobehub/ui";
 import Nav from "../@nav";
-
-
+import { useUserStore } from "@/store/user";
+import { Outlet } from "react-router-dom";
 const PanelLayout = memo(({ }) => {
-    return (<Flexbox horizontal>
-        <Flexbox>
-            <Nav />
-        </Flexbox>
-        <Flexbox>
+    const [initUser] = useUserStore((s) => [s.initUser]);
 
-        </Flexbox>
-    </Flexbox>)
+    useEffect(() => {
+        initUser();
+    }, [])
+
+    return (
+        <Flexbox
+            height={'100%'}
+            horizontal
+            style={{
+                position: 'relative',
+            }}
+            width={'100%'}
+        >
+            <Nav />
+            <Outlet />
+        </Flexbox>)
 })
 
 export default PanelLayout;

@@ -15,7 +15,7 @@ public class NotificationService(ICaptcha captcha) : INotificationService, IScop
         return Task.FromResult(new VerificationDto
         {
             Key = uuid,
-            Code = code.Base64
+            Code = "data:image/png;base64," + code.Base64
         });
     }
 

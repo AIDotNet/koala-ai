@@ -40,7 +40,7 @@ const TopLayout = memo(() => {
             />}
             actions={<Flexbox>
                 <Button onClick={() => {
-                    navigate('/panel')
+                    navigate('/login')
                 }}>
                     登录
                 </Button>

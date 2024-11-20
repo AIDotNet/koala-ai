@@ -1,0 +1,1297 @@
+[2024-11-19 15:01:04 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:01:06 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:01:06 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:01:06 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:01:06 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:01:06 INF] Executed DbCommand (303ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA journal_mode = 'wal';
+ [2024-11-19 15:01:06 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:01:06 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:01:06 INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsLock" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK___EFMigrationsLock" PRIMARY KEY,
+    "Timestamp" TEXT NOT NULL
+);
+ [2024-11-19 15:01:06 INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:01:06.7784475+00:00');
+SELECT changes();
+ [2024-11-19 15:01:06 INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:01:06 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:01:06 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:01:06 INF] Applying migration '20241105182702_Initial'.
+ [2024-11-19 15:01:07 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "chat_histories" (
+    -- 聊天记录
+
+    -- 聊天记录ID
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_chat_histories" PRIMARY KEY AUTOINCREMENT,
+
+    -- 会话ID
+    "SessionId" TEXT NOT NULL,
+
+    -- 聊天内容
+    "Content" TEXT NOT NULL,
+
+    -- 发送用户ID
+    "UserId" TEXT NOT NULL,
+
+    -- 发送用户IP
+    "IP" TEXT NOT NULL,
+
+    -- 使用的智能体ID
+    "AgentId" TEXT NOT NULL,
+
+    -- 是否发送消息
+    "SendMessage" INTEGER NOT NULL DEFAULT 0,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "roles" (
+    -- 角色
+
+    -- 角色ID
+    "Id" TEXT NOT NULL CONSTRAINT "PK_roles" PRIMARY KEY,
+
+    -- 角色名称
+    "Name" TEXT NOT NULL,
+
+    -- 角色描述
+    "Description" TEXT NOT NULL,
+
+    -- 角色编码 唯一
+    "Code" TEXT NOT NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "users" (
+    -- 用户
+
+    -- 用户ID
+    "Id" TEXT NOT NULL CONSTRAINT "PK_users" PRIMARY KEY,
+
+    -- 用户名
+    "Account" TEXT NOT NULL,
+
+    "Name" TEXT NOT NULL,
+
+    -- 密码
+    "Password" TEXT NOT NULL,
+
+    "Salt" TEXT NOT NULL,
+
+    -- 头像
+    "Avatar" TEXT NOT NULL,
+
+    -- 邮箱
+    "Email" TEXT NOT NULL,
+
+    -- 手机号
+    "Phone" TEXT NOT NULL,
+
+    -- 简介
+    "Introduction" TEXT NOT NULL,
+
+    "IsDisable" INTEGER NOT NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "work_spaces" (
+    -- 工作空间
+
+    -- 工作空间ID
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_work_spaces" PRIMARY KEY AUTOINCREMENT,
+
+    -- 工作空间名称
+    "Name" TEXT NOT NULL,
+
+    -- 工作空间描述
+    "Description" TEXT NULL,
+
+    "State" INTEGER NOT NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "user_auth_extensions" (
+    -- 用户认证扩展
+
+    -- 用户认证扩展ID
+    "Id" TEXT NOT NULL CONSTRAINT "PK_user_auth_extensions" PRIMARY KEY,
+
+    -- 用户ID
+    "UserId" TEXT NOT NULL,
+
+    -- 认证ID
+    "AuthId" TEXT NOT NULL,
+
+    -- 认证类型
+    "AuthType" TEXT NOT NULL,
+
+    -- 扩展数据
+    "ExtendData" TEXT NOT NULL,
+    CONSTRAINT "FK_user_auth_extensions_users_UserId" FOREIGN KEY ("UserId") REFERENCES "users" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "user_roles" (
+    -- 用户角色
+
+    -- 用户ID
+    "UserId" TEXT NOT NULL,
+
+    -- 角色ID
+    "RoleId" TEXT NOT NULL,
+    CONSTRAINT "PK_user_roles" PRIMARY KEY ("UserId", "RoleId"),
+    CONSTRAINT "FK_user_roles_roles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "roles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_user_roles_users_UserId" FOREIGN KEY ("UserId") REFERENCES "users" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "agents" (
+    -- 智能体
+
+    -- 智能体ID
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_agents" PRIMARY KEY AUTOINCREMENT,
+
+    -- 智能体名称
+    "Name" TEXT NOT NULL,
+
+    -- 智能体介绍
+    "Introduction" TEXT NOT NULL,
+
+    -- 智能体头像
+    "Avatar" TEXT NOT NULL,
+
+    "IsCollect" INTEGER NOT NULL,
+
+    "IsTop" INTEGER NOT NULL,
+
+    "WorkSpaceId" INTEGER NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "FK_agents_work_spaces_WorkSpaceId" FOREIGN KEY ("WorkSpaceId") REFERENCES "work_spaces" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "categories" (
+    -- 分类
+
+    -- 分类ID
+    "Id" TEXT NOT NULL CONSTRAINT "PK_categories" PRIMARY KEY,
+
+    -- 分类名称
+    "Name" TEXT NOT NULL,
+
+    -- 分类描述
+    "Description" TEXT NOT NULL,
+
+    "ParentId" TEXT NULL,
+
+    "WorkSpaceId" INTEGER NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "FK_categories_work_spaces_WorkSpaceId" FOREIGN KEY ("WorkSpaceId") REFERENCES "work_spaces" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "plugins" (
+    -- 插件
+
+    -- 插件ID
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_plugins" PRIMARY KEY AUTOINCREMENT,
+
+    -- 插件名称
+    "Name" TEXT NOT NULL,
+
+    -- 插件描述
+    "Description" TEXT NOT NULL,
+
+    "Runtime" TEXT NOT NULL,
+
+    -- 插件头像
+    "Avatar" TEXT NOT NULL,
+
+    "Enable" INTEGER NOT NULL,
+
+    "WorkSpaceId" INTEGER NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "FK_plugins_work_spaces_WorkSpaceId" FOREIGN KEY ("WorkSpaceId") REFERENCES "work_spaces" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "work_space_members" (
+    -- 工作空间成员
+
+    -- 工作空间ID
+    "WorkSpaceId" INTEGER NOT NULL,
+
+    -- 用户ID
+    "UserId" TEXT NOT NULL,
+
+    "RoleType" INTEGER NOT NULL,
+
+    "Id" INTEGER NOT NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "PK_work_space_members" PRIMARY KEY ("WorkSpaceId", "UserId"),
+    CONSTRAINT "FK_work_space_members_users_UserId" FOREIGN KEY ("UserId") REFERENCES "users" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_work_space_members_work_spaces_WorkSpaceId" FOREIGN KEY ("WorkSpaceId") REFERENCES "work_spaces" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "agent_configs" (
+    -- 智能体配置信息
+
+    -- 配置ID
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_agent_configs" PRIMARY KEY AUTOINCREMENT,
+
+    -- 智能体ID
+    "AgentId" INTEGER NOT NULL,
+
+    -- 对话模型
+    "Model" TEXT NOT NULL DEFAULT 'gpt-4',
+
+    -- 温度 (0-1) 越高越随机
+    "Temperature" REAL NOT NULL DEFAULT 0.69999999999999996,
+
+    -- TopP (0-1) 越高越随机
+    "TopP" REAL NOT NULL DEFAULT 0.90000000000000002,
+
+    -- 最大回复token
+    "MaxResponseToken" INTEGER NOT NULL DEFAULT 4000,
+
+    -- 输出格式
+    "OutputFormat" TEXT NOT NULL DEFAULT 'markdown',
+
+    -- 上下文数量
+    "ContextSize" INTEGER NOT NULL DEFAULT 0,
+
+    -- 开场白
+    "Opening" TEXT NULL DEFAULT '你好，我是AIDotNet智能助手，我可以帮助您解决问题，您可以问我任何问题。',
+
+    -- 是否提供用户建议提问
+    "SuggestUserQuestion" INTEGER NOT NULL DEFAULT 0,
+
+    -- 智能体提示词
+    "Prompt" TEXT NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "FK_agent_configs_agents_AgentId" FOREIGN KEY ("AgentId") REFERENCES "agents" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "knowledges" (
+    -- 知识库
+
+    -- 知识库ID
+    "Id" TEXT NOT NULL CONSTRAINT "PK_knowledges" PRIMARY KEY,
+
+    -- 知识库名称
+    "Name" TEXT NOT NULL,
+
+    -- 知识库描述
+    "Description" TEXT NOT NULL,
+
+    -- 知识库分类
+    "CategoryId" TEXT NULL,
+
+    -- 知识库 RAG 类型
+    "RagType" INTEGER NOT NULL,
+
+    -- 知识库头像
+    "Avatar" TEXT NOT NULL,
+
+    -- 知识库嵌入模型,当嵌入模型确认以后不能修改，否则会导致数据不一致
+    "EmbeddingModel" TEXT NOT NULL,
+
+    -- 知识库聊天模型
+    "ChatModel" TEXT NOT NULL,
+
+    "WorkSpaceId" INTEGER NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "FK_knowledges_categories_CategoryId" FOREIGN KEY ("CategoryId") REFERENCES "categories" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_knowledges_work_spaces_WorkSpaceId" FOREIGN KEY ("WorkSpaceId") REFERENCES "work_spaces" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "plugin_items" (
+    -- 插件项
+
+    -- 插件项ID
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_plugin_items" PRIMARY KEY AUTOINCREMENT,
+
+    "WorkSpaceId" INTEGER NOT NULL,
+
+    "PluginId" INTEGER NOT NULL,
+
+    -- 插件项名称
+    "Name" TEXT NOT NULL,
+
+    -- 插件项描述
+    "Description" TEXT NOT NULL,
+
+    "Parameters" TEXT NOT NULL,
+
+    "OutputParameters" TEXT NOT NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "FK_plugin_items_plugins_PluginId" FOREIGN KEY ("PluginId") REFERENCES "plugins" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_plugin_items_work_spaces_WorkSpaceId" FOREIGN KEY ("WorkSpaceId") REFERENCES "work_spaces" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "knowledge_items" (
+    -- 知识库条目
+
+    -- 知识库条目ID
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_knowledge_items" PRIMARY KEY AUTOINCREMENT,
+
+    -- 知识库ID
+    "KnowledgeId" TEXT NOT NULL,
+
+    -- 知识库条目名称
+    "Name" TEXT NOT NULL,
+
+    "Data" TEXT NOT NULL,
+
+    "DataCount" INTEGER NOT NULL,
+
+    "ExtraData" TEXT NOT NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "FK_knowledge_items_knowledges_KnowledgeId" FOREIGN KEY ("KnowledgeId") REFERENCES "knowledges" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "quantized_tasks" (
+    -- 量化任务
+
+    -- 量化任务ID
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_quantized_tasks" PRIMARY KEY AUTOINCREMENT,
+
+    "KnowledgeId" TEXT NOT NULL,
+
+    "KnowledgeItemId" INTEGER NOT NULL,
+
+    -- 量化任务状态
+    "State" INTEGER NOT NULL,
+
+    -- 备注
+    "Remark" TEXT NOT NULL,
+
+    "ProcessTime" TEXT NOT NULL,
+
+    "Creator" TEXT NULL,
+
+    "CreationTime" TEXT NULL,
+
+    "Modifier" TEXT NULL,
+
+    "ModificationTime" TEXT NULL,
+    CONSTRAINT "FK_quantized_tasks_knowledge_items_KnowledgeItemId" FOREIGN KEY ("KnowledgeItemId") REFERENCES "knowledge_items" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_quantized_tasks_knowledges_KnowledgeId" FOREIGN KEY ("KnowledgeId") REFERENCES "knowledges" ("Id") ON DELETE CASCADE
+);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_agent_configs_AgentId" ON "agent_configs" ("AgentId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_agents_Name" ON "agents" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_agents_WorkSpaceId" ON "agents" ("WorkSpaceId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_categories_Name" ON "categories" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_categories_WorkSpaceId" ON "categories" ("WorkSpaceId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_chat_histories_SessionId" ON "chat_histories" ("SessionId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_chat_histories_UserId" ON "chat_histories" ("UserId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_knowledge_items_KnowledgeId" ON "knowledge_items" ("KnowledgeId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_knowledge_items_Name" ON "knowledge_items" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_knowledges_CategoryId" ON "knowledges" ("CategoryId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_knowledges_Name" ON "knowledges" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_knowledges_WorkSpaceId" ON "knowledges" ("WorkSpaceId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_plugin_items_Name" ON "plugin_items" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_plugin_items_PluginId" ON "plugin_items" ("PluginId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_plugin_items_WorkSpaceId" ON "plugin_items" ("WorkSpaceId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_plugins_Name" ON "plugins" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_plugins_WorkSpaceId" ON "plugins" ("WorkSpaceId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_quantized_tasks_KnowledgeId" ON "quantized_tasks" ("KnowledgeId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_quantized_tasks_KnowledgeItemId" ON "quantized_tasks" ("KnowledgeItemId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_roles_Code" ON "roles" ("Code");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_roles_Name" ON "roles" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_user_auth_extensions_AuthType_AuthId" ON "user_auth_extensions" ("AuthType", "AuthId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_user_auth_extensions_UserId" ON "user_auth_extensions" ("UserId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_user_roles_RoleId" ON "user_roles" ("RoleId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_users_Account" ON "users" ("Account");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_users_Email" ON "users" ("Email");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_users_Name" ON "users" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_users_Phone" ON "users" ("Phone");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_work_space_members_UserId" ON "work_space_members" ("UserId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_work_space_members_WorkSpaceId" ON "work_space_members" ("WorkSpaceId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_work_space_members_WorkSpaceId_UserId" ON "work_space_members" ("WorkSpaceId", "UserId");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_work_spaces_Name" ON "work_spaces" ("Name");
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20241105182702_Initial', '9.0.0');
+ [2024-11-19 15:01:07 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:01:07 INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 5), @p2='?' (DbType = DateTimeOffset), @p3='?' (Size = 36), @p4='?' (Size = 5), @p5='?' (DbType = DateTimeOffset), @p6='?', @p7='?' (Size = 3)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "roles" ("Id", "Code", "CreationTime", "Creator", "Description", "ModificationTime", "Modifier", "Name")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 5), @p2='?' (Size = 2), @p3='?' (DbType = DateTimeOffset), @p4='?', @p5='?' (Size = 16), @p6='?' (Size = 23), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTimeOffset), @p9='?', @p10='?' (Size = 8), @p11='?' (Size = 32), @p12='?' (Size = 11), @p13='?' (Size = 32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "users" ("Id", "Account", "Avatar", "CreationTime", "Creator", "Email", "Introduction", "IsDisable", "ModificationTime", "Modifier", "Name", "Password", "Phone", "Salt")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13);
+ [2024-11-19 15:01:07 INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTimeOffset), @p1='?' (Size = 36), @p2='?' (Size = 7), @p3='?' (DbType = DateTimeOffset), @p4='?', @p5='?' (Size = 6), @p6='?' (DbType = Byte)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "work_spaces" ("CreationTime", "Creator", "Description", "ModificationTime", "Modifier", "Name", "State")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "Id";
+ [2024-11-19 15:01:07 INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "user_roles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+ [2024-11-19 15:01:08 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:01:08 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:01:08 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:01:08 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:01:08 INF] Hosting environment: Development
+ [2024-11-19 15:01:08 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:01:08 INF] Request starting HTTP/1.1 GET http://localhost:5087/swagger - null null
+ [2024-11-19 15:01:08 INF] Request finished HTTP/1.1 GET http://localhost:5087/swagger - 404 0 null 244.5246ms
+ [2024-11-19 15:01:08 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/swagger, Response status code: 404
+ [2024-11-19 15:01:13 INF] Request starting HTTP/1.1 GET http://localhost:5087/swagger - null null
+ [2024-11-19 15:01:13 INF] Request finished HTTP/1.1 GET http://localhost:5087/swagger - 404 0 null 65.8006ms
+ [2024-11-19 15:01:13 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/swagger, Response status code: 404
+ [2024-11-19 15:01:15 INF] Request starting HTTP/1.1 GET http://localhost:5087/ - null null
+ [2024-11-19 15:01:15 INF] Request finished HTTP/1.1 GET http://localhost:5087/ - 404 0 null 4.8922ms
+ [2024-11-19 15:01:15 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/, Response status code: 404
+ [2024-11-19 15:03:39 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:03:39 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:03:39 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:03:39 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:03:39 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 54.114ms
+ [2024-11-19 15:03:39 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/scalar.js - null null
+ [2024-11-19 15:03:39 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:03:39 INF] Sending file with download name ''.
+ [2024-11-19 15:03:39 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:03:39 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/scalar.js - 200 null text/javascript 48.5167ms
+ [2024-11-19 15:03:40 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:03:40 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:03:40 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:03:40 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:03:40 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:03:40 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 146.9749ms
+ [2024-11-19 15:03:40 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:03:40 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:03:40 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 13.6673ms
+ [2024-11-19 15:03:40 INF] Request starting HTTP/1.1 GET http://localhost:5087/favicon.ico - null null
+ [2024-11-19 15:03:40 INF] Request finished HTTP/1.1 GET http://localhost:5087/favicon.ico - 404 0 null 2.5813ms
+ [2024-11-19 15:03:40 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/favicon.ico, Response status code: 404
+ [2024-11-19 15:04:05 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:04:06 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:04:06 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:04:06 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:04:06 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:04:07 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:04:07 INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:04:07 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:04:07.2392835+00:00');
+SELECT changes();
+ [2024-11-19 15:04:07 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:04:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:04:07 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:04:07 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:04:07 INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:04:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:04:07 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:04:07 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:04:07 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:04:07 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:04:07 INF] Hosting environment: Development
+ [2024-11-19 15:04:07 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:04:08 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:04:08 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:04:08 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:04:08 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:04:08 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 282.267ms
+ [2024-11-19 15:04:08 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:04:08 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:04:08 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:04:08 INF] Request starting HTTP/1.1 GET http://localhost:5087/favicon.ico - null null
+ [2024-11-19 15:04:08 INF] Request finished HTTP/1.1 GET http://localhost:5087/favicon.ico - 404 0 null 6.7751ms
+ [2024-11-19 15:04:08 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/favicon.ico, Response status code: 404
+ [2024-11-19 15:04:08 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:04:08 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:04:08 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 148.1186ms
+ [2024-11-19 15:04:08 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:04:08 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:04:08 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 13.1081ms
+ [2024-11-19 15:04:27 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:04:27 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:04:27 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:04:27 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 10.9861ms
+ [2024-11-19 15:05:11 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:05:11 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:05:11 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:05:11 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 7.446ms
+ [2024-11-19 15:06:21 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:06:22 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:06:22 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:06:22 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:06:22 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:06:23 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:06:23 INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:06:23 INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:06:23.2215739+00:00');
+SELECT changes();
+ [2024-11-19 15:06:23 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:06:23 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:06:23 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:06:23 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:06:23 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:06:23 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:06:23 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:06:23 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:06:23 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:06:23 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:06:23 INF] Hosting environment: Development
+ [2024-11-19 15:06:23 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:06:24 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:06:24 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:06:24 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:06:24 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:06:24 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 181.618ms
+ [2024-11-19 15:06:24 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:06:24 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:06:24 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:06:24 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:06:24 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:06:24 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 119.8951ms
+ [2024-11-19 15:06:24 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:06:24 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:06:24 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 14.3ms
+ [2024-11-19 15:06:49 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:06:50 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:06:50 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:06:50 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:06:50 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:06:50 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:06:50 INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:06:50 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:06:50.6935323+00:00');
+SELECT changes();
+ [2024-11-19 15:06:50 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:06:50 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:06:50 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:06:50 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:06:50 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:06:51 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:06:51 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:06:51 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:06:51 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:06:51 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:06:51 INF] Hosting environment: Development
+ [2024-11-19 15:06:51 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:06:51 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:06:51 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:06:51 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:06:51 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:06:51 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 161.5256ms
+ [2024-11-19 15:06:51 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:06:51 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:06:51 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:06:52 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:06:52 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:06:52 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 197.8888ms
+ [2024-11-19 15:06:52 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:06:52 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:06:52 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 11.2963ms
+ [2024-11-19 15:07:15 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:07:16 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:07:16 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:07:16 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:07:16 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:07:16 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:07:16 INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:07:16 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:07:16.9822226+00:00');
+SELECT changes();
+ [2024-11-19 15:07:17 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:07:17 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:07:17 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:07:17 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:07:17 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:07:17 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:07:17 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:07:17 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:07:17 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:07:17 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:07:17 INF] Hosting environment: Development
+ [2024-11-19 15:07:17 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:07:17 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:07:18 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:07:18 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:07:18 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:07:18 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 226.8008ms
+ [2024-11-19 15:07:18 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:07:18 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:07:18 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:07:18 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:07:18 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:07:18 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 129.5597ms
+ [2024-11-19 15:07:18 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:07:18 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:07:18 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 13.1657ms
+ [2024-11-19 15:10:37 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:10:38 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:10:38 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:10:38 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:10:38 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:10:38 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:10:38 INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:10:38 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:10:38.5842952+00:00');
+SELECT changes();
+ [2024-11-19 15:10:38 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:10:38 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:10:38 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:10:38 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:10:38 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:10:38 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:10:39 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:10:39 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:10:39 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:10:39 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:10:39 INF] Hosting environment: Development
+ [2024-11-19 15:10:39 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:10:39 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:10:39 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:10:39 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:10:39 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:10:39 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 236.8861ms
+ [2024-11-19 15:10:39 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:10:39 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:10:39 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:10:39 INF] Request starting HTTP/1.1 GET http://localhost:5087/favicon.ico - null null
+ [2024-11-19 15:10:39 INF] Request finished HTTP/1.1 GET http://localhost:5087/favicon.ico - 404 0 null 4.1609ms
+ [2024-11-19 15:10:39 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/favicon.ico, Response status code: 404
+ [2024-11-19 15:10:39 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:10:39 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:10:39 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 137.4636ms
+ [2024-11-19 15:10:39 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:10:39 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:10:39 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 13.2167ms
+ [2024-11-19 15:13:06 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:13:07 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:13:07 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:13:07 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:13:07 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:13:07 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:13:07 INF] Executed DbCommand (99ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:13:07 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:13:07.7719516+00:00');
+SELECT changes();
+ [2024-11-19 15:13:07 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:13:07 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:13:07 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:13:07 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:13:07 INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:13:08 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:13:08 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:13:08 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:13:08 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:13:08 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:13:08 INF] Hosting environment: Development
+ [2024-11-19 15:13:08 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:13:08 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:13:08 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:13:08 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:13:08 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:13:08 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 204.3248ms
+ [2024-11-19 15:13:09 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:13:09 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:13:09 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:13:09 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:13:09 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:13:09 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 134.3353ms
+ [2024-11-19 15:13:09 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:13:09 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:13:09 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 15.5679ms
+ [2024-11-19 15:14:23 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:14:24 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:14:24 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:14:24 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:14:24 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:14:25 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:14:25 INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:14:25 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:14:25.196672+00:00');
+SELECT changes();
+ [2024-11-19 15:14:25 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:14:25 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:14:25 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:14:25 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:14:25 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:14:25 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:14:25 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:14:25 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:14:25 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:14:25 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:14:25 INF] Hosting environment: Development
+ [2024-11-19 15:14:25 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:14:26 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:14:26 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:14:26 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:14:26 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:14:26 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 212.8288ms
+ [2024-11-19 15:14:26 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:14:26 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:14:26 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:14:56 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:14:57 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:15:06 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:15:06 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:15:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 40161.7296ms
+ [2024-11-19 15:15:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 10403.539ms
+ [2024-11-19 15:48:20 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:48:21 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:48:21 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:48:21 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:48:21 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:48:21 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:48:21 INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:48:21 INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:48:21.6956564+00:00');
+SELECT changes();
+ [2024-11-19 15:48:21 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:48:21 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:48:21 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:48:21 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:48:21 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:48:22 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:48:22 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:48:22 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:48:22 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:48:22 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:48:22 INF] Hosting environment: Development
+ [2024-11-19 15:48:22 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:48:22 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:48:22 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:48:22 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:48:22 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:48:22 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 188.1069ms
+ [2024-11-19 15:48:22 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:48:22 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:48:22 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:48:23 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:48:23 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:48:23 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 145.3219ms
+ [2024-11-19 15:48:23 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:48:23 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:48:23 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 14.6458ms
+ [2024-11-19 15:54:11 INF] Fast Wiki API Host is starting...
+ [2024-11-19 15:54:12 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:54:12 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:54:12 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:54:12 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 15:54:12 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 15:54:12 INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 15:54:12 INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 07:54:12.5403081+00:00');
+SELECT changes();
+ [2024-11-19 15:54:12 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 15:54:12 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 15:54:12 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 15:54:12 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 15:54:12 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 15:54:12 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 15:54:13 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 15:54:13 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 15:54:13 INF] Now listening on: http://localhost:5087
+ [2024-11-19 15:54:13 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 15:54:13 INF] Hosting environment: Development
+ [2024-11-19 15:54:13 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 15:54:13 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 15:54:13 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:54:13 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 15:54:13 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 15:54:13 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 166.5549ms
+ [2024-11-19 15:54:13 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:54:13 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:54:13 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 15:54:13 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:54:13 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 15:54:13 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 171.364ms
+ [2024-11-19 15:54:13 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:54:13 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 15:54:13 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 10.4146ms
+ [2024-11-19 16:00:35 INF] Fast Wiki API Host is starting...
+ [2024-11-19 16:00:36 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:00:36 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:00:36 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:00:36 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:00:36 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 16:00:36 INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 16:00:36 INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 08:00:36.8318037+00:00');
+SELECT changes();
+ [2024-11-19 16:00:36 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 16:00:36 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 16:00:36 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 16:00:36 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 16:00:36 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 16:00:37 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 16:00:37 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 16:00:37 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 16:00:37 INF] Now listening on: http://localhost:5087
+ [2024-11-19 16:00:37 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 16:00:37 INF] Hosting environment: Development
+ [2024-11-19 16:00:37 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 16:00:37 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 16:00:37 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:00:37 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 16:00:37 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:00:37 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 161.4284ms
+ [2024-11-19 16:00:37 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:00:38 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:00:38 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 16:00:38 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:00:38 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:00:38 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 223.0414ms
+ [2024-11-19 16:00:38 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:00:38 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:00:38 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 12.1947ms
+ [2024-11-19 16:01:05 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:01:05 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:01:05 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:01:05 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 10.7192ms
+ [2024-11-19 16:01:47 INF] Fast Wiki API Host is starting...
+ [2024-11-19 16:01:48 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:01:48 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:01:48 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:01:48 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:01:48 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 16:01:48 INF] Executed DbCommand (129ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 16:01:48 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 08:01:48.9645955+00:00');
+SELECT changes();
+ [2024-11-19 16:01:49 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 16:01:49 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 16:01:49 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 16:01:49 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 16:01:49 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 16:01:49 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 16:01:49 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 16:01:49 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 16:01:49 INF] Now listening on: http://localhost:5087
+ [2024-11-19 16:01:49 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 16:01:49 INF] Hosting environment: Development
+ [2024-11-19 16:01:49 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 16:01:49 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 16:01:50 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:01:50 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 16:01:50 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:01:50 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 253.9027ms
+ [2024-11-19 16:01:50 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:01:50 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:01:50 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 16:01:50 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:01:50 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:01:50 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 172.7872ms
+ [2024-11-19 16:01:50 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:01:50 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:01:50 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 17.4183ms
+ [2024-11-19 16:02:29 INF] Fast Wiki API Host is starting...
+ [2024-11-19 16:02:31 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:02:31 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:02:31 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:02:31 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:02:31 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 16:02:31 INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 16:02:31 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 08:02:31.4622263+00:00');
+SELECT changes();
+ [2024-11-19 16:02:31 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 16:02:31 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 16:02:31 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 16:02:31 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 16:02:31 INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 16:02:31 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 16:02:31 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 16:02:31 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 16:02:32 INF] Now listening on: http://localhost:5087
+ [2024-11-19 16:02:32 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 16:02:32 INF] Hosting environment: Development
+ [2024-11-19 16:02:32 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 16:02:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 16:02:32 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:02:32 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 16:02:32 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:02:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 167.6583ms
+ [2024-11-19 16:02:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:02:32 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:02:32 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 16:02:32 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:02:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:02:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 139.2509ms
+ [2024-11-19 16:02:32 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:02:32 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:02:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 14.6384ms
+ [2024-11-19 16:03:14 INF] Fast Wiki API Host is starting...
+ [2024-11-19 16:03:15 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:03:15 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:03:15 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:03:15 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:03:16 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 16:03:16 INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 16:03:16 INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 08:03:16.3401569+00:00');
+SELECT changes();
+ [2024-11-19 16:03:16 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 16:03:16 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 16:03:16 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 16:03:16 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 16:03:16 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 16:03:16 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 16:03:16 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 16:03:16 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 16:03:17 INF] Now listening on: http://localhost:5087
+ [2024-11-19 16:03:17 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 16:03:17 INF] Hosting environment: Development
+ [2024-11-19 16:03:17 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 16:03:17 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 16:03:17 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:03:17 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 16:03:17 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:03:17 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 255.8238ms
+ [2024-11-19 16:03:17 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:03:17 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:03:17 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 16:03:17 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:03:17 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:03:17 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 147.3457ms
+ [2024-11-19 16:03:17 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:03:17 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:03:17 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 12.2894ms
+ [2024-11-19 16:03:44 INF] Fast Wiki API Host is starting...
+ [2024-11-19 16:03:45 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:03:45 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:03:45 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:03:45 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-11-19 16:03:45 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-11-19 16:03:45 INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-11-19 16:03:46 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-11-19 08:03:46.0093599+00:00');
+SELECT changes();
+ [2024-11-19 16:03:46 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-11-19 16:03:46 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-11-19 16:03:46 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-11-19 16:03:46 INF] No migrations were applied. The database is already up to date.
+ [2024-11-19 16:03:46 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-11-19 16:03:46 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-11-19 16:03:46 INF] User profile is available. Using 'C:\Users\token\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-11-19 16:03:46 WRN] The WebRootPath was not found: D:\data\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-11-19 16:03:46 INF] Now listening on: http://localhost:5087
+ [2024-11-19 16:03:46 INF] Application started. Press Ctrl+C to shut down.
+ [2024-11-19 16:03:46 INF] Hosting environment: Development
+ [2024-11-19 16:03:46 INF] Content root path: D:\data\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-11-19 16:03:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-11-19 16:03:47 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:03:47 INF] Write content with HTTP Response ContentType of text/html
+ [2024-11-19 16:03:47 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-11-19 16:03:47 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 191.3739ms
+ [2024-11-19 16:03:47 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:03:47 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:03:47 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-11-19 16:03:47 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:03:47 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-11-19 16:03:47 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 149.2923ms
+ [2024-11-19 16:03:47 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:03:47 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-11-19 16:03:47 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 13.6625ms
+ 

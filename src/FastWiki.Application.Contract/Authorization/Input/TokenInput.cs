@@ -16,4 +16,9 @@ public class TokenInput
     /// 验证码
     /// </summary>
     public string? Captcha { get; set; }
+    
+    /// <summary>
+    /// 验证码Key
+    /// </summary>
+    public string? CaptchaKey { get; set; }
 }

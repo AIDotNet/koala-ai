@@ -1,18 +1,37 @@
-﻿using FastWiki.Core.Model;
+﻿using FastWiki.Core.Exceptions;
+using FastWiki.Core.Model;
 
 namespace FastWiki.HttpApi.Filter;
 
-public class ResultFilter : IEndpointFilter
+public class ResultFilter(ILogger<ResultFilter> logger) : IEndpointFilter
 {
     public async ValueTask<object?> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)
     {
-        var result = await next(context);
-
-        if (result is not null)
+        try
         {
-            return ResponseModel.CreateSuccess(result);
-        }
+            var result = await next(context);
 
-        return result;
+            if (result is not null)
+            {
+                return ResponseModel.CreateSuccess(result);
+            }
+
+            return result;
+        }
+        catch (UserFriendlyException e)
+        {
+            logger.LogError("UserFriendlyException: {Message}", e.Message);
+            return ResponseModel.CreateError(e.Message);
+        }
+        catch (BusinessException e)
+        {
+            logger.LogError("BusinessException: {Message}", e.Message);
+            return ResponseModel.CreateError(e.Message);
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, "在处理 {Path} 时发生了错误", context.HttpContext.Request.Path);
+            return ResponseModel.CreateError("抱歉，服务器发生了错误");
+        }
     }
 }
