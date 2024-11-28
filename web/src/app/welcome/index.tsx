@@ -1,12 +1,13 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import WelcomeLayout from "./_layout";
-
+import { Button } from 'antd';
 
 
 const Welcome = memo(() => {
+
     return (
         <WelcomeLayout>
-            <h1>Welcome</h1>
+            首页
         </WelcomeLayout>
     );
 });
