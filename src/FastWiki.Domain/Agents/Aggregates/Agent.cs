@@ -17,13 +17,13 @@ public class Agent : AuditEntity<long>
     /// 智能体 Avatar
     /// </summary>
     public string Avatar { get; private set; } = null!;
-    
+
     /// <summary>
     /// 是否收藏
     /// </summary>
     /// <returns></returns>
     public bool IsCollect { get; private set; }
-    
+
     /// <summary>
     /// 是否置顶
     /// </summary>
@@ -38,13 +38,14 @@ public class Agent : AuditEntity<long>
 
     public WorkSpaces.Aggregates.WorkSpace WorkSpace { get; set; }
 
-    public Agent(string name, string introduction, string avatar)
+    public Agent(string name, string introduction, string avatar, long workspaceId)
     {
         SetName(name);
         SetIntroduction(introduction);
         SetAvatar(avatar);
         IsCollect = false;
         IsTop = false;
+        WorkSpaceId = workspaceId;
     }
 
     /// <summary>
@@ -63,10 +64,12 @@ public class Agent : AuditEntity<long>
         {
             throw new ArgumentException("智能体名称不能为空");
         }
+
         if (name.Length > 20)
         {
             throw new ArgumentException("智能体名称长度不能超过20");
         }
+
         Name = name;
     }
 
@@ -77,10 +80,12 @@ public class Agent : AuditEntity<long>
         {
             throw new ArgumentException("智能体介绍不能为空");
         }
+
         if (introduction.Length > 200)
         {
             throw new ArgumentException("智能体介绍长度不能超过200");
         }
+
         Introduction = introduction;
     }
 
@@ -91,6 +96,7 @@ public class Agent : AuditEntity<long>
         {
             throw new ArgumentException("智能体 Avatar不能为空");
         }
+
         Avatar = avatar;
     }
 
@@ -106,6 +112,5 @@ public class Agent : AuditEntity<long>
 
     protected Agent()
     {
-
     }
 }

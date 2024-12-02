@@ -11,7 +11,7 @@ import PanelLayout from "@/app/panel/_layout";
 import WelcomePanel from "@/app/panel/welcome";
 import LoginPage from "@/app/login";
 import Knowledge from "@/app/panel/knowledge";
-import Application from "@/app/panel/application";
+import Agent from "@/app/panel/agent";
 
 
 const routes = [
@@ -52,8 +52,8 @@ const routes = [
                 element: <Knowledge />
             },
             {
-                path: 'application',
-                element: <Application />
+                path: 'agent',
+                element: <Agent />
             }
         ]
     },

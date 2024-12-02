@@ -41,6 +41,7 @@ public static class ServiceExtensions
         endpoint.MapNotificationEndpoints();
         endpoint.MapWorkSpacesEndpoints();
         endpoint.MapPowersEndpoints();
+        endpoint.MapAgentEndpoints();
 
         return endpoint;
     }

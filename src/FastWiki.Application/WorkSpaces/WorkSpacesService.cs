@@ -24,11 +24,7 @@ public class WorkSpacesService(IWorkSpaceRepository workSpaceRepository, IUserCo
         {
             throw new UserFriendlyException("工作空间数量已达上限");
         }
-
-
         var workSpace = new WorkSpace(workSpacesDto.Name, workSpacesDto.Description);
-        
-        
         
         await workSpaceRepository.CreateAsync(workSpace);
     }

@@ -1,9 +1,10 @@
 import { useWorkspaceStore } from '@/store/workspace';
-import { DraggablePanel, ActionIcon, Avatar, List } from '@lobehub/ui';
+import { DraggablePanel, ActionIcon, Avatar, List, EditableText, Input } from '@lobehub/ui';
 import { useEffect } from 'react';
 import { Flexbox } from 'react-layout-kit';
 import { useGlobalStore } from '@/store/global';
 import { MoreHorizontalIcon } from 'lucide-react';
+import { Dropdown } from "antd";
 import {
     useNavigate,
     useSearchParams
@@ -16,8 +17,8 @@ const {
 export default function Workspace() {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const [workspaces, loadWorkspaces, activeWorkspaceId, setActiveWorkspaceId] =
-        useWorkspaceStore((state) => [state.workspaces, state.loadWorkspaces, state.activeWorkspaceId, state.setActiveWorkspaceId])
+    const [workspaces, loadWorkspaces, activeWorkspaceId, setActiveWorkspaceId, setWorkspaceName, setWorkspaceEditable, deleteWorkspace] =
+        useWorkspaceStore((state) => [state.workspaces, state.loadWorkspaces, state.activeWorkspaceId, state.setActiveWorkspaceId, state.setWorkspaceName, state.setWorkspaceEditable, state.deleteWorkspace])
     const [workspaceSideExpansion, switchWorkspaceSideExpansion] =
         useGlobalStore((state) => [state.workspaceSideExpansion, state.switchWorkspaceSideExpansion])
 
@@ -46,12 +47,12 @@ export default function Workspace() {
             switchWorkspaceSideExpansion();
         }}
         placement='left' >
-        <Flexbox 
+        <Flexbox
             className='workspace'
             style={{
-            height: '100%',
-            padding: 10,
-        }}>
+                height: '100%',
+                padding: 10,
+            }}>
             <span style={{
                 fontSize: 16,
                 fontWeight: 600,
@@ -65,12 +66,39 @@ export default function Workspace() {
                         className='workspace-item'
                         active={workspace.id === activeWorkspaceId}
                         key={index}
-                        actions={ <ActionIcon style={{
-                            cursor: 'pointer',
-                            borderRadius: 8,
-                            marginBottom: 5,
-                            left: 20,
-                        }} icon={MoreHorizontalIcon} />}
+                        actions={<>
+                            <Dropdown
+                                trigger={['click']}
+                                menu={{
+                                    items: [{
+                                        label: '查看成员',
+                                        key: 'view',
+                                        onClick: () => {
+                                            
+                                        }
+                                    }, {
+                                        label: '编辑',
+                                        key: 'edit',
+                                        onClick: () => {
+                                            setWorkspaceEditable(workspace.id, true);
+                                        }
+                                    }, {
+                                        label: '删除',
+                                        key: 'delete',
+                                        danger: true,
+                                        onClick: () => {
+                                            deleteWorkspace(workspace.id);
+                                        }
+                                    }]
+                                }}>
+                                <ActionIcon style={{
+                                    cursor: 'pointer',
+                                    borderRadius: 8,
+                                    marginBottom: 5,
+                                    left: 20,
+                                }} icon={MoreHorizontalIcon} />
+                            </Dropdown>
+                        </>}
                         style={{
                             cursor: 'pointer',
                             top: 20,
@@ -81,9 +109,23 @@ export default function Workspace() {
                         }}
                         description={workspace.description}
                         date={workspace.date}
-                        title={workspace.name}
-                        avatar={<Avatar avatar="🤖" />}
-                        />
+                        title={
+                            workspace.editable ? <Input
+                                type='pure'
+                                value={workspace.name}
+                                autoFocus
+                                maxLength={10}
+                                showCount
+                                onBlur={() => {
+                                    setWorkspaceName(workspace.id, workspace.name, true);
+                                }}
+                                onChange={(v) => {
+                                    setWorkspaceName(workspace.id, v.target.value);
+                                }}
+                            /> : workspace.name
+                        }
+                        avatar={<></>}
+                    />
                 })
             }
         </Flexbox>

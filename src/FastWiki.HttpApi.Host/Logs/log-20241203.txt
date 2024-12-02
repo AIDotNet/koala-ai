@@ -1,0 +1,437 @@
+[2024-12-03 01:26:24 INF] Fast Wiki API Host is starting...
+ [2024-12-03 01:26:26 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-12-03 01:26:26 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-12-03 01:26:26 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-12-03 01:26:26 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2024-12-03 01:26:26 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2024-12-03 01:26:26 INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2024-12-03 01:26:26 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2024-12-02 17:26:26.8524587+00:00');
+SELECT changes();
+ [2024-12-03 01:26:26 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2024-12-03 01:26:26 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2024-12-03 01:26:26 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2024-12-03 01:26:26 INF] No migrations were applied. The database is already up to date.
+ [2024-12-03 01:26:26 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2024-12-03 01:26:27 INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2024-12-03 01:26:27 INF] User profile is available. Using 'C:\Users\23957\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2024-12-03 01:26:27 WRN] The WebRootPath was not found: D:\AI\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot. Static files may be unavailable.
+ [2024-12-03 01:26:27 INF] Now listening on: http://localhost:5087
+ [2024-12-03 01:26:27 INF] Application started. Press Ctrl+C to shut down.
+ [2024-12-03 01:26:27 INF] Hosting environment: Development
+ [2024-12-03 01:26:27 INF] Content root path: D:\AI\fast-wiki\src\FastWiki.HttpApi.Host
+ [2024-12-03 01:26:27 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-12-03 01:26:27 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-12-03 01:26:27 INF] Write content with HTTP Response ContentType of text/html
+ [2024-12-03 01:26:28 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-12-03 01:26:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 273.8892ms
+ [2024-12-03 01:26:28 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-12-03 01:26:28 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-12-03 01:26:28 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2024-12-03 01:26:28 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-12-03 01:26:28 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-12-03 01:26:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 166.3031ms
+ [2024-12-03 01:26:28 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-12-03 01:26:28 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-12-03 01:26:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 10.3756ms
+ [2024-12-03 01:27:41 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:27:41 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:27:41 INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:27:41 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:27:41 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 396.9673ms
+ [2024-12-03 01:27:41 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:27:41 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:27:41 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:27:41 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:27:41 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 20.5424ms
+ [2024-12-03 01:28:22 INF] Request starting HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - null 0
+ [2024-12-03 01:28:22 INF] Request starting HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - null 0
+ [2024-12-03 01:28:22 INF] Executing endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2024-12-03 01:28:22 INF] Executing endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2024-12-03 01:28:22 INF] Executed endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2024-12-03 01:28:22 INF] Executed endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2024-12-03 01:28:23 INF] Request finished HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - 200 null application/json; charset=utf-8 230.2934ms
+ [2024-12-03 01:28:23 INF] Request finished HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - 200 null application/json; charset=utf-8 230.876ms
+ [2024-12-03 01:28:29 INF] Request starting HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - null 0
+ [2024-12-03 01:28:29 INF] Executing endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2024-12-03 01:28:29 INF] Executed endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2024-12-03 01:28:29 INF] Request finished HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - 200 null application/json; charset=utf-8 6.6347ms
+ [2024-12-03 01:28:34 INF] Request starting HTTP/1.1 POST http://localhost:5087/api/v1/authorization/token - application/json 114
+ [2024-12-03 01:28:34 INF] Executing endpoint 'HTTP: POST /api/v1/authorization/token'
+ [2024-12-03 01:28:34 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2024-12-03 01:28:34 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "r"."Id", "r"."Code", "r"."CreationTime", "r"."Creator", "r"."Description", "r"."ModificationTime", "r"."Modifier", "r"."Name"
+FROM "user_roles" AS "u"
+INNER JOIN "roles" AS "r" ON "u"."RoleId" = "r"."Id"
+WHERE "u"."UserId" = @__userId_0
+ [2024-12-03 01:28:34 INF] Executed endpoint 'HTTP: POST /api/v1/authorization/token'
+ [2024-12-03 01:28:34 INF] Request finished HTTP/1.1 POST http://localhost:5087/api/v1/authorization/token - 200 null application/json; charset=utf-8 79.7263ms
+ [2024-12-03 01:28:34 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2024-12-03 01:28:34 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:28:34 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2024-12-03 01:28:34 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:28:34 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 9.0356ms
+ [2024-12-03 01:28:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2024-12-03 01:28:35 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:28:35 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2024-12-03 01:28:35 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:28:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 6.0614ms
+ [2024-12-03 01:28:36 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:28:36 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:28:36 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:28:36 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:28:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 8.0929ms
+ [2024-12-03 01:28:36 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:28:36 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:28:36 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:28:36 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:28:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 7.392ms
+ [2024-12-03 01:33:28 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2024-12-03 01:33:28 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-12-03 01:33:28 INF] Write content with HTTP Response ContentType of text/html
+ [2024-12-03 01:33:28 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-12-03 01:33:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 5.8694ms
+ [2024-12-03 01:33:28 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/scalar.js - null null
+ [2024-12-03 01:33:28 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-12-03 01:33:28 INF] Sending file with download name ''.
+ [2024-12-03 01:33:28 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2024-12-03 01:33:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/scalar.js - 200 null text/javascript 23.7028ms
+ [2024-12-03 01:33:28 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-12-03 01:33:28 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-12-03 01:33:28 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-12-03 01:33:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 8.6462ms
+ [2024-12-03 01:33:28 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2024-12-03 01:33:28 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-12-03 01:33:28 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2024-12-03 01:33:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 7.6608ms
+ [2024-12-03 01:43:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:43:57 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:43:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:43:57 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:43:57 INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:43:57 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:43:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 14.2417ms
+ [2024-12-03 01:43:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:43:57 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:43:57 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:43:57 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+ [2024-12-03 01:43:57 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:43:57 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+ [2024-12-03 01:43:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 6.7196ms
+ [2024-12-03 01:43:57 INF] Executed DbCommand (1ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:43:57 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:43:57 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:43:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 65.5083ms
+ [2024-12-03 01:43:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:43:57 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:43:57 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:43:57 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:43:57 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:43:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 8.4825ms
+ [2024-12-03 01:43:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:43:57 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:43:57 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:43:57 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:43:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 6.5993ms
+ [2024-12-03 01:43:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:43:57 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:43:57 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:43:57 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:43:57 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:43:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 8.3745ms
+ [2024-12-03 01:43:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:43:57 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:43:57 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:43:57 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:43:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 6.3734ms
+ [2024-12-03 01:43:58 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:43:58 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:43:58 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:43:58 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:43:58 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:43:58 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 7.886ms
+ [2024-12-03 01:44:04 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:44:04 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:04 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2024-12-03 01:44:04 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:44:04 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2024-12-03 01:44:04 INF] Executed DbCommand (34ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:44:04 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:44:04 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:44:04 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:44:04 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:04 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:04 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:44:04 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 142.5114ms
+ [2024-12-03 01:44:04 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2024-12-03 01:44:04 INF] Executed DbCommand (34ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2024-12-03 01:44:04 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:44:04 INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:44:04 INF] Executed DbCommand (1ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:44:04 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:44:04 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 211.4913ms
+ [2024-12-03 01:44:04 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:04 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 215.6744ms
+ [2024-12-03 01:44:04 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:44:04 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 220.2081ms
+ [2024-12-03 01:44:04 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:44:05 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 110.4456ms
+ [2024-12-03 01:44:19 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:44:19 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2024-12-03 01:44:19 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:44:19 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:44:19 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2024-12-03 01:44:19 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:19 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:44:19 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:19 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:44:19 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:44:19 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:44:19 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2024-12-03 01:44:19 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:44:19 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:44:19 INF] Executed DbCommand (1ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2024-12-03 01:44:19 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:19 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:44:19 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:19 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:44:19 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2024-12-03 01:44:19 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 32.0817ms
+ [2024-12-03 01:44:19 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 29.7212ms
+ [2024-12-03 01:44:19 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 98.5433ms
+ [2024-12-03 01:44:19 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:44:19 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 104.9805ms
+ [2024-12-03 01:44:19 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 107.7058ms
+ [2024-12-03 01:44:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:44:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:44:30 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:30 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:30 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:44:30 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:44:30 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:30 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 12.0985ms
+ [2024-12-03 01:44:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 11.0062ms
+ [2024-12-03 01:44:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:44:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:44:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2024-12-03 01:44:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:44:32 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:44:32 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:32 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:32 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:44:32 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:44:32 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:44:32 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2024-12-03 01:44:32 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:44:32 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:44:32 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:32 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2024-12-03 01:44:32 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:44:32 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:44:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 15.7245ms
+ [2024-12-03 01:44:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 16.8317ms
+ [2024-12-03 01:44:32 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:44:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 19.991ms
+ [2024-12-03 01:44:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 25.4105ms
+ [2024-12-03 01:45:51 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:45:51 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:45:51 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:45:51 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:45:51 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:45:51 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 7.6002ms
+ [2024-12-03 01:45:51 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:45:51 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:45:51 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:45:51 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:45:51 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:45:52 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 14.1206ms
+ [2024-12-03 01:45:58 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2024-12-03 01:45:58 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:45:58 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2024-12-03 01:45:58 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2024-12-03 01:45:58 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2024-12-03 01:45:58 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 10.3951ms
+ 

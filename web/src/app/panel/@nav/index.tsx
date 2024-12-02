@@ -19,9 +19,9 @@ const Nav = memo(() => {
     const navigate = useNavigate();
     const [menus, setMenus] = useState([
         {
-            key: 'application',
+            key: 'agent',
             icon: Box,
-            title: '应用'
+            title: '智能体'
         }, {
             key: 'knowledge',
             icon: Album,
