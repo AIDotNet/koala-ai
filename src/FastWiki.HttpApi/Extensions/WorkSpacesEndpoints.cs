@@ -27,7 +27,7 @@ public static class WorkSpacesEndpoints
                 async (IWorkSpacesService service, long id) => await service.DeleteAsync(id));
 
         workSpaces.MapGet(string.Empty,
-            [EndpointSummary("获取工作空间"), EndpointDescription("获取工作空���")]
+            [EndpointSummary("获取工作空间"), EndpointDescription("获取工作空间")]
                 async (IWorkSpacesService service) => await service.GetAsync());
 
         return endpoint;

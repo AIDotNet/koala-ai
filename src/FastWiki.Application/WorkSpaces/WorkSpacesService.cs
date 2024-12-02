@@ -27,6 +27,9 @@ public class WorkSpacesService(IWorkSpaceRepository workSpaceRepository, IUserCo
 
 
         var workSpace = new WorkSpace(workSpacesDto.Name, workSpacesDto.Description);
+        
+        
+        
         await workSpaceRepository.CreateAsync(workSpace);
     }
 

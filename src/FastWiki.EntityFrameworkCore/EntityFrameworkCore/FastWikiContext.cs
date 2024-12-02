@@ -1,4 +1,6 @@
-﻿using FastWiki.Domain.Agents.Aggregates;
+﻿using FastWiki.Core;
+using FastWiki.Data.Auditing;
+using FastWiki.Domain.Agents.Aggregates;
 using FastWiki.Domain.Knowledges.Aggregates;
 using FastWiki.Domain.Powers.Aggregates;
 using FastWiki.Domain.Shared.WorkSpaces;
@@ -8,9 +10,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FastWiki.EntityFrameworkCore.EntityFrameworkCore;
 
-public class FastWikiContext<TContext>(DbContextOptions<TContext> options) : DbContext(options), IContext
+public class FastWikiContext<TContext>(DbContextOptions<TContext> options, IServiceProvider serviceProvider) : DbContext(options), IContext
     where TContext : DbContext
 {
+    protected IUserContext UserContext => serviceProvider.GetRequiredService<IUserContext>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -41,6 +45,56 @@ public class FastWikiContext<TContext>(DbContextOptions<TContext> options) : DbC
     public DbSet<UserAuthExtensions> UserAuthExtensions { get; set; }
 
     public DbSet<UserRole> UserRoles { get; set; }
+
+    public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
+        CancellationToken cancellationToken = new CancellationToken())
+    {
+        BeforeSaveChanges();
+        return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+    }
+
+    public override int SaveChanges(bool acceptAllChangesOnSuccess)
+    {
+        BeforeSaveChanges();
+        return base.SaveChanges(acceptAllChangesOnSuccess);
+    }
+
+    protected void BeforeSaveChanges()
+    {
+        var entries = ChangeTracker.Entries()
+            .Where(x => (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+        foreach (var entry in entries)
+        {
+            if (entry.State == EntityState.Added)
+            {
+                var creationTimeProperty = entry.Entity.GetType().GetProperty(nameof(ICreator.CreationTime));
+                if (creationTimeProperty != null && creationTimeProperty.PropertyType == typeof(DateTimeOffset?))
+                {
+                    creationTimeProperty.SetValue(entry.Entity, DateTimeOffset.Now);
+                }
+
+                var creatorProperty = entry.Entity.GetType().GetProperty(nameof(ICreator.Creator));
+                if (creatorProperty != null)
+                {
+                    creatorProperty.SetValue(entry.Entity, UserContext.UserId);
+                }
+            }
+            else if (entry.State == EntityState.Modified)
+            {
+                var lastModificationTimeProperty = entry.Entity.GetType().GetProperty(nameof(IModifier.ModificationTime));
+                if (lastModificationTimeProperty != null && lastModificationTimeProperty.PropertyType == typeof(DateTimeOffset?))
+                {
+                    lastModificationTimeProperty.SetValue(entry.Entity, DateTimeOffset.Now);
+                }
+                var modifierProperty = entry.Entity.GetType().GetProperty(nameof(IModifier.Modifier));
+                if (modifierProperty != null)
+                {
+                    modifierProperty.SetValue(entry.Entity, UserContext.UserId);
+                }
+            }
+        }
+    }
 
     public async Task RunMigrationsAsync(IServiceProvider serviceProvider,
         CancellationToken cancellationToken = new CancellationToken())

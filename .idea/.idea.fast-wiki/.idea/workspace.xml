@@ -10,23 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64af81bd-1684-4cc3-b4ce-a1ff685c1603" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FastWiki.Core/Exceptions/BusinessException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.fast-wiki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Authorization/Input/TokenInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Authorization/Input/TokenInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Users/Dto/UserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/Users/Dto/UserDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application/Authorization/AuthorizationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application/Authorization/AuthorizationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application/Notification/NotificationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application/Notification/NotificationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi/Filter/ResultFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/Filter/ResultFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/framework/FastWiki.Jwt/JwtService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/framework/FastWiki.Jwt/JwtService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/_lyouts/ThemeLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/_lyouts/ThemeLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.SqlServer/SqlServerDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.SqlServer/SqlServerDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.Sqlite/SqliteDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.Sqlite/SqliteDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application.Contract/WorkSpaces/Dto/WorkSpaceDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application.Contract/WorkSpaces/Dto/WorkSpaceDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.Application/WorkSpaces/WorkSpacesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.Application/WorkSpaces/WorkSpacesService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/FastWikiContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/EntityFrameworkCore/FastWikiContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/WorkSpaceRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.EntityFrameworkCore/Repositories/WorkSpaceRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/FastWiki.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/FastWiki.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi.Host/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FastWiki.HttpApi/Extensions/WorkSpacesEndpoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FastWiki.HttpApi/Extensions/WorkSpacesEndpoints.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/panel/@nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/panel/@nav/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/app/panel/_layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/panel/_layout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/app/welcome/_layout/top.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/app/welcome/_layout/top.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/routes/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/web/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/store/global/action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/store/global/action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/store/global/initialState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/store/global/initialState.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +41,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0aad9c0e254f489bb0b0e2747d386ca62acc00/05/55c303f0/ScalarOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0aad9c0e254f489bb0b0e2747d386ca62acc00/50/c323672d/OperationSorter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0b7856b364e04283a10bb924825b197f28f228/ac/eee1ab46/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3e286f5bc98449449892808c6bd12b212000/ff/f9a53d52/ServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b8eacc2566304491bce9f5f6cc6e08a5b5910/ca/57c1b543/EndpointSummaryAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e9560027e28243b88773840f429405412f120/af/68f4c991/OpenApiEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/EFCore/FastWiki.EntityFrameworkCore.PostgreSql/PostgreSqlEntityFrameworkCoreExtensions.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -61,27 +62,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET 启动设置配置文件.FastWiki.HttpApi.Host: http.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v2.0.0&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET 启动设置配置文件.FastWiki.HttpApi.Host: http.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "v2.0.0",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\data\\fast-wiki\\web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\token\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\token\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\token\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\token\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\token\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\token\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET 启动设置配置文件.FastWiki.HttpApi.Host: http">
     <configuration name="FastWiki.HttpApi" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/FastWiki.HttpApi/FastWiki.HttpApi.csproj" />
@@ -141,7 +144,13 @@
       <workItem from="1730704533970" duration="2134000" />
       <workItem from="1730824437408" duration="14017000" />
       <workItem from="1731998586938" duration="6229000" />
-      <workItem from="1732090717114" duration="6532000" />
+      <workItem from="1732090717114" duration="7113000" />
+      <workItem from="1732157355307" duration="3534000" />
+      <workItem from="1732606696527" duration="605000" />
+      <workItem from="1732690525555" duration="857000" />
+      <workItem from="1732782513656" duration="1565000" />
+      <workItem from="1733108299788" duration="2021000" />
+      <workItem from="1733120604326" duration="7774000" />
     </task>
     <task id="LOCAL-00001" summary="初始化前端项目&#10;设计表数据库字段&#10;增加初始化数据">
       <option name="closed" value="true" />
@@ -175,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732004018325</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="优化前端界面">
+      <option name="closed" value="true" />
+      <created>1732793352385</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732793352385</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +206,7 @@
     <MESSAGE value="增加数据库支持&#10;增加项目依赖设计" />
     <MESSAGE value="增加登录功能&#10;增加验证码接口&#10;增加用户接口" />
     <MESSAGE value="升级.NET 9&#10;删除Swagger&#10;使用scalar" />
-    <option name="LAST_COMMIT_MESSAGE" value="升级.NET 9&#10;删除Swagger&#10;使用scalar" />
+    <MESSAGE value="优化前端界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化前端界面" />
   </component>
 </project>

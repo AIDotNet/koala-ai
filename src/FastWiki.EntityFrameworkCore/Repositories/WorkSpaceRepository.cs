@@ -1,17 +1,35 @@
 ﻿using System.Linq.Expressions;
+using FastWiki.Domain.Shared.WorkSpaces;
 using FastWiki.Domain.WorkSpace.Repositories;
 using FastWiki.Domain.WorkSpaces.Aggregates;
 using FastWiki.EntityFrameworkCore.EntityFrameworkCore;
 
 namespace FastWiki.EntityFrameworkCore.Repositories;
 
-public class WorkSpaceRepository(IContext context) : Repository<WorkSpace>(context),IWorkSpaceRepository
+public class WorkSpaceRepository(IContext context) : Repository<WorkSpace>(context), IWorkSpaceRepository
 {
     public async Task CreateAsync(WorkSpace workSpace)
     {
-        await context.WorkSpaces.AddAsync(workSpace);
+        try
+        {
 
-        await context.SaveChangesAsync();
+            workSpace = (await context.WorkSpaces.AddAsync(workSpace)).Entity;
+
+            await context.SaveChangesAsync();
+
+            await context.WorkSpaceMembers.AddAsync(new WorkSpaceMember(workSpace.Id, workSpace.Creator,
+                WorkSpaceRoleType.Create));
+        
+            await context.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            if (workSpace.Id != 0)
+            {
+                await context.WorkSpaces.Where(x => x.Id == workSpace.Id)
+                    .ExecuteDeleteAsync();
+            }
+        }
     }
 
     public async Task DeleteAsync(long id)

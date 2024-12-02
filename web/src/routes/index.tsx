@@ -10,6 +10,9 @@ import Contact from "@/app/welcome/contact";
 import PanelLayout from "@/app/panel/_layout";
 import WelcomePanel from "@/app/panel/welcome";
 import LoginPage from "@/app/login";
+import Knowledge from "@/app/panel/knowledge";
+import Application from "@/app/panel/application";
+
 
 const routes = [
     {
@@ -43,6 +46,14 @@ const routes = [
             {
                 path: '',
                 element: <WelcomePanel />
+            },
+            {
+                path: 'knowledge',
+                element: <Knowledge />
+            },
+            {
+                path: 'application',
+                element: <Application />
             }
         ]
     },

@@ -1,0 +1,9 @@
+.workspace .workspace-item .layoutkit-flexbox{
+    inset-block-start: none;
+    position: relative;
+}
+
+.workspace-item{
+    border-radius: 8px;
+    margin-bottom: 5px;
+}

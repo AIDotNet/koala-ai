@@ -22,4 +22,8 @@ public class WorkSpaceDto
     /// 工作空间状态
     /// </summary>
     public WorkSpaceState State { get; set; }
+
+    public string? Creator { get; set; }
+
+    public DateTimeOffset? CreationTime { get; set; }
 }

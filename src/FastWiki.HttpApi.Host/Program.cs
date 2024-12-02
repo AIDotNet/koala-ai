@@ -1,6 +1,8 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using FastWiki.HttpApi.Extensions;
 using Scalar.AspNetCore;
-
+using FastWiki.HttpApi.Host.Converter;
 namespace FastWiki.HttpApi.Host;
 
 internal static class Program
@@ -20,6 +22,13 @@ internal static class Program
             log.Information("Fast Wiki API Host is starting...");
 
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.ConfigureHttpJsonOptions(options=>{
+                options.SerializerOptions.Converters.Add(new DateTimeOffsetJsonConvert());
+                options.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+                options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            });
+
             builder.Services.AddOpenApi((options =>
             {
                 

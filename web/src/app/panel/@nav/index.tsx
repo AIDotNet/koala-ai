@@ -1,32 +1,77 @@
 import UserAvatar from '@/features/User/UserAvatar';
-import { ActionIcon, Logo, SideNav } from '@lobehub/ui';
-import { Album, MessageSquare, Settings2 } from 'lucide-react';
-import { memo, useState, } from 'react';
-
+import { useWorkspaceStore } from '@/store/workspace';
+import { ActionIcon, SideNav, Tooltip } from '@lobehub/ui';
+import Divider from '@lobehub/ui/es/Form/components/FormDivider';
+import {
+    Album,
+    Box,
+    Plus,
+    Settings2
+} from 'lucide-react';
+import { memo, useEffect, useState, } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const Nav = memo(() => {
+    const { setCreateWorkspaceModalOpen } = useWorkspaceStore();
     const [tab, setTab] = useState<string>('chat');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [menus, setMenus] = useState([
+        {
+            key: 'application',
+            icon: Box,
+            title: '应用'
+        }, {
+            key: 'knowledge',
+            icon: Album,
+            title: '知识库'
+        }
+    ])
+
+    useEffect(() => {
+        const path = location.pathname;
+        if (path.includes('application')) {
+            setTab('application');
+        } else if (path.includes('knowledge')) {
+            setTab('knowledge');
+        } else {
+            setTab('application');
+        }
+    }, [location.pathname])
+
+    function handleTabChange(tab: string) {
+        setTab(tab);
+        navigate(`/panel/${tab}`);
+    }
+
+    function handleAddWorkspace() {
+        setCreateWorkspaceModalOpen(true);
+    }
 
     return (
         <SideNav
             style={{ height: '100%', zIndex: 100, }}
-            avatar={<UserAvatar  />}
+            avatar={<UserAvatar clickable />}
             bottomActions={<ActionIcon icon={Settings2} />}
             topActions={
                 <>
-                    <ActionIcon
-                        active={tab === 'chat'}
-                        icon={MessageSquare}
-                        onClick={() => setTab('chat')}
-                        size="large"
-                    />
-                    <ActionIcon
-                        active={tab === 'market'}
-                        icon={Album}
-                        onClick={() => setTab('market')}
-                        size="large"
-                    />
+                    <Tooltip title='新增工作区'>
+                        <ActionIcon icon={Plus} onClick={handleAddWorkspace} />
+                    </Tooltip>
+                    <Divider variant='dashed' />
+                    {menus.map(x => {
+                        return (<>
+                            <Tooltip title={x.title}>
+                                <ActionIcon
+                                    active={tab === x.key}
+                                    icon={x.icon}
+                                    onClick={() => handleTabChange(x.key)}
+                                    size="large"
+                                />
+                            </Tooltip>
+                        </>)
+                    })}
                 </>
             }
         />
