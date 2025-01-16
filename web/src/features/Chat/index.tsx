@@ -2,6 +2,8 @@ import { useChatStore } from "@/store/chat";
 import { useEffect, useState } from "react";
 import { Flexbox } from "react-layout-kit";
 import ChatList from "./ChatList";
+import { chatSelectors } from "@/store/chat/selectors";
+import ChatInput from "./ChatInput";
 
 export interface ChatProps {
     agentId: string;
@@ -9,7 +11,7 @@ export interface ChatProps {
 }
 
 const Chat = (props: ChatProps) => {
-    const [history, setHistory] = useChatStore((state) => [state.history, state.setHistory])
+    const [setHistory,history] = useChatStore((state) => [state.setHistory,state.history])
 
     useEffect(() => {
         setHistory([
@@ -27,8 +29,12 @@ const Chat = (props: ChatProps) => {
             }])
     }, [])
 
-    return <Flexbox>
-        <ChatList data={history} />
+    return <Flexbox style={{
+        width: '100%',
+        height: '100%',
+    }}>
+        <ChatList data={history.map((item) => item.id)} />
+        <ChatInput />
     </Flexbox>
 }
 

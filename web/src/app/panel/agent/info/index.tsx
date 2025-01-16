@@ -41,9 +41,8 @@ const useStyles = createStyles(({ css, token }) => ({
     border-right: 1px solid ${token.colorBorder};
     `,
     mainRight: css`
-    flex: 0.33;
+    flex: 0.34;
     height: 100%;
-    padding: 16px;
     border-left: 1px solid ${token.colorBorder};
     `,
     mainCenter: css`

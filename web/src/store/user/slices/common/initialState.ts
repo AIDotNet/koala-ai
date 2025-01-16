@@ -4,6 +4,9 @@ export interface CommonState {
     isUserCanEnableTrace: boolean;
     isUserHasConversation: boolean;
     isUserStateInit: boolean;
+    preference: {
+      useCmdEnterToSend?: boolean;
+    };
   }
   
   export const initialCommonState: CommonState = {
@@ -12,5 +15,7 @@ export interface CommonState {
     isUserCanEnableTrace: false,
     isUserHasConversation: false,
     isUserStateInit: false,
+    preference: {
+    },
   };
   

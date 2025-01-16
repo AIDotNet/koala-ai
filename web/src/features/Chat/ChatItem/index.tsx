@@ -1,5 +1,5 @@
 import ChatItem from '@/features/Conversation/ChatItem';
-import { ActionsBar } from '@lobehub/ui';
+import ActionsBar from '@/features/Conversation/ChatItem/ActionsBar';
 import { createStyles } from 'antd-style';
 import { memo, useMemo } from 'react';
 
@@ -68,7 +68,7 @@ const MainChatItem = memo<ThreadChatItemProps>(({ id, index }) => {
     //     );
     // });
 
-    const actionBar = useMemo(() => <ActionsBar id={id.toString()} />, [id]);
+    const actionBar = useMemo(() => <ActionsBar id={id} />, [id]);
 
     return (
         <ChatItem
