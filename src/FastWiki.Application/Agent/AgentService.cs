@@ -3,12 +3,14 @@ using FastWiki.Core;
 using FastWiki.Domain.Agents.Aggregates;
 using FastWiki.Domain.Agents.Repositories;
 using MapsterMapper;
+using Microsoft.Extensions.Configuration;
 
 namespace FastWiki.Application.Contract.Application;
 
 public class AgentService(
     IAgentRepository agentRepository,
     IUserContext userContext,
+    IConfiguration configuration,
     IMapper mapper
 ) : IAgentService, IScopeDependency
 {
@@ -38,6 +40,35 @@ public class AgentService(
     public async Task DeleteAsync(long id)
     {
         await agentRepository.DeleteAsync(x => x.Id == id && x.Creator == userContext.UserId);
+    }
+
+    public async Task<AgentDto> GetAsync(long id)
+    {
+        var agent = await agentRepository.FirstAsync(x => x.Creator == userContext.UserId && x.Id == id);
+
+        var config = await agentRepository.GetAgentConfigAsync(id);
+
+        if (config == null)
+        {
+            config = new AgentConfig(id, configuration["Agent:Model"],
+                0.5,
+                0.5,
+                4096,
+                "markdown",
+                10,
+                configuration["Agent:Opening"],
+                false,
+                string.Empty);
+
+            await agentRepository.AddAgentConfigAsync(config);
+
+            await agentRepository.SaveChangesAsync();
+        }
+
+        var dto = mapper.Map<AgentDto>(agent);
+
+        dto.AgentConfig = mapper.Map<AgentConfigDto>(config);
+        return dto;
     }
 
     public async Task UpdateAsync(long id, AgentInput input)

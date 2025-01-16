@@ -37,4 +37,6 @@ public class AgentDto
     /// 可空
     /// </summary>
     public long? WorkSpaceId { get; set; }
+    
+    public AgentConfigDto? AgentConfig { get; set; }
 }

@@ -22,6 +22,8 @@ public interface IAgentService
     /// <returns></returns>
     Task CreateAsync(AgentInput input);
 
+    Task<AgentDto> GetAsync(long id);
+
     /// <summary>
     /// 删除智能体
     /// </summary>

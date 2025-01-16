@@ -1,7 +1,7 @@
 import UserAvatar from '@/features/User/UserAvatar';
 import { useWorkspaceStore } from '@/store/workspace';
 import { ActionIcon, SideNav, Tooltip } from '@lobehub/ui';
-import Divider from '@lobehub/ui/es/Form/components/FormDivider';
+import { Divider } from 'antd';
 import {
     Album,
     Box,
@@ -57,7 +57,9 @@ const Nav = memo(() => {
             topActions={
                 <>
                     <Tooltip title='新增工作区'>
-                        <ActionIcon icon={Plus} onClick={handleAddWorkspace} />
+                        <ActionIcon icon={Plus}
+                            // @ts-ignore
+                            onClick={handleAddWorkspace} />
                     </Tooltip>
                     <Divider variant='dashed' />
                     {menus.map(x => {
@@ -66,6 +68,7 @@ const Nav = memo(() => {
                                 <ActionIcon
                                     active={tab === x.key}
                                     icon={x.icon}
+                                    // @ts-ignore
                                     onClick={() => handleTabChange(x.key)}
                                     size="large"
                                 />

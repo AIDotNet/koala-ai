@@ -33,3 +33,8 @@ export const updateAgent = (id: number, agentData: any) => {
 export const deleteAgent = (id: number) => {
   return del(`/api/v1/agent/${id}`);
 };
+
+
+export const getAgentInfo = (id: number) => {
+  return get(`/api/v1/agent/${id}`);
+};

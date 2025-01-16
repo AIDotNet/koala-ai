@@ -4,7 +4,11 @@ import { memo, useEffect, useState } from "react";
 import { Flexbox } from "react-layout-kit";
 import { Button, Empty, Spin } from "antd";
 import styled from "styled-components";
+import { SpotlightCard } from '@lobehub/ui/awesome';
 import { useAgentStore } from "@/store/agent";
+import { CreateAgentPage } from "./features/CreateAgent";
+import { Avatar } from "@lobehub/ui";
+import {useNavigate} from 'react-router-dom'
 
 const StyledEmpty = styled(Empty)`
     margin: 20px;
@@ -15,15 +19,12 @@ const StyledEmpty = styled(Empty)`
 `;
 
 const StyledContainer = styled(Flexbox)`
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
     width: 100%;
 `;
 
 const Agent = memo(() => {
     const [activeWorkspaceId] = useWorkspaceStore(state => [state.activeWorkspaceId]);
+    const navigate = useNavigate();
     const { agent, total, inputAgent, loadAgent } = useAgentStore(state => ({
         // 应用列表
         agent: state.agent,
@@ -46,6 +47,20 @@ const Agent = memo(() => {
         }
     }, [activeWorkspaceId]);
 
+    function renderItem(item: any) {
+        return (<Flexbox 
+            onClick={()=>{
+                navigate('/panel/agent/info/'+item.id);
+            }}
+            align={'flex-start'} gap={8} horizontal style={{ padding: 16 }}>
+            <Avatar size={24} avatar={item.avatar} style={{ flex: 'none' }} />
+            <Flexbox>
+                <div style={{ fontSize: 15, fontWeight: 600 }}>{item.name}</div>
+                <div style={{ opacity: 0.6 }}>{item.introduction}</div>
+            </Flexbox>
+        </Flexbox>)
+    }
+
     return <Flexbox horizontal style={{ width: '100%' }}>
         <Workspace />
         <Flexbox style={{
@@ -57,28 +72,27 @@ const Agent = memo(() => {
                 display: 'flex',
                 flexDirection: 'row-reverse',
             }}>
-                <Button type="primary"
-                    style={{
-                        width: '100px',
-                    }}
-                >
-                    创建应用
-                </Button>
+                <CreateAgentPage />
             </Flexbox>
             <StyledContainer horizontal>
                 {
                     activeWorkspaceId ? (
                         loading ? (
-                            <Spin />
+                            <div style={{
+                                textAlign: 'center',
+                                width:"100%"
+                            }}>
+                                <Spin />
+                            </div>
                         ) : (
-                            agent.length === 0 ? (
+                            agent?.length === 0 ? (
                                 <StyledEmpty description="暂无数据" />
                             ) : (
-                                agent.map((application, index) => {
-                                    return <div key={index}>
-                                        测试
-                                    </div>
-                                })
+                                <SpotlightCard
+                                    items={agent}
+                                    renderItem={renderItem}
+                                    style={{ margin: '10px' }}
+                                />
                             )
                         )
                     ) : (

@@ -29,6 +29,10 @@ public static class AgentEndpoints
             [EndpointSummary("删除应用"), EndpointDescription("删除应用")]
             async (IAgentService service, long id) => await service.DeleteAsync(id));
         
+        agent.MapGet("{id}",
+            [EndpointSummary("获取应用详情"), EndpointDescription("获取应用详情")]
+            async (IAgentService service, long id) => await service.GetAsync(id));
+        
         return endpoint;
     }
 }

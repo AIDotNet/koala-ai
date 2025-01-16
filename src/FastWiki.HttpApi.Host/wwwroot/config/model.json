@@ -1,0 +1,97 @@
+{
+  "modelProvider": [
+    {
+      "icon": "OpenAI",
+      "name": "OpenAI",
+      "description": "OpenAI 是一家人工智能研究实验室，致力于研究人工智能的广泛应用。",
+      "models": [
+        {
+          "id": "gpt-4o",
+          "model": "gpt-4o",
+          "displayName": "GPT-4o",
+          "description": "GPT-4o 是 GPT-4 的原始版本，是一个小型的自回归语言模型",
+          "url": "https://openai.com/gpt-4",
+          "maxTokens": 4096
+        },
+        {
+          "id": "gpt-4o-mini",
+          "model": "gpt-4o-mini",
+          "displayName": "GPT-4 Mini",
+          "description": "GPT-4 Mini 是 GPT-4 的精简版本，是一个小型的自回归语言模型。",
+          "url": "https://openai.com/gpt-4-mini",
+          "maxTokens": 8192
+        },
+        {
+          "id": "gpt-4",
+          "model": "gpt-4",
+          "displayName": "GPT-4",
+          "description": "GPT-4 是 OpenAI 的第四代通用预训练模型，是一个大型的自回归语言模型。",
+          "url": "https://openai.com/gpt-4",
+          "maxTokens": 4096
+        },
+        {
+          "id": "gpt-4-32k",
+          "model": "gpt-4-32k",
+          "displayName": "GPT-4 32K",
+          "description": "GPT-4 32K 是 GPT-4 的大型版本，是一个大型的自回归语言模型。",
+          "url": "https://openai.com/gpt-4-32k",
+          "maxTokens": 32768
+        },
+        {
+          "id": "gpt-4o-all",
+          "model": "gpt-4o-all",
+          "displayName": "GPT-4o All",
+          "description": "GPT-4o All 是 GPT-4o 的全版本，是一个小型的自回归语言模型。",
+          "url": "https://openai.com/gpt-4o-all",
+          "maxTokens": 8192
+        }
+      ]
+    },
+    {
+      "icon": "Kimi",
+      "name": "Kimi",
+      "description": "Kimi 是一个开源的人工智能模型提供者，致力于为开发者提供高质量的人工智能模型。",
+      "models": [
+        {
+          "id": "moonshot-v1-8k",
+          "model": "moonshot-v1-8k",
+          "displayName": "Moonshot V1 8K",
+          "description": "Moonshot V1 8K 是 Moonshot V1 的小型版本，是一个小型的自回归语言模型。",
+          "url": "https://platform.moonshot.cn/docs/api/chat#list-models",
+          "maxTokens": 8192
+        },
+        {
+          "id": "moonshot-v1-32k",
+          "model": "moonshot-v1-32k",
+          "displayName": "Moonshot V1 32K",
+          "description": "Moonshot V1 32K 是 Moonshot V1 的大型版本，是一个大型的自回归语言模型。",
+          "url": "https://platform.moonshot.cn/docs/api/chat#list-models",
+          "maxTokens": 32768
+        },
+        {
+          "id": "moonshot-v1-128k",
+          "model": "moonshot-v1-128k",
+          "displayName": "Moonshot V1 128K",
+          "description": "Moonshot V1 128K 是 Moonshot V1 的超大型版本，是一个超大型的自回归语言模型。",
+          "url": "https://platform.moonshot.cn/docs/api/chat#list-models",
+          "maxTokens": 131072
+        }
+      ]
+    },
+    {
+      "icon": "deepseek-chat",
+      "name": "Deep Seek Chat",
+      "description": "Deep Seek Chat 是一个开源的人工智能模型提供者，致力于为开发者提供高质量的人工智能模型。",
+      "models": [
+        {
+          "id": "deepseek-chat",
+          "model": "deepseek-chat",
+          "displayName": "Deep Seek Chat",
+          "description": "Deep Seek Chat 是 Deep Seek 的聊天模型，是一个小型的自回归语言模型。",
+          "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+          "maxTokens": 8192
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using EarthChat.Scalar.Extensions;
 using FastWiki.HttpApi.Extensions;
 using Scalar.AspNetCore;
 using FastWiki.HttpApi.Host.Converter;
@@ -29,12 +30,7 @@ internal static class Program
                 options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             });
 
-            builder.Services.AddOpenApi((options =>
-            {
-                
-                options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
-
-            }));
+            builder.Services.WithScalar();
 
 
             builder.Services.AddFastWiki(builder.Configuration);
@@ -44,20 +40,14 @@ internal static class Program
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
-                app.MapScalarApiReference((options =>
-                {
-                    options.Title = "Fast Wiki API";
-                    options.Authentication = new ScalarAuthenticationOptions()
-                    {
-                        PreferredSecurityScheme = "Bearer",
-                    };
-                })); 
+                app.UseScalar("Fast Wiki API Host");
             }
 
             await app.UseFastWiki(builder.Configuration);
             app.MapApis();
 
+            app.UseStaticFiles();
+            
             await app.RunAsync();
         }
         catch (Exception ex)

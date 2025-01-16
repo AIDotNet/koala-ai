@@ -36,4 +36,6 @@ public interface IRepository<TEntity> where TEntity : class
     Task<TEntity> LastAsync(Expression<Func<TEntity, bool>> expression, CancellationToken cancellationToken = default);
 
     Task DeleteAsync(Expression<Func<TEntity, bool>> expression, CancellationToken cancellationToken = default);
+    
+    Task SaveChangesAsync(CancellationToken cancellationToken = default);
 }

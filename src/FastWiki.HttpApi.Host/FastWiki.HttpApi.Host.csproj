@@ -6,8 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="EarthChat.Scalar" Version="0.1.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
-        <PackageReference Include="Scalar.AspNetCore" Version="1.2.39"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

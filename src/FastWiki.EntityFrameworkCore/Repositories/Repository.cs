@@ -94,4 +94,9 @@ public class Repository<TEntity>(IContext context) : IRepository<TEntity>
         return _dbSet.Where(expression)
             .ExecuteDeleteAsync(cancellationToken);
     }
+
+    public Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return context.SaveChangesAsync(cancellationToken);
+    }
 }

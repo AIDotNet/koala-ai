@@ -22,4 +22,18 @@ public interface IAgentRepository : IRepository<Agent>
     /// <param name="keyword"></param>
     /// <returns></returns>
     Task<int> GetCountAsync(long workspaceId, string? keyword);
+    
+    /// <summary>
+    /// 获取Agent 配置
+    /// </summary>
+    /// <param name="agentId"></param>
+    /// <returns></returns>
+    Task<AgentConfig> GetAgentConfigAsync(long agentId);
+    
+    /// <summary>
+    /// 添加Agent 配置
+    /// </summary>
+    /// <param name="agentConfig"></param>
+    /// <returns></returns>
+    Task AddAgentConfigAsync(AgentConfig agentConfig);
 }

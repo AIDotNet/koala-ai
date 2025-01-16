@@ -35,6 +35,14 @@ export default function Workspace() {
     }, [activeWorkspaceId])
 
     useEffect(() => {
+        if (workspaces?.length === 0) {
+            // navigate('/login');
+        }else{
+            setActiveWorkspaceId(workspaces[0].id);
+        }
+    }, [workspaces])
+
+    useEffect(() => {
         const workspaceId = searchParams.get('workspaceId');
         if (workspaceId) {
             setActiveWorkspaceId(parseInt(workspaceId));

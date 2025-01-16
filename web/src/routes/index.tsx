@@ -12,6 +12,7 @@ import WelcomePanel from "@/app/panel/welcome";
 import LoginPage from "@/app/login";
 import Knowledge from "@/app/panel/knowledge";
 import Agent from "@/app/panel/agent";
+import AgentInfo from "@/app/panel/agent/info";
 
 
 const routes = [
@@ -53,12 +54,16 @@ const routes = [
             },
             {
                 path: 'agent',
-                element: <Agent />
+                element: <Agent />,
             }
         ]
     },
     {
-        path:'/login',
+        path: '/panel/agent/info/:agentId',
+        element: <AgentInfo />
+    },
+    {
+        path: '/login',
         element: <LoginPage />
     }
 ];
