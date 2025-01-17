@@ -25,6 +25,7 @@ export interface ChatAction {
   reInvokeToolMessage: (id: number) => void;
   clearMessage: () => void;
   updateInputMessage: (message: string) => void;
+  sendMessage: () => Promise<void>;
 }
 
 
@@ -144,5 +145,9 @@ export const chatSlice: StateCreator<
   },
   updateInputMessage: (message: string) => {
     set({ inputMessage: message });
+  },
+  sendMessage: async () => {
+    // 发送消息
+
   },
 })

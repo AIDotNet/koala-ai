@@ -8,6 +8,7 @@ import { Model } from '@/features/Model';
 import { Button } from 'antd';
 import { SquareChevronLeft, Sparkles } from 'lucide-react';
 import Chat from '@/features/Chat';
+import Tools from './tools';
 
 const useStyles = createStyles(({ css, token }) => ({
     container: css`
@@ -193,7 +194,7 @@ export default function AgentInfo() {
                         />
                     </Flexbox>
                     <Flexbox className={styles.mainCenter}>
-
+                            <Tools agentInfo={agentInfo}/>
                     </Flexbox>
                     <Flexbox className={styles.mainRight}>
                         {agentId && <Chat agentId={agentId} />}

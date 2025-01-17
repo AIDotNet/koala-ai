@@ -5,10 +5,11 @@ import { useChatStore } from '@/store/chat';
 import { chatSelectors } from '@/store/chat/selectors';
 
 const TextArea = memo<{ onSend?: () => void }>(({ onSend }) => {
-  const [loading, value, updateInputMessage] = useChatStore((s) => [
+  const [loading, value, updateInputMessage, sendMessage] = useChatStore((s) => [
     chatSelectors.isAIGenerating(s),
     s.inputMessage,
     s.updateInputMessage,
+    s.sendMessage,
   ]);
 
   return (
@@ -16,7 +17,7 @@ const TextArea = memo<{ onSend?: () => void }>(({ onSend }) => {
       loading={loading}
       onChange={updateInputMessage}
       onSend={() => {
-        // sendMessage();
+        sendMessage();
         onSend?.();
       }}
       value={value}

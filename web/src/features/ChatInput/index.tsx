@@ -57,7 +57,7 @@ const DesktopChatInput = memo<DesktopChatInputProps>(
           style={{ zIndex: 10 }}
         >
           <Flexbox
-            gap={8}
+            gap={3}
             height={'100%'}
             padding={'12px 0 16px'}
             style={{ minHeight: CHAT_TEXTAREA_HEIGHT, position: 'relative' }}

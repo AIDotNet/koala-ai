@@ -47,8 +47,6 @@ const InputArea = memo<InputAreaProps>(({ onSend, value, loading, onChange }) =>
   useEffect(() => {
     const fn = (e: BeforeUnloadEvent) => {
       if (hasValue) {
-        // set returnValue to trigger alert modal
-        // Note: No matter what value is set, the browser will display the standard text
         e.returnValue = '你有正在输入中的内容，确定要离开吗？';
       }
     };
