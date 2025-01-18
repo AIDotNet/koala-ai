@@ -50,6 +50,7 @@ const useStyles = createStyles(({ css, token }) => ({
     flex: 0.33;
     height: 100%;
     padding: 16px;
+    overflow: auto;
     `,
     preview: css`
     text-align: center;
