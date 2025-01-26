@@ -1,4 +1,5 @@
 ﻿using FastWiki.Domain.Agents.Repositories;
+using FastWiki.Domain.Knowledges.Repositories;
 using FastWiki.Domain.Powers.Repositories;
 using FastWiki.Domain.Users.Repositories;
 using FastWiki.Domain.WorkSpace.Repositories;
@@ -15,6 +16,7 @@ public static class ServiceExtensions
         services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
         services.AddScoped<IAgentRepository, AgentRepository>();
+        services.AddScoped<IKnowledgeRepository, KnowledgeRepository>();
 
         return services;
     }

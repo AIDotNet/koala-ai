@@ -1,9 +1,8 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using EarthChat.Scalar.Extensions;
 using FastWiki.HttpApi.Extensions;
-using Scalar.AspNetCore;
 using FastWiki.HttpApi.Host.Converter;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 namespace FastWiki.HttpApi.Host;
 
 internal static class Program
