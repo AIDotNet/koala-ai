@@ -14,7 +14,6 @@ const ChatList = ({
     data
 }:ChatListProps) => {
     const mobile = isMobileDevice();
-    console.log(data);
     
     if (data.length === 0) return <Welcome />;
 

@@ -8,6 +8,7 @@ import { Model } from '@/features/Model';
 import { Button } from 'antd';
 import { SquareChevronLeft, Sparkles } from 'lucide-react';
 import Chat from '@/features/Chat';
+import Tools from './tools';
 
 const useStyles = createStyles(({ css, token }) => ({
     container: css`
@@ -41,15 +42,15 @@ const useStyles = createStyles(({ css, token }) => ({
     border-right: 1px solid ${token.colorBorder};
     `,
     mainRight: css`
-    flex: 0.33;
+    flex: 0.34;
     height: 100%;
-    padding: 16px;
     border-left: 1px solid ${token.colorBorder};
     `,
     mainCenter: css`
     flex: 0.33;
     height: 100%;
     padding: 16px;
+    overflow: auto;
     `,
     preview: css`
     text-align: center;
@@ -194,7 +195,7 @@ export default function AgentInfo() {
                         />
                     </Flexbox>
                     <Flexbox className={styles.mainCenter}>
-
+                            <Tools agentInfo={agentInfo}/>
                     </Flexbox>
                     <Flexbox className={styles.mainRight}>
                         {agentId && <Chat agentId={agentId} />}

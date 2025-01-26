@@ -9,9 +9,10 @@
     <ItemGroup>
       <PackageReference Include="Gnarly" Version="1.0.7" />
       <PackageReference Include="Gnarly.Data" Version="1.0.7" />
-      <PackageReference Include="Lazy.Captcha.Core" Version="2.0.9" />
+      <PackageReference Include="Lazy.Captcha.Core" Version="2.1.0" />
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+      <PackageReference Include="Microsoft.SemanticKernel" Version="1.33.0" />
     </ItemGroup>
 
     <ItemGroup>
