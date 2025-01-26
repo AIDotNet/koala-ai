@@ -1,10 +1,8 @@
 ﻿using FastWiki.Domain.Shared.Knowledge;
 
-namespace FastWiki.Application.Contract.Knowledges.Dto;
-
-public class KnowledgeDto
+namespace FastWiki.Application.Contract.knowledge.Dto;
+public class CreateKnowledge
 {
-    public string Id { get; set; }
     public string Name { get; private set; } = null!;
 
     public string? Description { get; private set; }

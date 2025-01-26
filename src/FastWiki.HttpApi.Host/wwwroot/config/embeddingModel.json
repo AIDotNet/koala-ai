@@ -1,0 +1,33 @@
+{
+  "modelProvider": [
+    {
+      "icon": "OpenAI",
+      "name": "OpenAI",
+      "description": "OpenAI 是一家人工智能研究实验室，致力于研究人工智能的广泛应用。",
+      "models": [
+        {
+          "id": "text-embedding-3-small",
+          "model": "text-embedding-3-small",
+          "displayName": "text-embedding-3-small",
+          "description": "text-embedding-3-small 是OpenAI提供的基础向量模型",
+          "maxTokens": 4096
+        },
+        {
+          "id": "text-embedding-ada-002",
+          "model": "text-embedding-ada-002",
+          "displayName": "text embedding ada002",
+          "description": "text-embedding-ada-002 是OpenAI提供的基础向量模型",
+          "maxTokens": 8192
+        },
+        {
+          "id": "text-embedding-3-large",
+          "model": "text-embedding-3-large",
+          "displayName": "text-embedding-3-large",
+          "description": "text-embedding-3-large 是OpenAI提供的基础向量模型",
+          "url": "https://openai.com/gpt-4",
+          "maxTokens": 8192
+        }
+      ]
+    }
+  ]
+}

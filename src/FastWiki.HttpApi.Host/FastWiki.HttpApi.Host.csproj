@@ -37,4 +37,10 @@
       <Folder Include="Logs\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="wwwroot\config\embeddingModel.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

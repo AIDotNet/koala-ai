@@ -1,7 +1,7 @@
-﻿using FastWiki.Application.Contract.Knowledges.Dto;
+﻿using FastWiki.Application.Contract.knowledge.Dto;
 using FastWiki.Core.Model;
 
-namespace FastWiki.Application.Contract.Knowledges;
+namespace FastWiki.Application.Contract.knowledge;
 
 public interface IKnowledgeService
 {
@@ -28,4 +28,11 @@ public interface IKnowledgeService
     /// <param name="id"></param>
     /// <returns></returns>
     Task DeleteAsync(string id);
+
+    /// <summary>
+    /// 创建知识库
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    Task CreateAsync(CreateKnowledge input);
 }

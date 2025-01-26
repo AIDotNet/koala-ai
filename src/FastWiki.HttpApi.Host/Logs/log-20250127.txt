@@ -1,0 +1,1136 @@
+[2025-01-27 00:06:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:06:57 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:06:57 INF] Executed DbCommand (3ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:06:57 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:06:57 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:06:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 24.2741ms
+ [2025-01-27 00:06:57 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:06:57 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:06:57 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:06:57 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:06:57 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:06:57 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 28.5746ms
+ [2025-01-27 00:11:52 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:11:52 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:11:52 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:11:52 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:11:52 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:11:52 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 16.4855ms
+ [2025-01-27 00:11:52 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:11:52 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:11:52 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:11:52 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:11:52 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:11:52 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 13.0202ms
+ [2025-01-27 00:26:15 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:26:15 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:26:15 INF] Executed DbCommand (3ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:26:15 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:26:15 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:26:15 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 22.7085ms
+ [2025-01-27 00:26:16 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:26:16 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:26:16 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:26:16 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:26:16 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:26:16 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 9.4543ms
+ [2025-01-27 00:29:07 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:29:07 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:07 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:29:07 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:29:07 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:07 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 9.2643ms
+ [2025-01-27 00:29:07 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:29:07 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:07 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:29:07 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:29:07 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:07 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 9.4717ms
+ [2025-01-27 00:29:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 00:29:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:29:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:29:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 00:29:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:29:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:29:31 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:31 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 00:29:31 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 00:29:31 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:29:31 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:31 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:29:31 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:31 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 170.9193ms
+ [2025-01-27 00:29:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 127.5131ms
+ [2025-01-27 00:29:32 INF] Executed DbCommand (1ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:29:32 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:32 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:29:32 INF] Executed DbCommand (1ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:29:32 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:29:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 183.1313ms
+ [2025-01-27 00:29:32 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:29:32 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:29:32 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:32 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:32 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:29:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 178.9025ms
+ [2025-01-27 00:29:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 163.7653ms
+ [2025-01-27 00:29:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 165.8936ms
+ [2025-01-27 00:34:45 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 00:34:45 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 00:34:45 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 00:34:45 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 00:34:45 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 00:34:45 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:34:45 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 00:34:45 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:34:45 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 00:34:45 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 00:34:45 INF] Executed DbCommand (29ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 00:34:45 INF] Executed DbCommand (30ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 00:34:45 INF] Executed DbCommand (3ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2025-01-27 00:34:45 INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 00:34:45 INF] Executed DbCommand (3ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 00:34:45 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 00:34:45 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:34:45 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2025-01-27 00:34:45 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:34:45 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 00:34:45 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 84.084ms
+ [2025-01-27 00:34:45 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 85.6465ms
+ [2025-01-27 00:34:45 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 00:34:45 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 85.6529ms
+ [2025-01-27 00:34:45 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 82.3897ms
+ [2025-01-27 00:34:45 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 83.5315ms
+ [2025-01-27 00:34:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 00:34:46 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 00:34:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 4.5927ms
+ [2025-01-27 00:34:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:34:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:34:46 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:34:46 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:34:46 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:34:46 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:34:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 00:34:46 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:34:46 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:34:46 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 00:34:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:34:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-27 00:34:46 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:34:46 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:34:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 16.3652ms
+ [2025-01-27 00:34:46 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:34:46 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:34:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 25.7791ms
+ [2025-01-27 00:34:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 27.6652ms
+ [2025-01-27 00:34:46 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:34:46 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-27 00:34:46 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:34:46 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-27 00:34:46 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:34:46 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-27 00:34:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 36.5408ms
+ [2025-01-27 00:34:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 37.7521ms
+ [2025-01-27 00:40:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 00:40:35 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:40:35 INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 00:40:35 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:40:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 17.2314ms
+ [2025-01-27 00:40:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 00:40:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 00:40:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 00:40:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 00:40:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 00:40:35 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 00:40:35 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 00:40:35 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 00:40:35 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:40:35 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 00:40:35 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2025-01-27 00:40:35 INF] Executed DbCommand (1ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 00:40:35 INF] Executed DbCommand (1ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2025-01-27 00:40:35 INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 00:40:35 INF] Executed DbCommand (1ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 00:40:35 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2025-01-27 00:40:35 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 00:40:35 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2025-01-27 00:40:35 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 00:40:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 44.526ms
+ [2025-01-27 00:40:35 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:40:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 63.3884ms
+ [2025-01-27 00:40:35 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 00:40:35 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 00:40:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 65.4442ms
+ [2025-01-27 00:40:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 69.7318ms
+ [2025-01-27 00:40:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 58.8492ms
+ [2025-01-27 00:40:37 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 00:40:37 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 00:40:37 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:40:37 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:40:37 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 00:40:37 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 00:40:37 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:40:37 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 00:40:37 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 9.6311ms
+ [2025-01-27 00:40:37 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 11.1131ms
+ [2025-01-27 00:58:48 INF] Fast Wiki API Host is starting...
+ [2025-01-27 00:58:49 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 00:58:49 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 00:58:49 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 00:58:49 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 00:58:49 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2025-01-27 00:58:49 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2025-01-27 00:58:49 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-01-26 16:58:49.654543+00:00');
+SELECT changes();
+ [2025-01-27 00:58:49 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2025-01-27 00:58:49 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2025-01-27 00:58:49 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2025-01-27 00:58:49 INF] No migrations were applied. The database is already up to date.
+ [2025-01-27 00:58:49 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2025-01-27 00:58:50 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2025-01-27 00:58:50 INF] User profile is available. Using 'C:\Users\23957\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2025-01-27 00:58:50 INF] Now listening on: http://localhost:5087
+ [2025-01-27 00:58:50 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2025-01-27 00:58:50 INF] Application started. Press Ctrl+C to shut down.
+ [2025-01-27 00:58:50 INF] Hosting environment: Development
+ [2025-01-27 00:58:50 INF] Content root path: D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host
+ [2025-01-27 00:58:50 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2025-01-27 00:58:50 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-27 00:58:50 INF] Write content with HTTP Response ContentType of text/html
+ [2025-01-27 00:58:51 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-27 00:58:51 WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-27 00:58:51 WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-27 00:58:51 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 359.1777ms
+ [2025-01-27 00:58:51 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2025-01-27 00:58:51 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-27 00:58:51 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-27 00:58:51 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 130.8905ms
+ [2025-01-27 01:36:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:06 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:06 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:06 INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:06 INF] Executed DbCommand (6ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:06 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:06 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:06 INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:06 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:06 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 490.1145ms
+ [2025-01-27 01:36:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 94.8432ms
+ [2025-01-27 01:36:06 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:06 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 500.7686ms
+ [2025-01-27 01:36:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 103.5959ms
+ [2025-01-27 01:36:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:06 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:06 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 15.6478ms
+ [2025-01-27 01:36:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:06 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:06 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 19.2308ms
+ [2025-01-27 01:36:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:06 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:06 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:06 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:06 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:06 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 20.2027ms
+ [2025-01-27 01:36:06 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 21.4089ms
+ [2025-01-27 01:36:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:35 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:35 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:35 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 17.2241ms
+ [2025-01-27 01:36:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:35 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:35 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:35 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:35 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 14.1321ms
+ [2025-01-27 01:36:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 01:36:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:35 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 01:36:35 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:35 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:35 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 17.3381ms
+ [2025-01-27 01:36:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 01:36:35 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:35 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 01:36:35 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 01:36:35 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:35 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 01:36:35 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 01:36:35 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:35 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 01:36:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 41.7727ms
+ [2025-01-27 01:36:35 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 24.8438ms
+ [2025-01-27 01:36:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 29.1025ms
+ [2025-01-27 01:36:42 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:42 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:42 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:42 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:42 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 01:36:42 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:42 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:42 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 01:36:42 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:42 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:42 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:42 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+ [2025-01-27 01:36:42 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:42 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 20.6272ms
+ [2025-01-27 01:36:42 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+ [2025-01-27 01:36:42 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 33.9017ms
+ [2025-01-27 01:36:42 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2025-01-27 01:36:42 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2025-01-27 01:36:42 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2025-01-27 01:36:42 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2025-01-27 01:36:42 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 01:36:42 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-27 01:36:42 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 91.5525ms
+ [2025-01-27 01:36:42 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 92.183ms
+ [2025-01-27 01:36:43 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:43 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:43 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:43 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:43 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 10.0118ms
+ [2025-01-27 01:36:43 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:43 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:36:43 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:36:43 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:43 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:43 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:43 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:43 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:36:43 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:43 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:43 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:36:43 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:36:43 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:43 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 18.6565ms
+ [2025-01-27 01:36:43 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:36:43 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 22.1042ms
+ [2025-01-27 01:36:43 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 27.9438ms
+ [2025-01-27 01:38:01 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:38:01 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:38:01 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:38:01 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:38:01 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 15.7037ms
+ [2025-01-27 01:38:01 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:38:01 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:01 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:01 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:01 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:01 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 15.7446ms
+ [2025-01-27 01:38:02 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:38:02 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:38:02 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:38:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 10.3725ms
+ [2025-01-27 01:38:02 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:38:02 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:38:02 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:38:02 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:02 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 13.5987ms
+ [2025-01-27 01:38:02 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 25.6482ms
+ [2025-01-27 01:38:02 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:38:02 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:02 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 12.9138ms
+ [2025-01-27 01:38:02 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 01:38:02 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 01:38:02 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 01:38:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 9.3467ms
+ [2025-01-27 01:38:02 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:38:02 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:02 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:02 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 12.962ms
+ [2025-01-27 01:38:04 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:38:04 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:04 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:04 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:04 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:04 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 14.3679ms
+ [2025-01-27 01:38:04 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:38:04 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:04 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:04 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:38:04 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:38:04 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 14.1715ms
+ [2025-01-27 01:39:09 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:39:09 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:39:09 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:39:09 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:39:09 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:39:09 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 20.8328ms
+ [2025-01-27 01:52:52 INF] Fast Wiki API Host is starting...
+ [2025-01-27 01:52:53 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 01:52:53 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 01:52:53 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 01:52:53 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 01:52:53 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2025-01-27 01:52:53 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2025-01-27 01:52:53 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-01-26 17:52:53.6923386+00:00');
+SELECT changes();
+ [2025-01-27 01:52:53 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2025-01-27 01:52:53 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2025-01-27 01:52:53 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2025-01-27 01:52:53 INF] No migrations were applied. The database is already up to date.
+ [2025-01-27 01:52:53 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2025-01-27 01:52:54 INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2025-01-27 01:52:54 INF] User profile is available. Using 'C:\Users\23957\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2025-01-27 01:52:54 INF] Now listening on: http://localhost:5087
+ [2025-01-27 01:52:54 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2025-01-27 01:52:54 INF] Application started. Press Ctrl+C to shut down.
+ [2025-01-27 01:52:54 INF] Hosting environment: Development
+ [2025-01-27 01:52:54 INF] Content root path: D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host
+ [2025-01-27 01:52:54 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2025-01-27 01:52:55 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-27 01:52:55 INF] Write content with HTTP Response ContentType of text/html
+ [2025-01-27 01:52:55 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-27 01:52:55 WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-27 01:52:55 WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-27 01:52:55 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 364.596ms
+ [2025-01-27 01:52:55 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2025-01-27 01:52:55 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-27 01:52:55 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-27 01:52:55 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 123.4023ms
+ [2025-01-27 01:53:06 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:53:07 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:53:07 INF] Executed DbCommand (4ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:53:07 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:53:07 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:53:07 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 371.5134ms
+ [2025-01-27 01:54:21 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:54:21 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:54:22 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:54:22 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:54:22 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:54:22 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 51.9708ms
+ [2025-01-27 01:54:22 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 01:54:22 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:54:22 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:54:23 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 01:54:23 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 01:54:23 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 19.1498ms
+ [2025-01-27 01:56:37 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:56:37 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:56:37 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:56:37 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:56:37 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 55.7718ms
+ [2025-01-27 01:56:37 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 65.3818ms
+ [2025-01-27 01:57:11 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:57:11 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:57:11 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 12.9416ms
+ [2025-01-27 01:59:28 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:59:28 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:59:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 6.7367ms
+ [2025-01-27 01:59:29 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:59:29 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:59:29 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:59:29 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:59:29 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:59:29 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:59:29 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 01:59:29 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 158.7156ms
+ [2025-01-27 01:59:29 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 160.0359ms
+ [2025-01-27 01:59:29 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:59:29 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:59:29 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 01:59:29 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 116.0555ms
+ [2025-01-27 01:59:29 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 87.8365ms
+ [2025-01-27 01:59:29 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 30.7637ms
+ [2025-01-27 02:03:43 INF] Fast Wiki API Host is starting...
+ [2025-01-27 02:03:44 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 02:03:44 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 02:03:44 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 02:03:44 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 02:03:44 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2025-01-27 02:03:44 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2025-01-27 02:03:44 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-01-26 18:03:44.2931029+00:00');
+SELECT changes();
+ [2025-01-27 02:03:44 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2025-01-27 02:03:44 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2025-01-27 02:03:44 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2025-01-27 02:03:44 INF] No migrations were applied. The database is already up to date.
+ [2025-01-27 02:03:44 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2025-01-27 02:03:44 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2025-01-27 02:03:44 INF] User profile is available. Using 'C:\Users\23957\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2025-01-27 02:03:44 INF] Now listening on: http://localhost:5087
+ [2025-01-27 02:03:44 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2025-01-27 02:03:44 INF] Application started. Press Ctrl+C to shut down.
+ [2025-01-27 02:03:45 INF] Hosting environment: Development
+ [2025-01-27 02:03:45 INF] Content root path: D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host
+ [2025-01-27 02:03:45 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2025-01-27 02:03:45 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-27 02:03:45 INF] Write content with HTTP Response ContentType of text/html
+ [2025-01-27 02:03:45 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-27 02:03:45 WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-27 02:03:45 WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-27 02:03:45 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 324.2711ms
+ [2025-01-27 02:03:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2025-01-27 02:03:46 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-27 02:03:46 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-27 02:03:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 122.1591ms
+ [2025-01-27 02:04:01 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:04:01 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:04:01 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:04:02 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:04:02 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:04:02 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:04:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 89.8392ms
+ [2025-01-27 02:04:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 91.0637ms
+ [2025-01-27 02:04:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 92.0338ms
+ [2025-01-27 02:04:07 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:04:07 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:04:07 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1072 application/json 17.1728ms
+ [2025-01-27 02:05:23 INF] Fast Wiki API Host is starting...
+ [2025-01-27 02:05:24 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 02:05:24 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 02:05:24 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 02:05:24 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-27 02:05:24 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2025-01-27 02:05:24 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2025-01-27 02:05:24 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-01-26 18:05:24.7436845+00:00');
+SELECT changes();
+ [2025-01-27 02:05:24 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2025-01-27 02:05:24 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2025-01-27 02:05:24 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2025-01-27 02:05:24 INF] No migrations were applied. The database is already up to date.
+ [2025-01-27 02:05:24 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2025-01-27 02:05:25 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2025-01-27 02:05:25 INF] User profile is available. Using 'C:\Users\23957\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2025-01-27 02:05:25 INF] Now listening on: http://localhost:5087
+ [2025-01-27 02:05:25 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2025-01-27 02:05:25 INF] Application started. Press Ctrl+C to shut down.
+ [2025-01-27 02:05:25 INF] Hosting environment: Development
+ [2025-01-27 02:05:25 INF] Content root path: D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host
+ [2025-01-27 02:05:25 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2025-01-27 02:05:26 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-27 02:05:26 INF] Write content with HTTP Response ContentType of text/html
+ [2025-01-27 02:05:26 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-27 02:05:26 WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-27 02:05:26 WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-27 02:05:26 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 284.9988ms
+ [2025-01-27 02:05:26 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2025-01-27 02:05:26 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-27 02:05:26 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-27 02:05:26 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 118.889ms
+ [2025-01-27 02:05:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 02:05:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 02:05:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 02:05:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 02:05:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 02:05:31 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 02:05:31 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 02:05:31 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 02:05:31 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 02:05:31 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 02:05:31 INF] Executed DbCommand (4ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 02:05:31 INF] Executed DbCommand (5ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 02:05:31 INF] Executed DbCommand (2ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 02:05:31 INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 02:05:31 INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 02:05:31 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 02:05:31 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 02:05:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 396.3095ms
+ [2025-01-27 02:05:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 335.044ms
+ [2025-01-27 02:05:31 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 02:05:31 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 02:05:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 423.5595ms
+ [2025-01-27 02:05:31 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 02:05:31 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 02:05:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 452.401ms
+ [2025-01-27 02:05:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 516.0529ms
+ [2025-01-27 02:05:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:05:32 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:05:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 24.4956ms
+ [2025-01-27 02:05:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:05:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:05:32 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:05:32 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:05:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:05:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:05:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:05:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 21.3031ms
+ [2025-01-27 02:05:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 21.3767ms
+ [2025-01-27 02:05:32 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:05:32 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:05:32 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:05:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 23.1336ms
+ [2025-01-27 02:05:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 24.3113ms
+ [2025-01-27 02:05:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 25.6046ms
+ [2025-01-27 02:05:59 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:05:59 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:05:59 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 49.8407ms
+ [2025-01-27 02:06:20 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:06:20 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:06:20 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 35.0228ms
+ [2025-01-27 02:06:20 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:06:20 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:06:20 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 5.8669ms
+ [2025-01-27 02:08:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:08:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:08:30 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:08:30 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:08:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 9.685ms
+ [2025-01-27 02:08:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 37.759ms
+ [2025-01-27 02:08:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:08:30 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:08:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 4.153ms
+ [2025-01-27 02:08:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:08:30 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:08:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 8.4888ms
+ [2025-01-27 02:08:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:08:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:08:30 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:08:30 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:08:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 13.0864ms
+ [2025-01-27 02:08:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 14.0176ms
+ [2025-01-27 02:09:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:09:32 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:09:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 36.1314ms
+ [2025-01-27 02:09:32 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:09:32 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:09:32 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 4.8548ms
+ [2025-01-27 02:12:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 02:12:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 02:12:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-27 02:12:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-27 02:12:35 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-27 02:12:35 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 02:12:35 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 02:12:35 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 02:12:35 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 02:12:35 INF] Executing endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 02:12:35 INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 02:12:35 INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-27 02:12:35 INF] Executed DbCommand (3ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 02:12:35 INF] Executed DbCommand (3ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-27 02:12:35 INF] Executed DbCommand (1ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "k"."Id", "k"."Avatar", "k"."CategoryId", "k"."ChatModel", "k"."CreationTime", "k"."Creator", "k"."Description", "k"."EmbeddingModel", "k"."ModificationTime", "k"."Modifier", "k"."Name", "k"."RagType", "k"."WorkSpaceId"
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 02:12:35 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 02:12:35 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-27 02:12:35 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 02:12:35 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-27 02:12:35 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__P_UserId_1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "knowledges" AS "k"
+WHERE "k"."WorkSpaceId" = @__workspaceId_0 AND "k"."Creator" = @__P_UserId_1
+ [2025-01-27 02:12:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 150.5075ms
+ [2025-01-27 02:12:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 229.5921ms
+ [2025-01-27 02:12:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 202.3902ms
+ [2025-01-27 02:12:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 165.4921ms
+ [2025-01-27 02:12:35 INF] Executed endpoint 'HTTP: GET /api/v1/knowledge/list'
+ [2025-01-27 02:12:35 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/knowledge/list?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 178.3754ms
+ [2025-01-27 02:12:36 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:12:36 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:12:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 9.3635ms
+ [2025-01-27 02:12:36 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:12:36 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:12:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 4.1244ms
+ [2025-01-27 02:12:36 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - null null
+ [2025-01-27 02:12:36 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-27 02:12:36 INF] Sending file. Request path: '/config/embeddingModel.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\embeddingModel.json'
+ [2025-01-27 02:12:36 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-27 02:12:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/embeddingModel.json - 200 1098 application/json 5.739ms
+ [2025-01-27 02:12:36 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 6.8393ms
+ 

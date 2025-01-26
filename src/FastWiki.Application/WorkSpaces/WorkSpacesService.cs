@@ -25,7 +25,7 @@ public class WorkSpacesService(IWorkSpaceRepository workSpaceRepository, IUserCo
             throw new UserFriendlyException("工作空间数量已达上限");
         }
         var workSpace = new WorkSpace(workSpacesDto.Name, workSpacesDto.Description);
-        
+
         await workSpaceRepository.CreateAsync(workSpace);
     }
 
@@ -58,5 +58,10 @@ public class WorkSpacesService(IWorkSpaceRepository workSpaceRepository, IUserCo
         var result = mapper.Map<List<WorkSpaceDto>>(workSpaces);
 
         return result;
+    }
+
+    public async Task<bool> ExistAsync(long id)
+    {
+        return await workSpaceRepository.AnyAsync(x => x.Id == id && x.Creator == userContext.UserId);
     }
 }

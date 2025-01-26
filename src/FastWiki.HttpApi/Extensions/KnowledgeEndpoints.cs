@@ -1,4 +1,5 @@
-﻿using FastWiki.Application.Contract.Knowledges;
+﻿using FastWiki.Application.Contract.knowledge;
+using FastWiki.Application.Contract.knowledge.Dto;
 using FastWiki.HttpApi.Filter;
 
 namespace FastWiki.HttpApi.Extensions;
@@ -22,6 +23,10 @@ public static class KnowledgeEndpoints
         knowledge.MapDelete("id",
                 [EndpointSummary("删除知识"), EndpointDescription("删除知识")]
         async (IKnowledgeService service, string id) => await service.DeleteAsync(id));
+
+        knowledge.MapPost("create",
+                [EndpointSummary("创建知识"), EndpointDescription("创建知识")]
+        async (IKnowledgeService service, CreateKnowledge input) => await service.CreateAsync(input));
 
         return endpoint;
     }

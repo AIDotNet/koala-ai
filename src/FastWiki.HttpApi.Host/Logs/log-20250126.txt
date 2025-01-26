@@ -1,0 +1,310 @@
+[2025-01-26 16:14:41 INF] Fast Wiki API Host is starting...
+ [2025-01-26 16:14:43 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 16:14:43 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 16:14:43 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 16:14:43 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 16:14:43 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2025-01-26 16:14:43 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2025-01-26 16:14:43 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-01-26 08:14:43.390732+00:00');
+SELECT changes();
+ [2025-01-26 16:14:43 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2025-01-26 16:14:43 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2025-01-26 16:14:43 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2025-01-26 16:14:43 INF] No migrations were applied. The database is already up to date.
+ [2025-01-26 16:14:43 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2025-01-26 16:14:43 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2025-01-26 16:14:43 INF] User profile is available. Using 'C:\Users\23957\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2025-01-26 16:14:44 INF] Now listening on: http://localhost:5087
+ [2025-01-26 16:14:44 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2025-01-26 16:14:44 INF] Application started. Press Ctrl+C to shut down.
+ [2025-01-26 16:14:44 INF] Hosting environment: Development
+ [2025-01-26 16:14:44 INF] Content root path: D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host
+ [2025-01-26 16:14:44 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2025-01-26 16:14:44 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 16:14:44 INF] Write content with HTTP Response ContentType of text/html
+ [2025-01-26 16:14:44 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 16:14:44 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/scalar.js - null null
+ [2025-01-26 16:14:44 WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-26 16:14:44 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 16:14:44 WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-26 16:14:44 INF] Sending file with download name ''.
+ [2025-01-26 16:14:44 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 424.1571ms
+ [2025-01-26 16:14:44 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 16:14:44 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/scalar.js - 200 null text/javascript 41.0544ms
+ [2025-01-26 16:14:45 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2025-01-26 16:14:45 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-26 16:14:45 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-26 16:14:45 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 96.9084ms
+ [2025-01-26 16:14:45 INF] Request starting HTTP/1.1 GET http://localhost:5087/favicon.ico - null null
+ [2025-01-26 16:14:45 INF] Request finished HTTP/1.1 GET http://localhost:5087/favicon.ico - 404 0 null 8.445ms
+ [2025-01-26 16:14:45 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/favicon.ico, Response status code: 404
+ [2025-01-26 16:14:59 INF] Fast Wiki API Host is starting...
+ [2025-01-26 16:15:00 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 16:15:00 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 16:15:00 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 16:15:00 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 16:15:00 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2025-01-26 16:15:00 INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2025-01-26 16:15:00 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-01-26 08:15:00.3098738+00:00');
+SELECT changes();
+ [2025-01-26 16:15:00 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2025-01-26 16:15:00 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2025-01-26 16:15:00 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2025-01-26 16:15:00 INF] No migrations were applied. The database is already up to date.
+ [2025-01-26 16:15:00 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2025-01-26 16:15:00 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2025-01-26 16:15:00 INF] User profile is available. Using 'C:\Users\23957\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2025-01-26 16:15:00 INF] Now listening on: http://localhost:5087
+ [2025-01-26 16:15:00 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2025-01-26 16:15:00 INF] Application started. Press Ctrl+C to shut down.
+ [2025-01-26 16:15:00 INF] Hosting environment: Development
+ [2025-01-26 16:15:00 INF] Content root path: D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host
+ [2025-01-26 16:15:01 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2025-01-26 16:15:01 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 16:15:01 INF] Write content with HTTP Response ContentType of text/html
+ [2025-01-26 16:15:01 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 16:15:01 WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-26 16:15:01 WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-26 16:15:01 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 343.1814ms
+ [2025-01-26 16:15:01 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2025-01-26 16:15:01 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-26 16:15:02 INF] Request starting HTTP/1.1 GET http://localhost:5087/favicon.ico - null null
+ [2025-01-26 16:15:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/favicon.ico - 404 0 null 10.591ms
+ [2025-01-26 16:15:02 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/favicon.ico, Response status code: 404
+ [2025-01-26 16:15:02 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-26 16:15:02 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 114.6264ms
+ [2025-01-26 23:55:41 INF] Fast Wiki API Host is starting...
+ [2025-01-26 23:55:42 WRN] The property 'KnowledgeItem.ExtraData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 23:55:42 WRN] The property 'PluginItem.OutputParameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 23:55:42 WRN] The property 'PluginItem.Parameters' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 23:55:42 WRN] The property 'UserAuthExtensions.ExtendData' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+ [2025-01-26 23:55:42 INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+ [2025-01-26 23:55:42 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+ [2025-01-26 23:55:42 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-01-26 15:55:42.7842697+00:00');
+SELECT changes();
+ [2025-01-26 23:55:42 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+ [2025-01-26 23:55:42 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+ [2025-01-26 23:55:42 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+ [2025-01-26 23:55:42 INF] No migrations were applied. The database is already up to date.
+ [2025-01-26 23:55:42 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+ [2025-01-26 23:55:43 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "users" AS "u")
+ [2025-01-26 23:55:43 INF] User profile is available. Using 'C:\Users\23957\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+ [2025-01-26 23:55:43 INF] Now listening on: http://localhost:5087
+ [2025-01-26 23:55:43 INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+ [2025-01-26 23:55:43 INF] Application started. Press Ctrl+C to shut down.
+ [2025-01-26 23:55:43 INF] Hosting environment: Development
+ [2025-01-26 23:55:43 INF] Content root path: D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host
+ [2025-01-26 23:55:46 INF] Request starting HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - null 0
+ [2025-01-26 23:55:46 INF] Request starting HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - null 0
+ [2025-01-26 23:55:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/v1 - null null
+ [2025-01-26 23:55:46 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 23:55:46 INF] Write content with HTTP Response ContentType of text/html
+ [2025-01-26 23:55:46 INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'ggWVflAKCIFScD7RjgF2E74Hly6MwW7hE-YNBOaSLe4'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+ [2025-01-26 23:55:46 INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'ggWVflAKCIFScD7RjgF2E74Hly6MwW7hE-YNBOaSLe4'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+ [2025-01-26 23:55:46 INF] Bearer was not authenticated. Failure message: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'ggWVflAKCIFScD7RjgF2E74Hly6MwW7hE-YNBOaSLe4'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+ [2025-01-26 23:55:46 INF] Bearer was not authenticated. Failure message: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'ggWVflAKCIFScD7RjgF2E74Hly6MwW7hE-YNBOaSLe4'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+ [2025-01-26 23:55:46 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 23:55:46 INF] Executing endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2025-01-26 23:55:46 INF] Request starting HTTP/1.1 GET http://localhost:5087/scalar/scalar.js - null null
+ [2025-01-26 23:55:46 INF] Executing endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2025-01-26 23:55:46 INF] Executing endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 23:55:46 WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-26 23:55:46 INF] Sending file with download name ''.
+ [2025-01-26 23:55:46 WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+ [2025-01-26 23:55:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/v1 - 200 null text/html 342.3565ms
+ [2025-01-26 23:55:46 INF] Executed endpoint 'HTTP: GET /scalar/{documentName}'
+ [2025-01-26 23:55:46 INF] Request finished HTTP/1.1 GET http://localhost:5087/scalar/scalar.js - 200 null text/javascript 60.5016ms
+ [2025-01-26 23:55:47 INF] Executed endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2025-01-26 23:55:47 INF] Executed endpoint 'HTTP: POST /api/v1/notifications/login-verification-code'
+ [2025-01-26 23:55:47 INF] Request finished HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - 200 null application/json; charset=utf-8 486.8006ms
+ [2025-01-26 23:55:47 INF] Request finished HTTP/1.1 POST http://localhost:5087/api/v1/notifications/login-verification-code - 200 null application/json; charset=utf-8 489.0534ms
+ [2025-01-26 23:55:47 INF] Request starting HTTP/1.1 GET http://localhost:5087/openapi/v1.json - null null
+ [2025-01-26 23:55:47 INF] Executing endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-26 23:55:47 INF] Executed endpoint 'HTTP: GET /openapi/{documentName}.json'
+ [2025-01-26 23:55:47 INF] Request finished HTTP/1.1 GET http://localhost:5087/openapi/v1.json - 200 null application/json;charset=utf-8 104.7054ms
+ [2025-01-26 23:55:47 INF] Request starting HTTP/1.1 GET http://localhost:5087/favicon.ico - null null
+ [2025-01-26 23:55:47 INF] Request finished HTTP/1.1 GET http://localhost:5087/favicon.ico - 404 0 null 8.9895ms
+ [2025-01-26 23:55:47 INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5087/favicon.ico, Response status code: 404
+ [2025-01-26 23:58:27 INF] Request starting HTTP/1.1 POST http://localhost:5087/api/v1/authorization/token - application/json 114
+ [2025-01-26 23:58:27 INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'ggWVflAKCIFScD7RjgF2E74Hly6MwW7hE-YNBOaSLe4'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+ [2025-01-26 23:58:27 INF] Bearer was not authenticated. Failure message: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'ggWVflAKCIFScD7RjgF2E74Hly6MwW7hE-YNBOaSLe4'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+ [2025-01-26 23:58:27 INF] Executing endpoint 'HTTP: POST /api/v1/authorization/token'
+ [2025-01-26 23:58:27 INF] Executed DbCommand (3ms) [Parameters=[@__userName_0='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-26 23:58:27 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "r"."Id", "r"."Code", "r"."CreationTime", "r"."Creator", "r"."Description", "r"."ModificationTime", "r"."Modifier", "r"."Name"
+FROM "user_roles" AS "u"
+INNER JOIN "roles" AS "r" ON "u"."RoleId" = "r"."Id"
+WHERE "u"."UserId" = @__userId_0
+ [2025-01-26 23:58:27 INF] Executed endpoint 'HTTP: POST /api/v1/authorization/token'
+ [2025-01-26 23:58:27 INF] Request finished HTTP/1.1 POST http://localhost:5087/api/v1/authorization/token - 200 null application/json; charset=utf-8 223.2713ms
+ [2025-01-26 23:58:27 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-26 23:58:27 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-26 23:58:27 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-26 23:58:27 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-26 23:58:27 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 57.0102ms
+ [2025-01-26 23:58:28 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/users/current - null null
+ [2025-01-26 23:58:28 INF] Executing endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-26 23:58:28 INF] Executed DbCommand (0ms) [Parameters=[@__userName_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."Id", "u"."Account", "u"."Avatar", "u"."CreationTime", "u"."Creator", "u"."Email", "u"."Introduction", "u"."IsDisable", "u"."ModificationTime", "u"."Modifier", "u"."Name", "u"."Password", "u"."Phone", "u"."Salt"
+FROM "users" AS "u"
+WHERE "u"."Account" = @__userName_0
+LIMIT 1
+ [2025-01-26 23:58:28 INF] Executed endpoint 'HTTP: GET /api/v1/users/current'
+ [2025-01-26 23:58:28 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/users/current - 200 null application/json; charset=utf-8 7.4117ms
+ [2025-01-26 23:58:29 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-26 23:58:29 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-26 23:58:29 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-26 23:58:29 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-26 23:58:29 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 88.4456ms
+ [2025-01-26 23:58:29 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - null null
+ [2025-01-26 23:58:29 INF] Executing endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-26 23:58:29 INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w0"."Id", "w0"."CreationTime", "w0"."Creator", "w0"."Description", "w0"."ModificationTime", "w0"."Modifier", "w0"."Name", "w0"."State"
+FROM "work_space_members" AS "w"
+INNER JOIN "work_spaces" AS "w0" ON "w"."WorkSpaceId" = "w0"."Id"
+WHERE "w"."UserId" = @__userId_0
+ [2025-01-26 23:58:29 INF] Executed endpoint 'HTTP: GET /api/v1/workspaces/'
+ [2025-01-26 23:58:29 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/workspaces - 200 null application/json; charset=utf-8 7.5106ms
+ [2025-01-26 23:58:30 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - null null
+ [2025-01-26 23:58:30 INF] Executing endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-26 23:58:30 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+ [2025-01-26 23:58:30 WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+ [2025-01-26 23:58:30 INF] Executed DbCommand (1ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+LIMIT @__p_2 OFFSET @__p_1
+ [2025-01-26 23:58:30 INF] Executed DbCommand (0ms) [Parameters=[@__workspaceId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "agents" AS "a"
+WHERE "a"."WorkSpaceId" = @__workspaceId_0
+ [2025-01-26 23:58:30 INF] Executed endpoint 'HTTP: GET /api/v1/agent/'
+ [2025-01-26 23:58:30 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent?workspaceId=5&page=1&pageSize=10 - 200 null application/json; charset=utf-8 55.6654ms
+ [2025-01-26 23:58:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/config/model.json - null null
+ [2025-01-26 23:58:31 INF] Sending file. Request path: '/config/model.json'. Physical path: 'D:\GitHub\fast-wiki\src\FastWiki.HttpApi.Host\wwwroot\config\model.json'
+ [2025-01-26 23:58:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/config/model.json - 200 3765 application/json 10.2944ms
+ [2025-01-26 23:58:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-26 23:58:31 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-26 23:58:31 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-26 23:58:31 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-26 23:58:31 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-26 23:58:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 28.8895ms
+ [2025-01-26 23:58:31 INF] Request starting HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - null null
+ [2025-01-26 23:58:31 INF] Executing endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-26 23:58:31 INF] Executed DbCommand (0ms) [Parameters=[@__P_UserId_0='?' (Size = 36), @__id_1='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."Avatar", "a"."CreationTime", "a"."Creator", "a"."Introduction", "a"."IsCollect", "a"."IsTop", "a"."ModificationTime", "a"."Modifier", "a"."Name", "a"."WorkSpaceId"
+FROM "agents" AS "a"
+WHERE "a"."Creator" = @__P_UserId_0 AND "a"."Id" = @__id_1
+LIMIT 1
+ [2025-01-26 23:58:31 INF] Executed DbCommand (0ms) [Parameters=[@__agentId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AgentId", "a"."ContextSize", "a"."CreationTime", "a"."Creator", "a"."MaxResponseToken", "a"."Model", "a"."ModificationTime", "a"."Modifier", "a"."Opening", "a"."OutputFormat", "a"."Prompt", "a"."SuggestUserQuestion", "a"."Temperature", "a"."TopP"
+FROM "agent_configs" AS "a"
+WHERE "a"."AgentId" = @__agentId_0
+LIMIT 1
+ [2025-01-26 23:58:31 INF] Executed endpoint 'HTTP: GET /api/v1/agent/{id}'
+ [2025-01-26 23:58:31 INF] Request finished HTTP/1.1 GET http://localhost:5087/api/v1/agent/1 - 200 null application/json; charset=utf-8 11.6266ms
+ 

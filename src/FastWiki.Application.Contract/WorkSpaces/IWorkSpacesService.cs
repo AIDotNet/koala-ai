@@ -32,4 +32,11 @@ public interface IWorkSpacesService
     /// </summary>
     /// <returns></returns>
     Task<List<WorkSpaceDto>> GetAsync();
+
+    /// <summary>
+    /// 判断工作空间是否存在
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task<bool> ExistAsync(long id);
 }
