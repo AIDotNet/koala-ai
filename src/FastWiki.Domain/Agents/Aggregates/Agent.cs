@@ -34,7 +34,7 @@ public class Agent : AuditEntity<long>
     /// 工作空间Id
     /// 可空
     /// </summary>
-    public long? WorkSpaceId { get; set; }
+    public long? WorkspaceId { get; set; }
 
     public WorkSpaces.Aggregates.WorkSpace WorkSpace { get; set; }
 
@@ -45,7 +45,7 @@ public class Agent : AuditEntity<long>
         SetAvatar(avatar);
         IsCollect = false;
         IsTop = false;
-        WorkSpaceId = workspaceId;
+        WorkspaceId = workspaceId;
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class Agent : AuditEntity<long>
     /// <param name="workSpaceId"></param>
     public void BindingWorkSpace(long workSpaceId)
     {
-        WorkSpaceId = workSpaceId;
+        WorkspaceId = workSpaceId;
     }
 
     public void SetName(string name)

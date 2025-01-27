@@ -28,7 +28,7 @@ public class Knowledge : AuditEntity<string>
     /// 工作空间Id
     /// 可空
     /// </summary>
-    public long? WorkSpaceId { get; set; }
+    public long? WorkspaceId { get; set; }
 
     public Category Category { get; set; }
     
@@ -127,7 +127,7 @@ public class Knowledge : AuditEntity<string>
     /// <param name="workSpaceId"></param>
     public void BindingWorkSpace(long workSpaceId)
     {
-        WorkSpaceId = workSpaceId;
+        WorkspaceId = workSpaceId;
     }
 
     protected Knowledge()

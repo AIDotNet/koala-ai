@@ -30,8 +30,7 @@ internal static class Program
             });
 
             builder.Services.WithScalar();
-
-
+            
             builder.Services.AddFastWiki(builder.Configuration);
 
             var app = builder.Build();

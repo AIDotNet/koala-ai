@@ -36,7 +36,7 @@ public class KnowledgeEntityType : IEntityTypeConfiguration<Knowledge>
             .HasComment("知识库 RAG 类型")
             .IsRequired();
 
-        builder.HasIndex(x => x.WorkSpaceId);
+        builder.HasIndex(x => x.WorkspaceId);
 
         builder.Property(x => x.Avatar)
             .IsRequired()
@@ -60,7 +60,7 @@ public class KnowledgeEntityType : IEntityTypeConfiguration<Knowledge>
 
         builder.HasOne(x => x.WorkSpace)
             .WithMany()
-            .HasForeignKey(x => x.WorkSpaceId)
+            .HasForeignKey(x => x.WorkspaceId)
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasIndex(x => x.Name);

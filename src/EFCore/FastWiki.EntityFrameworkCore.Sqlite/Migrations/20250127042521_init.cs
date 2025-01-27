@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -156,7 +156,7 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                     Avatar = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "智能体头像"),
                     IsCollect = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsTop = table.Column<bool>(type: "INTEGER", nullable: false),
-                    WorkSpaceId = table.Column<long>(type: "INTEGER", nullable: true),
+                    WorkspaceId = table.Column<long>(type: "INTEGER", nullable: true),
                     Creator = table.Column<string>(type: "TEXT", nullable: true),
                     CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
                     Modifier = table.Column<string>(type: "TEXT", nullable: true),
@@ -166,8 +166,8 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 {
                     table.PrimaryKey("PK_agents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_agents_work_spaces_WorkSpaceId",
-                        column: x => x.WorkSpaceId,
+                        name: "FK_agents_work_spaces_WorkspaceId",
+                        column: x => x.WorkspaceId,
                         principalTable: "work_spaces",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -305,7 +305,7 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                     Avatar = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "知识库头像"),
                     EmbeddingModel = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "知识库嵌入模型,当嵌入模型确认以后不能修改，否则会导致数据不一致"),
                     ChatModel = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "知识库聊天模型"),
-                    WorkSpaceId = table.Column<long>(type: "INTEGER", nullable: true),
+                    WorkspaceId = table.Column<long>(type: "INTEGER", nullable: true),
                     Creator = table.Column<string>(type: "TEXT", nullable: true),
                     CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
                     Modifier = table.Column<string>(type: "TEXT", nullable: true),
@@ -321,8 +321,8 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_knowledges_work_spaces_WorkSpaceId",
-                        column: x => x.WorkSpaceId,
+                        name: "FK_knowledges_work_spaces_WorkspaceId",
+                        column: x => x.WorkspaceId,
                         principalTable: "work_spaces",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -437,9 +437,9 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 column: "Name");
 
             migrationBuilder.CreateIndex(
-                name: "IX_agents_WorkSpaceId",
+                name: "IX_agents_WorkspaceId",
                 table: "agents",
-                column: "WorkSpaceId");
+                column: "WorkspaceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_categories_Name",
@@ -482,9 +482,9 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 column: "Name");
 
             migrationBuilder.CreateIndex(
-                name: "IX_knowledges_WorkSpaceId",
+                name: "IX_knowledges_WorkspaceId",
                 table: "knowledges",
-                column: "WorkSpaceId");
+                column: "WorkspaceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_plugin_items_Name",

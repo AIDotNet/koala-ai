@@ -3,29 +3,29 @@
 namespace FastWiki.Application.Contract.knowledge.Dto;
 public class CreateKnowledge
 {
-    public string Name { get; private set; } = null!;
+    public string Name { get;  set; } 
 
-    public string? Description { get; private set; }
+    public string? Description { get;  set; }
 
-    public string? CategoryId { get; private set; }
+    public string? CategoryId { get;  set; }
 
-    public KnowledgeRagType RagType { get; private set; }
+    public KnowledgeRagType RagType { get;  set; }
 
-    public string Avatar { get; private set; } = null!;
+    public string Avatar { get; set; } 
 
     /// <summary>
     /// 知识库向量模型
     /// </summary>
-    public string EmbeddingModel { get; private set; } = null!;
+    public string EmbeddingModel { get; set; } 
 
     /// <summary>
     /// 知识库对话处理模型
     /// </summary>
-    public string ChatModel { get; private set; } = null!;
+    public string ChatModel { get; set; } 
 
     /// <summary>
     /// 工作空间Id
     /// 可空
     /// </summary>
-    public long? WorkSpaceId { get; set; }
+    public long WorkspaceId { get; set; }
 }

@@ -1,4 +1,6 @@
-﻿namespace FastWiki.Domain.Knowledges.Aggregates;
+﻿using FastWiki.Domain.Shared.Knowledge;
+
+namespace FastWiki.Domain.Knowledge.Aggregates;
 
 public class KnowledgeItem : AuditEntity<long>
 {
@@ -15,14 +17,29 @@ public class KnowledgeItem : AuditEntity<long>
     public string Data { get; private set; } = null!;
 
     /// <summary>
+    /// 绑定文件Id
+    /// </summary>
+    public string? FileId { get; set; }
+
+    /// <summary>
     /// 数据数量
     /// </summary>
     public int DataCount { get; set; }
 
     /// <summary>
+    /// 知识库状态
+    /// </summary>
+    public KnowledgeItemStatus Status { get; set; }
+
+    /// <summary>
+    /// 是否启用
+    /// </summary>
+    public bool Enable { get; set; }
+
+    /// <summary>
     /// 扩展数据
     /// </summary>
-    public Dictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> ExtraData { get; set; } = new();
 
     public Knowledge Knowledge { get; set; }
 
@@ -79,5 +96,20 @@ public class KnowledgeItem : AuditEntity<long>
     public void ClearExtraData()
     {
         ExtraData.Clear();
+    }
+
+    public void EnableKnowledgeItem()
+    {
+        Enable = true;
+    }
+
+    public void DisableKnowledgeItem()
+    {
+        Enable = false;
+    }
+
+    public void UpdateStatus(KnowledgeItemStatus status)
+    {
+        Status = status;
     }
 }

@@ -18,6 +18,11 @@ public class ResultFilter(ILogger<ResultFilter> logger) : IEndpointFilter
 
             return result;
         }
+        catch (ArgumentException args)
+        {
+            logger.LogError("UserFriendlyException: {Message}", args.Message);
+            return ResponseModel.CreateError(args.Message);
+        }
         catch (UserFriendlyException e)
         {
             logger.LogError("UserFriendlyException: {Message}", e.Message);

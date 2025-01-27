@@ -36,7 +36,7 @@ public class AgentDto
     /// 工作空间Id
     /// 可空
     /// </summary>
-    public long? WorkSpaceId { get; set; }
+    public long? WorkspaceId { get; set; }
     
     public AgentConfigDto? AgentConfig { get; set; }
 }

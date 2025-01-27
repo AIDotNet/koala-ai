@@ -27,7 +27,7 @@ public class AgentService(
 
     public async Task CreateAsync(AgentInput input)
     {
-        if (await agentRepository.AnyAsync(a => a.Name == input.Name && a.WorkSpaceId == input.WorkSpaceId))
+        if (await agentRepository.AnyAsync(a => a.Name == input.Name && a.WorkspaceId == input.WorkSpaceId))
         {
             throw new BusinessException("已经存在相同名称的智能体");
         }

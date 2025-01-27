@@ -8,7 +8,8 @@ using MapsterMapper;
 
 namespace FastWiki.Application.knowledge;
 
-public sealed class KnowledgeService(IKnowledgeRepository knowledgeRepository,
+public sealed class KnowledgeService(
+    IKnowledgeRepository knowledgeRepository,
     IMapper mapper,
     IUserContext userContext,
     IWorkSpacesService workSpacesService) : IKnowledgeService, IScopeDependency
@@ -16,9 +17,11 @@ public sealed class KnowledgeService(IKnowledgeRepository knowledgeRepository,
     public async Task<PagedResultDto<KnowledgeDto>> GetListAsync(long workspaceId, int page, int pageSize,
         string? keyword)
     {
-        var result = await knowledgeRepository.ListAsync(x => x.WorkSpaceId == workspaceId && x.Creator == userContext.UserId);
+        var result =
+            await knowledgeRepository.ListAsync(x => x.WorkspaceId == workspaceId && x.Creator == userContext.UserId);
 
-        var count = await knowledgeRepository.CountAsync(x => x.WorkSpaceId == workspaceId && x.Creator == userContext.UserId);
+        var count = await knowledgeRepository.CountAsync(x =>
+            x.WorkspaceId == workspaceId && x.Creator == userContext.UserId);
 
         return new PagedResultDto<KnowledgeDto>(count, mapper.Map<List<KnowledgeDto>>(result));
     }
@@ -37,12 +40,12 @@ public sealed class KnowledgeService(IKnowledgeRepository knowledgeRepository,
 
     public async Task CreateAsync(CreateKnowledge input)
     {
-        if (input.WorkSpaceId == null)
+        if (input.WorkspaceId == null)
         {
             throw new UserFriendlyException("工作空间不存在");
         }
 
-        if (!await workSpacesService.ExistAsync(input.WorkSpaceId.Value))
+        if (!await workSpacesService.ExistAsync(input.WorkspaceId))
         {
             throw new UserFriendlyException("工作空间不存在");
         }
@@ -57,7 +60,10 @@ public sealed class KnowledgeService(IKnowledgeRepository knowledgeRepository,
             throw new UserFriendlyException("知识库描述不能为空");
         }
 
-        var knowledge = new Knowledge(input.Name, input.Description, input.Avatar, input.EmbeddingModel, input.ChatModel, input.CategoryId);
+        var knowledge = new Knowledge(input.Name, input.Description, input.Avatar, input.EmbeddingModel,
+            input.ChatModel, input.CategoryId);
+
+        knowledge.WorkspaceId = input.WorkspaceId;
 
         await knowledgeRepository.AddAsync(knowledge);
 

@@ -30,11 +30,11 @@ public class AgentEntityType : IEntityTypeConfiguration<Agent>
             .HasComment("智能体头像")
             .HasMaxLength(1000);
 
-        builder.HasIndex(x => x.WorkSpaceId);
+        builder.HasIndex(x => x.WorkspaceId);
 
         builder.HasOne(x => x.WorkSpace)
             .WithMany()
-            .HasForeignKey(x => x.WorkSpaceId)
+            .HasForeignKey(x => x.WorkspaceId)
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasIndex(x => x.Name);

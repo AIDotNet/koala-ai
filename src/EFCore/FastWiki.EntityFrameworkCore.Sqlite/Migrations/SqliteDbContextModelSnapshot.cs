@@ -15,7 +15,7 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
             modelBuilder.Entity("FastWiki.Domain.Agents.Aggregates.Agent", b =>
                 {
@@ -60,14 +60,14 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                         .HasColumnType("TEXT")
                         .HasComment("智能体名称");
 
-                    b.Property<long?>("WorkSpaceId")
+                    b.Property<long?>("WorkspaceId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Name");
 
-                    b.HasIndex("WorkSpaceId");
+                    b.HasIndex("WorkspaceId");
 
                     b.ToTable("agents", null, t =>
                         {
@@ -332,7 +332,7 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                         .HasColumnType("INTEGER")
                         .HasComment("知识库 RAG 类型");
 
-                    b.Property<long?>("WorkSpaceId")
+                    b.Property<long?>("WorkspaceId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -341,7 +341,7 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
 
                     b.HasIndex("Name");
 
-                    b.HasIndex("WorkSpaceId");
+                    b.HasIndex("WorkspaceId");
 
                     b.ToTable("knowledges", null, t =>
                         {
@@ -853,7 +853,7 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 {
                     b.HasOne("FastWiki.Domain.WorkSpaces.Aggregates.WorkSpace", "WorkSpace")
                         .WithMany()
-                        .HasForeignKey("WorkSpaceId")
+                        .HasForeignKey("WorkspaceId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("WorkSpace");
@@ -889,7 +889,7 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
 
                     b.HasOne("FastWiki.Domain.WorkSpaces.Aggregates.WorkSpace", "WorkSpace")
                         .WithMany()
-                        .HasForeignKey("WorkSpaceId")
+                        .HasForeignKey("WorkspaceId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Category");

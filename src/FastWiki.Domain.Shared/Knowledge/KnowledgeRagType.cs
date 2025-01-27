@@ -1,4 +1,6 @@
-﻿namespace FastWiki.Domain.Shared.Knowledge;
+﻿using System.ComponentModel;
+
+namespace FastWiki.Domain.Shared.Knowledge;
 
 /// <summary>
 /// 知识库Rag类型
@@ -8,10 +10,12 @@ public enum KnowledgeRagType : byte
     /// <summary>
     /// 正常Rag模式
     /// </summary>
-    DefaultRag = 1,
+    [Description("普通知识库")]
+    DefaultRag = 0,
 
     /// <summary>
     /// Mem0 Rag
     /// </summary>
-    Mem0Rag = 2
+    [Description("Mem0知识库")]
+    Mem0Rag = 10
 }

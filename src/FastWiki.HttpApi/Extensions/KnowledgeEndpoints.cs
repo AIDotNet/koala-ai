@@ -20,11 +20,11 @@ public static class KnowledgeEndpoints
                 [EndpointSummary("获取知识详情"), EndpointDescription("获取知识详情")]
         async (IKnowledgeService service, string id) => await service.GetAsync(id));
 
-        knowledge.MapDelete("id",
+        knowledge.MapDelete("{id}",
                 [EndpointSummary("删除知识"), EndpointDescription("删除知识")]
         async (IKnowledgeService service, string id) => await service.DeleteAsync(id));
 
-        knowledge.MapPost("create",
+        knowledge.MapPost("",
                 [EndpointSummary("创建知识"), EndpointDescription("创建知识")]
         async (IKnowledgeService service, CreateKnowledge input) => await service.CreateAsync(input));
 

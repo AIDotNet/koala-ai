@@ -35,7 +35,7 @@ public class AgentRepository(IContext context) : Repository<Agent>(context), IAg
     private IQueryable<Agent> CreateQuery(long workspaceId, string? keyword)
     {
         var query = context.Agents.AsQueryable();
-        query = query.Where(a => a.WorkSpaceId == workspaceId);
+        query = query.Where(a => a.WorkspaceId == workspaceId);
         if (!string.IsNullOrEmpty(keyword))
         {
             query = query.Where(a => a.Name.Contains(keyword));
