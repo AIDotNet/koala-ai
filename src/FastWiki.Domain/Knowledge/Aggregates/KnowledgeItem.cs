@@ -41,7 +41,7 @@ public class KnowledgeItem : AuditEntity<long>
     /// </summary>
     public Dictionary<string, string> ExtraData { get; set; } = new();
 
-    public Knowledge Knowledge { get; set; }
+    public FastWikiKnowledge Knowledge { get; set; }
 
     public KnowledgeItem(string name, string data)
     {

@@ -1,12 +1,11 @@
-﻿using FastWiki.Domain.Knowledges.Aggregates;
-using Microsoft.EntityFrameworkCore;
+﻿using FastWiki.Domain.Knowledge.Aggregates;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FastWiki.EntityFrameworkCore.EntityTypeConfigurations;
 
-public class KnowledgeEntityType : IEntityTypeConfiguration<Knowledge>
+public class KnowledgeEntityType : IEntityTypeConfiguration<FastWikiKnowledge>
 {
-    public void Configure(EntityTypeBuilder<Knowledge> builder)
+    public void Configure(EntityTypeBuilder<FastWikiKnowledge> builder)
     {
         builder.ToTable("knowledges", (tableBuilder) => { tableBuilder.HasComment("知识库"); });
 

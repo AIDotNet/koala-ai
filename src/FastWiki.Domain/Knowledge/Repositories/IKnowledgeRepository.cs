@@ -1,9 +1,9 @@
 ﻿using FastWiki.Data.Repositories;
-using FastWiki.Domain.Knowledges.Aggregates;
+using FastWiki.Domain.Knowledge.Aggregates;
 
-namespace FastWiki.Domain.Knowledges.Repositories;
+namespace FastWiki.Domain.Knowledge.Repositories;
 
-public interface IKnowledgeRepository : IRepository<Knowledge>
+public interface IKnowledgeRepository : IRepository<FastWikiKnowledge>
 {
     
 }

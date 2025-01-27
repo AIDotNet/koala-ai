@@ -1,4 +1,5 @@
-﻿using FastWiki.Domain.Shared.Knowledge;
+﻿using FastWiki.Domain.Knowledge.Aggregates;
+using FastWiki.Domain.Shared.Knowledge;
 
 namespace FastWiki.Domain.Knowledges.Aggregates;
 
@@ -22,7 +23,7 @@ public class QuantizedTask : AuditEntity<long>
 
     public KnowledgeItem KnowledgeItem { get; set; }
     
-    public Knowledge Knowledge { get; set; }
+    public FastWikiKnowledge Knowledge { get; set; }
     
     public QuantizedTask(string knowledgeId, long knowledgeItemId)
     {

@@ -2,8 +2,8 @@
 using FastWiki.Application.Contract.knowledge.Dto;
 using FastWiki.Application.Contract.WorkSpaces;
 using FastWiki.Core;
-using FastWiki.Domain.Knowledges.Aggregates;
-using FastWiki.Domain.Knowledges.Repositories;
+using FastWiki.Domain.Knowledge.Aggregates;
+using FastWiki.Domain.Knowledge.Repositories;
 using MapsterMapper;
 
 namespace FastWiki.Application.knowledge;
@@ -60,7 +60,7 @@ public sealed class KnowledgeService(
             throw new UserFriendlyException("知识库描述不能为空");
         }
 
-        var knowledge = new Knowledge(input.Name, input.Description, input.Avatar, input.EmbeddingModel,
+        var knowledge = new FastWikiKnowledge(input.Name, input.Description, input.Avatar, input.EmbeddingModel,
             input.ChatModel, input.CategoryId);
 
         knowledge.WorkspaceId = input.WorkspaceId;

@@ -1,7 +1,6 @@
 ﻿using System.Text.Json;
 using FastWiki.Core;
-using FastWiki.Domain.Knowledges.Aggregates;
-using Microsoft.EntityFrameworkCore;
+using FastWiki.Domain.Knowledge.Aggregates;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FastWiki.EntityFrameworkCore.EntityTypeConfigurations;

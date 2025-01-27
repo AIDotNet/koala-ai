@@ -1,6 +1,6 @@
-﻿namespace FastWiki.Domain.Knowledges.Aggregates;
+﻿namespace FastWiki.Domain.Knowledge.Aggregates;
 
-public class Category : AuditEntity<string>
+public  class Category : AuditEntity<string>
 {
     public string Name { get; private set; } = null!;
 

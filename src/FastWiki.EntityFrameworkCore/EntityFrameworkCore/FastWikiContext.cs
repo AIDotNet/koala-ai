@@ -1,6 +1,7 @@
 ﻿using FastWiki.Core;
 using FastWiki.Data.Auditing;
 using FastWiki.Domain.Agents.Aggregates;
+using FastWiki.Domain.Knowledge.Aggregates;
 using FastWiki.Domain.Knowledges.Aggregates;
 using FastWiki.Domain.Powers.Aggregates;
 using FastWiki.Domain.Shared.WorkSpaces;
@@ -32,7 +33,7 @@ public class FastWikiContext<TContext>(DbContextOptions<TContext> options, IServ
 
     public DbSet<Category> Categories { get; set; }
 
-    public DbSet<Knowledge> Knowledges { get; set; }
+    public DbSet<FastWikiKnowledge> Knowledge { get; set; }
 
     public DbSet<KnowledgeItem> KnowledgeItems { get; set; }
 

@@ -1,8 +1,9 @@
-﻿using FastWiki.Domain.Shared.Knowledge;
+﻿using FastWiki.Domain.Knowledges.Aggregates;
+using FastWiki.Domain.Shared.Knowledge;
 
-namespace FastWiki.Domain.Knowledges.Aggregates;
+namespace FastWiki.Domain.Knowledge.Aggregates;
 
-public class Knowledge : AuditEntity<string>
+public class FastWikiKnowledge : AuditEntity<string>
 {
     public string Name { get; private set; } = null!;
 
@@ -34,7 +35,7 @@ public class Knowledge : AuditEntity<string>
     
     public WorkSpaces.Aggregates.WorkSpace WorkSpace { get; set; }
 
-    public Knowledge(string name, string description, string avatar, string embeddingModel, string chatModel,
+    public FastWikiKnowledge(string name, string description, string avatar, string embeddingModel, string chatModel,
         string? categoryId)
     {
         CategoryId = categoryId;
@@ -130,7 +131,7 @@ public class Knowledge : AuditEntity<string>
         WorkspaceId = workSpaceId;
     }
 
-    protected Knowledge()
+    protected FastWikiKnowledge()
     {
     }
 }

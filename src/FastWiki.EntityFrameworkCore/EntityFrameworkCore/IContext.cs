@@ -1,4 +1,5 @@
 ﻿using FastWiki.Domain.Agents.Aggregates;
+using FastWiki.Domain.Knowledge.Aggregates;
 using FastWiki.Domain.Knowledges.Aggregates;
 using FastWiki.Domain.Powers.Aggregates;
 using FastWiki.Domain.Users.Aggregates;
@@ -20,7 +21,7 @@ public interface IContext
 
     DbSet<Category> Categories { get; set; }
 
-    DbSet<Knowledge> Knowledges { get; set; }
+    DbSet<FastWikiKnowledge> Knowledge { get; set; }
 
     DbSet<KnowledgeItem> KnowledgeItems { get; set; }
 

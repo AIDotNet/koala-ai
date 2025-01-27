@@ -1,5 +1,5 @@
 ﻿using FastWiki.Domain.Agents.Repositories;
-using FastWiki.Domain.Knowledges.Repositories;
+using FastWiki.Domain.Knowledge.Repositories;
 using FastWiki.Domain.Powers.Repositories;
 using FastWiki.Domain.Users.Repositories;
 using FastWiki.Domain.WorkSpace.Repositories;
