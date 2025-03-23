@@ -32,6 +32,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastWiki.HttpApi", "src\Fas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastWiki.Jwt", "src\framework\FastWiki.Jwt\FastWiki.Jwt.csproj", "{72C93FC4-A354-431F-A657-54F7BC6A8E8F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3B1F3E33-5CCE-4DC3-932E-654E02210EEC}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+		migrations.bat = migrations.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

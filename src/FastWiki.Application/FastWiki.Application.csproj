@@ -11,8 +11,8 @@
       <PackageReference Include="Gnarly.Data" Version="1.0.7" />
       <PackageReference Include="Lazy.Captcha.Core" Version="2.1.0" />
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
-      <PackageReference Include="Microsoft.SemanticKernel" Version="1.33.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
+      <PackageReference Include="Microsoft.SemanticKernel" Version="1.42.0" />
     </ItemGroup>
 
     <ItemGroup>

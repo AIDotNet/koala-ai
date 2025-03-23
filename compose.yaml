@@ -1,0 +1,6 @@
+﻿services:
+  fastwiki.httpapi.host:
+    image: fastwiki.httpapi.host
+    build:
+      context: .
+      dockerfile: src/FastWiki.HttpApi.Host/Dockerfile

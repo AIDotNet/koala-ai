@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
+namespace FastWiki.EntityFrameworkCore.SqlServer.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,18 +15,18 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "chat_histories",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false, comment: "聊天记录ID")
-                        .Annotation("Sqlite:Autoincrement", true),
-                    SessionId = table.Column<string>(type: "TEXT", nullable: false, comment: "会话ID"),
-                    Content = table.Column<string>(type: "TEXT", nullable: false, comment: "聊天内容"),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false, comment: "发送用户ID"),
-                    IP = table.Column<string>(type: "TEXT", nullable: false, comment: "发送用户IP"),
-                    AgentId = table.Column<string>(type: "TEXT", nullable: false, comment: "使用的智能体ID"),
-                    SendMessage = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: false, comment: "是否发送消息"),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "bigint", nullable: false, comment: "聊天记录ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SessionId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "会话ID"),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "聊天内容"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "发送用户ID"),
+                    IP = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "发送用户IP"),
+                    AgentId = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "使用的智能体ID"),
+                    SendMessage = table.Column<bool>(type: "bit", nullable: false, defaultValue: false, comment: "是否发送消息"),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,14 +38,14 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "roles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false, comment: "角色ID"),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "角色名称"),
-                    Description = table.Column<string>(type: "TEXT", nullable: false, comment: "角色描述"),
-                    Code = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "角色编码 唯一"),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "角色ID"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "角色名称"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "角色描述"),
+                    Code = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "角色编码 唯一"),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,20 +57,20 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "users",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false, comment: "用户ID"),
-                    Account = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "用户名"),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Password = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "密码"),
-                    Salt = table.Column<string>(type: "TEXT", nullable: false),
-                    Avatar = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "头像"),
-                    Email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "邮箱"),
-                    Phone = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "手机号"),
-                    Introduction = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "简介"),
-                    IsDisable = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "用户ID"),
+                    Account = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "用户名"),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "密码"),
+                    Salt = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Avatar = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "头像"),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "邮箱"),
+                    Phone = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "手机号"),
+                    Introduction = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "简介"),
+                    IsDisable = table.Column<bool>(type: "bit", nullable: false),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,15 +82,15 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "work_spaces",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false, comment: "工作空间ID")
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "工作空间名称"),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: true, comment: "工作空间描述"),
-                    State = table.Column<byte>(type: "INTEGER", nullable: false),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "bigint", nullable: false, comment: "工作空间ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "工作空间名称"),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true, comment: "工作空间描述"),
+                    State = table.Column<byte>(type: "tinyint", nullable: false),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -102,11 +102,11 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "user_auth_extensions",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false, comment: "用户认证扩展ID"),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false, comment: "用户ID"),
-                    AuthId = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "认证ID"),
-                    AuthType = table.Column<string>(type: "TEXT", nullable: false, comment: "认证类型"),
-                    ExtendData = table.Column<string>(type: "TEXT", nullable: false, comment: "扩展数据")
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "用户认证扩展ID"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "用户ID"),
+                    AuthId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "认证ID"),
+                    AuthType = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "认证类型"),
+                    ExtendData = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "扩展数据")
                 },
                 constraints: table =>
                 {
@@ -124,8 +124,8 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "user_roles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false, comment: "用户ID"),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false, comment: "角色ID")
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "用户ID"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "角色ID")
                 },
                 constraints: table =>
                 {
@@ -149,18 +149,18 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "agents",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false, comment: "智能体ID")
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "智能体名称"),
-                    Introduction = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "智能体介绍"),
-                    Avatar = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "智能体头像"),
-                    IsCollect = table.Column<bool>(type: "INTEGER", nullable: false),
-                    IsTop = table.Column<bool>(type: "INTEGER", nullable: false),
-                    WorkspaceId = table.Column<long>(type: "INTEGER", nullable: true),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "bigint", nullable: false, comment: "智能体ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "智能体名称"),
+                    Introduction = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "智能体介绍"),
+                    Avatar = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "智能体头像"),
+                    IsCollect = table.Column<bool>(type: "bit", nullable: false),
+                    IsTop = table.Column<bool>(type: "bit", nullable: false),
+                    WorkspaceId = table.Column<long>(type: "bigint", nullable: true),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -178,15 +178,15 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "categories",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false, comment: "分类ID"),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "分类名称"),
-                    Description = table.Column<string>(type: "TEXT", nullable: false, comment: "分类描述"),
-                    ParentId = table.Column<string>(type: "TEXT", nullable: true),
-                    WorkSpaceId = table.Column<long>(type: "INTEGER", nullable: true),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "分类ID"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "分类名称"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "分类描述"),
+                    ParentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WorkSpaceId = table.Column<long>(type: "bigint", nullable: true),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -204,18 +204,18 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "plugins",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false, comment: "插件ID")
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "插件名称"),
-                    Description = table.Column<string>(type: "TEXT", nullable: false, comment: "插件描述"),
-                    Runtime = table.Column<string>(type: "TEXT", nullable: false),
-                    Avatar = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "插件头像"),
-                    Enable = table.Column<bool>(type: "INTEGER", nullable: false),
-                    WorkSpaceId = table.Column<long>(type: "INTEGER", nullable: true),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "bigint", nullable: false, comment: "插件ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "插件名称"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "插件描述"),
+                    Runtime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Avatar = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "插件头像"),
+                    Enable = table.Column<bool>(type: "bit", nullable: false),
+                    WorkSpaceId = table.Column<long>(type: "bigint", nullable: true),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -233,14 +233,14 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "work_space_members",
                 columns: table => new
                 {
-                    WorkSpaceId = table.Column<long>(type: "INTEGER", nullable: false, comment: "工作空间ID"),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false, comment: "用户ID"),
-                    RoleType = table.Column<byte>(type: "INTEGER", nullable: false),
-                    Id = table.Column<long>(type: "INTEGER", nullable: false),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    WorkSpaceId = table.Column<long>(type: "bigint", nullable: false, comment: "工作空间ID"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "用户ID"),
+                    RoleType = table.Column<byte>(type: "tinyint", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -264,22 +264,22 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "agent_configs",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false, comment: "配置ID")
-                        .Annotation("Sqlite:Autoincrement", true),
-                    AgentId = table.Column<long>(type: "INTEGER", nullable: false, comment: "智能体ID"),
-                    Model = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, defaultValue: "gpt-4", comment: "对话模型"),
-                    Temperature = table.Column<double>(type: "REAL", nullable: false, defaultValue: 0.69999999999999996, comment: "温度 (0-1) 越高越随机"),
-                    TopP = table.Column<double>(type: "REAL", nullable: false, defaultValue: 0.90000000000000002, comment: "TopP (0-1) 越高越随机"),
-                    MaxResponseToken = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 4000, comment: "最大回复token"),
-                    OutputFormat = table.Column<string>(type: "TEXT", nullable: false, defaultValue: "markdown", comment: "输出格式"),
-                    ContextSize = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0, comment: "上下文数量"),
-                    Opening = table.Column<string>(type: "TEXT", maxLength: 4000, nullable: true, defaultValue: "你好，我是AIDotNet智能助手，我可以帮助您解决问题，您可以问我任何问题。", comment: "开场白"),
-                    SuggestUserQuestion = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: false, comment: "是否提供用户建议提问"),
-                    Prompt = table.Column<string>(type: "TEXT", maxLength: 4000, nullable: true, comment: "智能体提示词"),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "bigint", nullable: false, comment: "配置ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AgentId = table.Column<long>(type: "bigint", nullable: false, comment: "智能体ID"),
+                    Model = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, defaultValue: "gpt-4", comment: "对话模型"),
+                    Temperature = table.Column<double>(type: "float", nullable: false, defaultValue: 0.69999999999999996, comment: "温度 (0-1) 越高越随机"),
+                    TopP = table.Column<double>(type: "float", nullable: false, defaultValue: 0.90000000000000002, comment: "TopP (0-1) 越高越随机"),
+                    MaxResponseToken = table.Column<int>(type: "int", nullable: false, defaultValue: 4000, comment: "最大回复token"),
+                    OutputFormat = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "markdown", comment: "输出格式"),
+                    ContextSize = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "上下文数量"),
+                    Opening = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true, defaultValue: "你好，我是AIDotNet智能助手，我可以帮助您解决问题，您可以问我任何问题。", comment: "开场白"),
+                    SuggestUserQuestion = table.Column<bool>(type: "bit", nullable: false, defaultValue: false, comment: "是否提供用户建议提问"),
+                    Prompt = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true, comment: "智能体提示词"),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -297,19 +297,19 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "knowledges",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false, comment: "知识库ID"),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "知识库名称"),
-                    Description = table.Column<string>(type: "TEXT", nullable: false, comment: "知识库描述"),
-                    CategoryId = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true, comment: "知识库分类"),
-                    RagType = table.Column<byte>(type: "INTEGER", nullable: false, comment: "知识库 RAG 类型"),
-                    Avatar = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "知识库头像"),
-                    EmbeddingModel = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "知识库嵌入模型,当嵌入模型确认以后不能修改，否则会导致数据不一致"),
-                    ChatModel = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "知识库聊天模型"),
-                    WorkspaceId = table.Column<long>(type: "INTEGER", nullable: true),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "知识库ID"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "知识库名称"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "知识库描述"),
+                    CategoryId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true, comment: "知识库分类"),
+                    RagType = table.Column<byte>(type: "tinyint", nullable: false, comment: "知识库 RAG 类型"),
+                    Avatar = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "知识库头像"),
+                    EmbeddingModel = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "知识库嵌入模型,当嵌入模型确认以后不能修改，否则会导致数据不一致"),
+                    ChatModel = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "知识库聊天模型"),
+                    WorkspaceId = table.Column<long>(type: "bigint", nullable: true),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -333,18 +333,18 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "plugin_items",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false, comment: "插件项ID")
-                        .Annotation("Sqlite:Autoincrement", true),
-                    WorkSpaceId = table.Column<long>(type: "INTEGER", nullable: false),
-                    PluginId = table.Column<long>(type: "INTEGER", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "插件项名称"),
-                    Description = table.Column<string>(type: "TEXT", nullable: false, comment: "插件项描述"),
-                    Parameters = table.Column<string>(type: "TEXT", nullable: false),
-                    OutputParameters = table.Column<string>(type: "TEXT", nullable: false),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "bigint", nullable: false, comment: "插件项ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    WorkSpaceId = table.Column<long>(type: "bigint", nullable: false),
+                    PluginId = table.Column<long>(type: "bigint", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "插件项名称"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "插件项描述"),
+                    Parameters = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OutputParameters = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -368,17 +368,20 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "knowledge_items",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false, comment: "知识库条目ID")
-                        .Annotation("Sqlite:Autoincrement", true),
-                    KnowledgeId = table.Column<string>(type: "TEXT", nullable: false, comment: "知识库ID"),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, comment: "知识库条目名称"),
-                    Data = table.Column<string>(type: "TEXT", nullable: false),
-                    DataCount = table.Column<int>(type: "INTEGER", nullable: false),
-                    ExtraData = table.Column<string>(type: "TEXT", nullable: false),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "bigint", nullable: false, comment: "知识库条目ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    KnowledgeId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "知识库ID"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "知识库条目名称"),
+                    Data = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DataCount = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    Enable = table.Column<bool>(type: "bit", nullable: false),
+                    ExtraData = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -396,17 +399,17 @@ namespace FastWiki.EntityFrameworkCore.Sqlite.Migrations
                 name: "quantized_tasks",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false, comment: "量化任务ID")
-                        .Annotation("Sqlite:Autoincrement", true),
-                    KnowledgeId = table.Column<string>(type: "TEXT", nullable: false),
-                    KnowledgeItemId = table.Column<long>(type: "INTEGER", nullable: false),
-                    State = table.Column<byte>(type: "INTEGER", nullable: false, comment: "量化任务状态"),
-                    Remark = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: false, comment: "备注"),
-                    ProcessTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
-                    Creator = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    Modifier = table.Column<string>(type: "TEXT", nullable: true),
-                    ModificationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "bigint", nullable: false, comment: "量化任务ID")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    KnowledgeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    KnowledgeItemId = table.Column<long>(type: "bigint", nullable: false),
+                    State = table.Column<byte>(type: "tinyint", nullable: false, comment: "量化任务状态"),
+                    Remark = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "备注"),
+                    ProcessTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    Modifier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModificationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
