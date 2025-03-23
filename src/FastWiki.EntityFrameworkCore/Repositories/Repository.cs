@@ -99,4 +99,12 @@ public class Repository<TEntity>(IContext context) : IRepository<TEntity>
     {
         return context.SaveChangesAsync(cancellationToken);
     }
+
+    public Task<List<TEntity>> PageListAsync(int page, int pageSize, Expression<Func<TEntity, bool>> expression, CancellationToken cancellationToken = default)
+    {
+        return _dbSet.Where(expression)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
+    }
 }

@@ -35,4 +35,12 @@ public interface IKnowledgeService
     /// <param name="input"></param>
     /// <returns></returns>
     Task CreateAsync(CreateKnowledge input);
+
+    /// <summary>
+    /// 更新知识库
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    Task UpdateAsync(string id, CreateKnowledge input);
 }

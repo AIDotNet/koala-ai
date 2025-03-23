@@ -58,7 +58,7 @@ export default function Workspace() {
         <Flexbox
             className='workspace'
             style={{
-                height: '100%',
+                height: '100vh',
                 padding: 10,
             }}>
             <span style={{

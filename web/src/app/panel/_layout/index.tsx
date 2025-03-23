@@ -22,7 +22,14 @@ const PanelLayout = memo(({ }) => {
             width={'100%'}
         >
             <Nav />
-            <Outlet />
+            <Flexbox style={{
+                flex: 1,
+                height: '100vh',
+                overflow: 'auto'
+            }}>
+
+                <Outlet />
+            </Flexbox>
             <CreateWorkspace />
         </Flexbox>)
 })

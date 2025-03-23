@@ -18,10 +18,13 @@ public sealed class KnowledgeService(
         string? keyword)
     {
         var result =
-            await knowledgeRepository.ListAsync(x => x.WorkspaceId == workspaceId && x.Creator == userContext.UserId);
+            await knowledgeRepository.PageListAsync(page, pageSize,
+                x => x.WorkspaceId == workspaceId && x.Creator == userContext.UserId &&
+                     (string.IsNullOrWhiteSpace(keyword) || x.Name.Contains(keyword)));
 
         var count = await knowledgeRepository.CountAsync(x =>
-            x.WorkspaceId == workspaceId && x.Creator == userContext.UserId);
+            x.WorkspaceId == workspaceId && x.Creator == userContext.UserId &&
+            (string.IsNullOrWhiteSpace(keyword) || x.Name.Contains(keyword)));
 
         return new PagedResultDto<KnowledgeDto>(count, mapper.Map<List<KnowledgeDto>>(result));
     }
@@ -66,6 +69,33 @@ public sealed class KnowledgeService(
         knowledge.WorkspaceId = input.WorkspaceId;
 
         await knowledgeRepository.AddAsync(knowledge);
+
+        await knowledgeRepository.SaveChangesAsync();
+    }
+
+    public async Task UpdateAsync(string id, CreateKnowledge input)
+    {
+        var knowledge = await knowledgeRepository.FirstOrDefaultAsync(x => x.Id == id && x.Creator == userContext.UserId);
+
+        if (knowledge == null)
+        {
+            throw new UserFriendlyException("知识库不存在");
+        }
+
+        if (string.IsNullOrWhiteSpace(input.Name))
+        {
+            throw new UserFriendlyException("知识库名称不能为空");
+        }
+
+        if (string.IsNullOrWhiteSpace(input.Description))
+        {
+            throw new UserFriendlyException("知识库描述不能为空");
+        }
+
+        knowledge.SetName(input.Name);
+        knowledge.SetDescription(input.Description);
+        knowledge.SetAvatar(input.Avatar);
+        knowledge.SetChatModel(input.ChatModel);
 
         await knowledgeRepository.SaveChangesAsync();
     }

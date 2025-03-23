@@ -77,19 +77,6 @@ export const Model: React.FC<ModelProps> = ({ id, onSelect,style }) => {
                 }
             })
         }
-    //         { label: <span>Lucy</span>, value: 'Lucy' },
-    //       ],
-    //     },
-    //     {
-    //       label: <span>engineer</span>,
-    //       title: 'engineer',
-    //       options: [
-    //         { label: <span>Chloe</span>, value: 'Chloe' },
-    //         { label: <span>Lucas</span>, value: 'Lucas' },
-    //       ],
-    //     },
-    //   ]
-    // }
     >
     </Select>;
 };

@@ -56,7 +56,12 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IUserCo
 
     public async Task<UserDto> GetCurrentAsync()
     {
-        var user = await userRepository.GetAsync(userContext.UserId);
+        var user = await userRepository.GetAsync(Guid.Parse(userContext.UserId));
+
+        if (user == null)
+        {
+            throw new UserFriendlyException("用户不存在");
+        }
 
         return mapper.Map<UserDto>(user);
     }

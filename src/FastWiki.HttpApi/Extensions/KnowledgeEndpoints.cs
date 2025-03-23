@@ -28,6 +28,11 @@ public static class KnowledgeEndpoints
                 [EndpointSummary("创建知识"), EndpointDescription("创建知识")]
         async (IKnowledgeService service, CreateKnowledge input) => await service.CreateAsync(input));
 
+        knowledge.MapPut("{id}",
+                [EndpointSummary("更新知识"), EndpointDescription("更新知识")]
+                async (IKnowledgeService service, string id, CreateKnowledge input) =>
+                        await service.UpdateAsync(id, input));
+
         return endpoint;
     }
 }
