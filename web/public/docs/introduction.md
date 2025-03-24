@@ -1,6 +1,6 @@
 # 介绍
 
-Fast Wiki 是用 AIDotNet 组织开源的一款.NET AI 知识库，基于 React LobeUI 的知识库管理系统。Fast Wiki 旨在为.NET 开发者提供一个快速、简单、易用的知识库管理系统，帮助.NET 开发者更好的管理自己的知识库。
+Koala AI 是用 AIDotNet 组织开源的一款.NET AI 知识库，基于 React LobeUI 的知识库管理系统。Koala AI 旨在为.NET 开发者提供一个快速、简单、易用的知识库管理系统，帮助.NET 开发者更好的管理自己的知识库。
 
 ## 特性
 

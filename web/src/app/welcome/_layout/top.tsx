@@ -35,7 +35,7 @@ const TopLayout = memo(() => {
         <Header
             logo={<Logo
                 extra={<>
-                    Fast Wiki
+                    Koala AI
                 </>}
             />}
             actions={<Flexbox>

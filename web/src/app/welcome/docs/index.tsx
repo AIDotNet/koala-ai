@@ -16,7 +16,7 @@ const Docs = memo(() => {
     const [menuKey, setMenuKey] = useState(menu);
     const menus = [
         {
-            label: 'Fast Wiki介绍',
+            label: 'Koala AI介绍',
             key: 'introduction',
         },
         {
@@ -73,7 +73,7 @@ const Docs = memo(() => {
                         fontWeight: 'bold',
                         padding: 16,
                     }}>
-                        Fast Wiki 文档
+                        Koala AI 文档
                     </span>
                 </Flexbox>
                 <Divider style={{

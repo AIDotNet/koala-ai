@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "git": "https://github.com/aIDotNet/fast-wiki",
+  "git": "https://github.com/aIDotNet/koala-ai",
   "homepage": "https://ai-dotnet.com",
   "gitee": "https://gitee.com/aidotnet/fast-wiki",
   "scripts": {
@@ -13,10 +13,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/styled": "^11.14.0",
     "@icons-pack/react-simple-icons": "^11.0.1",
     "@lobehub/ui": "^1.164.3",
     "@types/node": "^22.8.7",
     "chroma-js": "^3.1.2",
+    "framer-motion": "^12.5.0",
     "lodash-es": "^4.17.21",
     "node": "^22.11.0",
     "numeral": "^2.0.6",

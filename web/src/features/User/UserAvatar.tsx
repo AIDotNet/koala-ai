@@ -1,7 +1,7 @@
 import { Avatar, type AvatarProps } from '@lobehub/ui';
 import { createStyles } from 'antd-style';
 import { forwardRef } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import { BRANDING_NAME } from '@/const/branding';
 import { DEFAULT_USER_AVATAR_URL } from '@/const/meta';
 import { useUserStore } from '@/store/user';
@@ -45,6 +45,7 @@ export interface UserAvatarProps extends AvatarProps {
 
 const UserAvatar = forwardRef<HTMLDivElement, UserAvatarProps>(
   ({ size = 40, background, clickable, className, style, ...rest }, ref) => {
+    const navigate = useNavigate();
     const { styles, cx } = useStyles();
     // const [avatar, username] = useUserStore((s) => [
     //   userProfileSelectors.userAvatar(s),
@@ -53,10 +54,13 @@ const UserAvatar = forwardRef<HTMLDivElement, UserAvatarProps>(
 
     // const isSignedIn = useUserStore(authSelectors.isLogin);
 
-    
+
 
     return (
       <Avatar
+        onClick={() => {
+          navigate('/panel')
+        }}
         // alt={isSignedIn ? (username as string) : BRANDING_NAME}
         // avatar={isSignedIn ? avatar || DEFAULT_USER_AVATAR_URL : DEFAULT_USER_AVATAR_URL}
         // background={isSignedIn && avatar ? background : undefined}

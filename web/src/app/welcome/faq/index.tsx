@@ -6,7 +6,7 @@ const { Title, Paragraph } = Typography;
 
 const faqData = [
     {
-        question: "什么是Fast Wiki?",
+        question: "什么是Koala AI?",
         answer: "FastWiki是一个基于人工智能的知识库，利用检索增强生成（RAG）来提供准确和相关的信息。"
     },
     {
@@ -53,7 +53,7 @@ const Faq = memo(() => {
                     fontSize: 32,
                     marginBottom: 24
                 }}>
-                    Fast Wiki 常见问题
+                    Koala AI 常见问题
                 </h1>
                 <FaqList />
             </div>

@@ -1,33 +1,35 @@
 import UserAvatar from '@/features/User/UserAvatar';
 import { useWorkspaceStore } from '@/store/workspace';
-import { ActionIcon, SideNav, Tooltip } from '@lobehub/ui';
-import { Divider } from 'antd';
+import { Tooltip } from 'antd';
+import { Flexbox } from 'react-layout-kit';
 import {
     Album,
     Box,
     Plus,
     Settings2
 } from 'lucide-react';
-import { memo, useEffect, useState, } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import { ActionIcon } from '@lobehub/ui';
 
 const Nav = memo(() => {
     const { setCreateWorkspaceModalOpen } = useWorkspaceStore();
-    const [tab, setTab] = useState<string>('chat');
+    const [tab, setTab] = useState<string>('agent');
     const location = useLocation();
     const navigate = useNavigate();
-    const [menus, setMenus] = useState([
+    
+    const menus = [
         {
             key: 'agent',
             icon: Box,
             title: '智能体'
-        }, {
+        }, 
+        {
             key: 'knowledge',
             icon: Album,
             title: '知识库'
         }
-    ])
+    ];
 
     useEffect(() => {
         const path = location.pathname;
@@ -38,48 +40,96 @@ const Nav = memo(() => {
         } else {
             setTab('application');
         }
-    }, [location.pathname])
+    }, [location.pathname]);
 
-    function handleTabChange(tab: string) {
+    const handleTabChange = (tab: string) => {
         setTab(tab);
         navigate(`/panel/${tab}`);
-    }
+    };
 
-    function handleAddWorkspace() {
+    const handleAddWorkspace = () => {
         setCreateWorkspaceModalOpen(true);
-    }
+    };
 
     return (
-        <SideNav
-            style={{ height: '100%', zIndex: 100, }}
-            avatar={<UserAvatar clickable />}
-            bottomActions={<ActionIcon icon={Settings2} />}
-            topActions={
-                <>
-                    <Tooltip title='新增工作区'>
-                        <ActionIcon icon={Plus}
-                            // @ts-ignore
-                            onClick={handleAddWorkspace} />
+        <Flexbox 
+            style={{
+                width: '64px',
+                height: '100vh',
+                background: '#1a1a1a',
+                borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+                position: 'relative',
+                zIndex: 100,
+            }}
+        >
+            {/* 顶部头像区域 */}
+            <Flexbox
+                padding={12}
+                gap={24}
+            >
+                <UserAvatar clickable />
+                <Tooltip title="新增工作区" placement="right">
+                    <ActionIcon
+                        icon={Plus}
+                        onClick={handleAddWorkspace}
+                        style={{
+                            color: 'rgba(255, 255, 255, 0.8)',
+                            background: 'transparent',
+                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            borderRadius: '8px',
+                        }}
+                    />
+                </Tooltip>
+                <div 
+                    style={{
+                        height: '1px',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        margin: '4px 0',
+                    }}
+                />
+            </Flexbox>
+
+            {/* 导航菜单 */}
+            <Flexbox gap={8} padding={12}>
+                {menus.map(item => (
+                    <Tooltip key={item.key} title={item.title} placement="right">
+                        <ActionIcon
+                            icon={item.icon}
+                            onClick={() => handleTabChange(item.key)}
+                            style={{
+                                color: tab === item.key ? '#fff' : 'rgba(255, 255, 255, 0.6)',
+                                background: tab === item.key ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
+                                borderRadius: '8px',
+                                transition: 'all 0.3s',
+                            }}
+                        />
                     </Tooltip>
-                    <Divider variant='dashed' />
-                    {menus.map(x => {
-                        return (<>
-                            <Tooltip title={x.title}>
-                                <ActionIcon
-                                    active={tab === x.key}
-                                    icon={x.icon}
-                                    // @ts-ignore
-                                    onClick={() => handleTabChange(x.key)}
-                                    size="large"
-                                />
-                            </Tooltip>
-                        </>)
-                    })}
-                </>
-            }
-        />
-    )
-})
+                ))}
+            </Flexbox>
+
+            {/* 底部设置按钮 */}
+            <Flexbox
+                style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    width: '100%',
+                    padding: '12px',
+                }}
+            >
+                <Tooltip title="设置" placement="right">
+                    <ActionIcon
+                        icon={Settings2}
+                        style={{
+                            color: 'rgba(255, 255, 255, 0.8)',
+                            background: 'transparent',
+                            borderRadius: '8px',
+                        }}
+                    />
+                </Tooltip>
+            </Flexbox>
+        </Flexbox>
+    );
+});
 
 Nav.displayName = "Nav";
 
