@@ -10,14 +10,14 @@ const Terms = memo(() => {
             margin: 'auto',
             padding: '0 24px',
         }}>
-            <Title level={2}>欢迎使用 FastWiki</Title>
+            <Title level={2}>欢迎使用 Koala</Title>
             <Paragraph>
-                FastWiki 是一个 AI 驱动的知识库，旨在帮助您快速获取所需的信息。
+                Koala 是一个 AI 驱动的知识库，旨在帮助您快速获取所需的信息。
             </Paragraph>
             <Tabs defaultActiveKey="1">
                 <Tabs.TabPane tab="服务条款" key="1">
                     <Paragraph>
-                        在使用 FastWiki 之前，请仔细阅读以下服务条款。您使用本网站即表示您同意遵守这些条款。我们保留随时更新服务条款的权利，更新后的条款将会发布在本页面上。
+                        在使用 Koala 之前，请仔细阅读以下服务条款。您使用本网站即表示您同意遵守这些条款。我们保留随时更新服务条款的权利，更新后的条款将会发布在本页面上。
                     </Paragraph>
                     <Paragraph>
                         1. 您应确保在使用本网站时遵守所有适用的法律法规，不得利用本网站从事任何非法活动。

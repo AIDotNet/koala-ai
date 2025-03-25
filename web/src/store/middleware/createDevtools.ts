@@ -17,6 +17,6 @@ export const createDevtools =
 
             // @ts-ignore
             return optionalDevtools(showDevtools)(initializer, {
-                name: `FastWiki_${name}`,
+                name: `Koala_${name}`,
             });
         };

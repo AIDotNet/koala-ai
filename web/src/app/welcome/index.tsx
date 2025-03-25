@@ -173,6 +173,7 @@ const Welcome = memo(() => {
     const [scrollY, setScrollY] = useState(0);
     const [particles, setParticles] = useState([]);
     const navigate = useNavigate();
+    const featuresRef = useRef(null);
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -195,6 +196,13 @@ const Welcome = memo(() => {
         useTransform(scrollYProgress, [0, 1], [0, -100]),
         springConfig
     );
+    
+    // 特性部分的动画变换
+    const featuresOpacity = useTransform(scrollYProgress, [0.3, 0.6], [0, 1]);
+    const featuresY = useTransform(scrollYProgress, [0.3, 0.6], [100, 0]);
+    
+    // 背景元素颜色
+    const bgColors = ['#4285f4', '#34a853', '#fbbc05', '#ea4335'];
 
     const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
@@ -305,25 +313,21 @@ const Welcome = memo(() => {
                             whileInView={{ scale: [0.95, 1] }}
                         >
                             <Title level={1} style={{ color: 'white', fontSize: '64px', marginBottom: '24px' }}>
-                                koala AI 您的智能开发Agent开发平台
+                                Koala - 智能知识库平台
                             </Title>
                             <Paragraph style={{ color: 'white', fontSize: '20px', opacity: 0.8 }}>
-                                koala AI 是一个开源的法学硕士应用程序开发平台。使用RAG引擎编排从代理到复杂AI工作流的LLM应用程序。
+                                基于AI技术的新一代知识管理系统，让团队协作更高效
                             </Paragraph>
                             <ActionButtons>
                                 <Button 
-                                    onClick={()=>{
-                                        navigate("/panel")
-                                    }}
+                                    onClick={() => navigate('/login')}
                                     type="primary" size="large" style={{ height: '48px', padding: '0 32px' }}>
-                                    开始使用
+                                    立即开始
                                 </Button>
                                 <Button
-                                    onClick={()=>{
-                                        window.open(GITHUB, "_blank")
-                                    }}
+                                    onClick={() => navigate('/docs')}
                                     size="large" style={{ height: '48px', padding: '0 32px', background: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)' }}>
-                                    GitHub
+                                    了解更多
                                 </Button>
                             </ActionButtons>
                         </ContentWrapper>

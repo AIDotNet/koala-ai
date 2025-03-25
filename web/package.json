@@ -5,7 +5,7 @@
   "type": "module",
   "git": "https://github.com/aIDotNet/koala-ai",
   "homepage": "https://ai-dotnet.com",
-  "gitee": "https://gitee.com/aidotnet/fast-wiki",
+  "gitee": "https://gitee.com/aidotnet/koala-ai",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

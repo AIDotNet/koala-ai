@@ -7,23 +7,23 @@ const { Title, Paragraph } = Typography;
 const faqData = [
     {
         question: "什么是Koala AI?",
-        answer: "FastWiki是一个基于人工智能的知识库，利用检索增强生成（RAG）来提供准确和相关的信息。"
+        answer: "Koala是一个基于人工智能的知识库，利用检索增强生成（RAG）来提供准确和相关的信息。"
     },
     {
-        question: "FastWiki是如何工作的？",
-        answer: "FastWiki使用先进的人工智能算法从庞大的数据库中检索信息，并为用户查询生成精确的答案。"
+        question: "Koala是如何工作的？",
+        answer: "Koala使用先进的人工智能算法从庞大的数据库中检索信息，并为用户查询生成精确的答案。"
     },
     {
         question: "什么是检索增强生成（RAG）？",
         answer: "RAG是一种技术，它将相关文档的检索与答案的生成结合起来，从而提高了答案的准确性和相关性。"
     },
     {
-        question: "如何使用FastWiki？",
-        answer: "你可以通过访问FastWiki的web界面来使用它，在那里你可以搜索信息并获得人工智能生成的答案。"
+        question: "如何使用Koala？",
+        answer: "你可以通过访问Koala的web界面来使用它，在那里你可以搜索信息并获得人工智能生成的答案。"
     },
     {
-        question: "FastWiki是免费使用的吗?",
-        answer: "FastWiki提供免费和付费计划。免费计划提供基本访问，而付费计划提供高级功能和更全面的支持。"
+        question: "Koala是免费使用的吗?",
+        answer: "Koala提供免费和付费计划。免费计划提供基本访问，而付费计划提供高级功能和更全面的支持。"
     }
 ];
 

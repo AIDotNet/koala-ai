@@ -1,6 +1,6 @@
-export const LOBE_CHAT_CLOUD = 'FastWiki Cloud';
+export const LOBE_CHAT_CLOUD = 'Koala Cloud';
 
-export const BRANDING_NAME = 'FastWiki';
+export const BRANDING_NAME = 'Koala';
 export const BRANDING_LOGO_URL = '';
 
 export const ORG_NAME = 'TokenAI';

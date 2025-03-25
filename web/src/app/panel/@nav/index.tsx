@@ -62,7 +62,6 @@ const Nav = memo(() => {
                 zIndex: 100,
             }}
         >
-            {/* 顶部头像区域 */}
             <Flexbox
                 padding={12}
                 gap={24}
