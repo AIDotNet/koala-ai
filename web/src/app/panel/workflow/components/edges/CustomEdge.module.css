@@ -1,0 +1,36 @@
+.animated {
+  animation: dashAnimation 2s linear infinite;
+  stroke-dasharray: 5;
+}
+
+@keyframes dashAnimation {
+  from {
+    stroke-dashoffset: 10;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.edgeLabel {
+  font-size: 12px;
+  fill: #666;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white;
+}
+
+.edgePath {
+  stroke-width: 2px;
+  fill: none;
+  pointer-events: visibleStroke;
+  cursor: pointer;
+}
+
+.edgePath:hover {
+  stroke-width: 3px;
+}
+
+.marker {
+  fill: currentColor;
+} 

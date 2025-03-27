@@ -6,7 +6,8 @@ import {
     Album,
     Box,
     Plus,
-    Settings2
+    Settings2,
+    GitBranch
 } from 'lucide-react';
 import { memo, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -28,6 +29,11 @@ const Nav = memo(() => {
             key: 'knowledge',
             icon: Album,
             title: '知识库'
+        },
+        {
+            key: 'workflow',
+            icon: GitBranch,
+            title: '工作流'
         }
     ];
 
@@ -37,6 +43,8 @@ const Nav = memo(() => {
             setTab('application');
         } else if (path.includes('knowledge')) {
             setTab('knowledge');
+        } else if (path.includes('workflow')) {
+            setTab('workflow');
         } else {
             setTab('application');
         }

@@ -1,0 +1,73 @@
+.workflowDesigner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  padding: 8px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.workflowContent {
+  flex: 1;
+  height: calc(100vh - 120px);
+  overflow: hidden;
+}
+
+.nodePanel {
+  width: 280px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.canvasContainer {
+  flex: 1;
+  height: 100%;
+  margin-left: 16px;
+  position: relative;
+}
+
+.canvasContainer :global(.react-flow__pane) {
+  cursor: default;
+}
+
+.canvasContainer :global(.react-flow__node) {
+  border-radius: 5px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d9d9d9;
+}
+
+.canvasContainer :global(.react-flow__edge-path) {
+  stroke-width: 2;
+}
+
+.canvasContainer :global(.react-flow__handle) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #1677ff;
+  border: 1px solid white;
+}
+
+.canvasContainer :global(.react-flow__handle-bottom) {
+  bottom: -4px;
+}
+
+.canvasContainer :global(.react-flow__handle-top) {
+  top: -4px;
+}
+
+.canvasContainer :global(.react-flow__handle-left) {
+  left: -4px;
+}
+
+.canvasContainer :global(.react-flow__handle-right) {
+  right: -4px;
+} 

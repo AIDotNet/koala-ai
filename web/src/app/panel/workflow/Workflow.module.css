@@ -1,0 +1,13 @@
+.workflowContainer {
+  min-height: calc(100vh - 64px);
+}
+
+.workflowCard {
+  transition: all 0.3s;
+  height: 100%;
+}
+
+.workflowCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+} 

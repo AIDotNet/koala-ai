@@ -1,6 +1,6 @@
 ﻿services:
-  fastwiki.httpapi.host:
-    image: fastwiki.httpapi.host
+  koala.httpapi.host:
+    image: koala.httpapi.host
     build:
       context: .
-      dockerfile: src/FastWiki.HttpApi.Host/Dockerfile
+      dockerfile: src/Koala.HttpApi.Host/Dockerfile

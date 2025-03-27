@@ -27,6 +27,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
     "react-virtuoso": "^4.12.3",
+    "reactflow": "^11.11.4",
     "styled-components": "^6.1.13",
     "swr": "^2.3.0",
     "ua-parser-js": "^2.0.0-rc.1",

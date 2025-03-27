@@ -1,5 +1,3 @@
-
-
 import { createBrowserRouter } from "react-router-dom";
 import Welcome from "../app/welcome";
 import About from "../app/welcome/about";
@@ -15,6 +13,8 @@ import Agent from "@/app/panel/agent";
 import AgentInfo from "@/app/panel/agent/info";
 import KnowledgeInfo from "@/app/panel/knowledge/info";
 import File from "@/app/panel/knowledge/file";
+import Workflow from "@/app/panel/workflow";
+import WorkflowDesigner from "@/app/panel/workflow/WorkflowDesigner";
 
 const routes = [
     {
@@ -56,6 +56,18 @@ const routes = [
             {
                 path: 'agent',
                 element: <Agent />,
+            },
+            {
+                path: 'workflow',
+                element: <Workflow />
+            },
+            {
+                path: 'workflow/designer',
+                element: <WorkflowDesigner />
+            },
+            {
+                path: 'workflow/designer/register',
+                element: <WorkflowDesigner />
             },
             {
                 path: 'knowledge/info/:knowledgeId',

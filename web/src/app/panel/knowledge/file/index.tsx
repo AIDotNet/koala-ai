@@ -183,16 +183,7 @@ export default function File() {
     const { styles } = useStyles();
     const navigate = useNavigate();
     const [current, setCurrent] = useState(0);
-    const [fileList, setFileList] = useState<UploadFile[]>([
-        // 添加一个示例文件用于展示
-        {
-            uid: '-1',
-            name: 'AIAgent.pptx',
-            status: 'done',
-            size: 2048 * 1024, // 2MB
-            type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-        } as UploadFile
-    ]);
+    const [fileList, setFileList] = useState<UploadFile[]>([]);
     const [uploading, setUploading] = useState(false);
     
     // 预览状态
