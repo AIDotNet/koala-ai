@@ -126,4 +126,20 @@
 
 .nodeOutputs .nodePort {
   justify-content: flex-end;
+}
+
+.nodeModelInfo {
+  padding: 6px 8px;
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  border-bottom: 1px dashed #e0e0e0;
+  margin-bottom: 8px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: rgba(211, 173, 247, 0.1);
+  border-radius: 4px;
+  margin: 4px 8px 8px 8px;
 } 

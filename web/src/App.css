@@ -1,0 +1,48 @@
+:root {
+  /* 背景色 */
+  --color-bg-container: #ffffff;
+  --color-bg-elevated: #ffffff;
+  --color-bg-layout: #f0f2f5;
+  --color-bg-mask: rgba(0, 0, 0, 0.45);
+  
+  /* 文字颜色 */
+  --color-text: rgba(0, 0, 0, 0.85);
+  --color-text-secondary: rgba(0, 0, 0, 0.45);
+  --color-text-disabled: rgba(0, 0, 0, 0.25);
+  
+  /* 边框颜色 */
+  --color-border: #d9d9d9;
+  --color-border-secondary: #f0f0f0;
+  
+  /* 填充色 */
+  --color-fill: rgba(0, 0, 0, 0.15);
+  --color-fill-secondary: rgba(0, 0, 0, 0.06);
+  --color-fill-tertiary: rgba(0, 0, 0, 0.04);
+  
+  /* 阴影 */
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --box-shadow-secondary: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* 暗色主题变量 */
+[data-theme='dark'] {
+  --color-bg-container: #141414;
+  --color-bg-elevated: #1f1f1f;
+  --color-bg-layout: #000000;
+  --color-bg-mask: rgba(0, 0, 0, 0.45);
+  
+  --color-text: rgba(255, 255, 255, 0.85);
+  --color-text-secondary: rgba(255, 255, 255, 0.45);
+  --color-text-disabled: rgba(255, 255, 255, 0.25);
+  
+  --color-border: #434343;
+  --color-border-secondary: #303030;
+  
+  --color-fill: rgba(255, 255, 255, 0.15);
+  --color-fill-secondary: rgba(255, 255, 255, 0.06);
+  --color-fill-tertiary: rgba(255, 255, 255, 0.04);
+  
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --box-shadow-secondary: 0 2px 4px rgba(0, 0, 0, 0.35);
+
+}

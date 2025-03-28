@@ -2,13 +2,15 @@ import Workspace from "@/features/Workspace";
 import { useWorkspaceStore } from "@/store/workspace";
 import { memo, useEffect, useState } from "react";
 import { Flexbox } from "react-layout-kit";
-import { Button, Empty, Spin } from "antd";
+import { Button, Empty, Spin, Typography, Card, Badge, Tag, Space, Dropdown } from "antd";
 import styled from "styled-components";
-import { SpotlightCard } from '@lobehub/ui/awesome';
 import { useAgentStore } from "@/store/agent";
 import { CreateAgentPage } from "./features/CreateAgent";
 import { Avatar } from "@lobehub/ui";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { MoreOutlined } from '@ant-design/icons';
+
+const { Title, Text } = Typography;
 
 const StyledEmpty = styled(Empty)`
     margin: 20px;
@@ -20,6 +22,47 @@ const StyledEmpty = styled(Empty)`
 
 const StyledContainer = styled(Flexbox)`
     width: 100%;
+    padding: 0 16px;
+`;
+
+const AgentItem = styled(Card)`
+    margin-bottom: 16px;
+    border-radius: 12px;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+`;
+
+const AgentTag = styled(Tag)`
+    margin-right: 0;
+    font-size: 12px;
+    border-radius: 4px;
+`;
+
+const MetaItem = styled(Flexbox)`
+    padding: 6px 12px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    align-items: center;
+`;
+
+const PageHeader = styled(Flexbox)`
+    padding: 24px 16px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+`;
+
+const ActionButton = styled(Button)`
+    opacity: 0.7;
+    &:hover {
+        opacity: 1;
+    }
 `;
 
 const Agent = memo(() => {
@@ -48,60 +91,121 @@ const Agent = memo(() => {
     }, [activeWorkspaceId]);
 
     function renderItem(item: any) {
-        return (<Flexbox 
-            onClick={()=>{
-                navigate('/panel/agent/info/'+item.id);
-            }}
-            align={'flex-start'} gap={8} horizontal style={{ padding: 16 }}>
-            <Avatar size={24} avatar={item.avatar} style={{ flex: 'none' }} />
-            <Flexbox>
-                <div style={{ fontSize: 15, fontWeight: 600 }}>{item.name}</div>
-                <div style={{ opacity: 0.6 }}>{item.introduction}</div>
-            </Flexbox>
-        </Flexbox>)
+        return (
+            <AgentItem 
+                bodyStyle={{ padding: '16px' }}
+                hoverable
+                extra={
+                    <Dropdown 
+                        menu={{ 
+                            items: [
+                                {
+                                    key: 'view',
+                                    label: '查看详情',
+                                    onClick: (e) => {
+                                        e.domEvent.stopPropagation();
+                                        navigate('/panel/agent/info/' + item.id);
+                                    }
+                                }
+                            ]
+                        }}
+                        trigger={['click']}
+                    >
+                        <ActionButton 
+                            type="text" 
+                            icon={<MoreOutlined />} 
+                            size="small" 
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </Dropdown>
+                }
+                onClick={() => {
+                    navigate('/panel/agent/info/' + item.id);
+                }}
+            >
+                <Flexbox gap={16} horizontal align="flex-start" style={{ position: 'relative' }}>
+                    <Badge 
+                        status="processing" 
+                        style={{ position: 'absolute', top: 0, right: 0 }} 
+                    />
+                    
+                    <Avatar 
+                        size={48} 
+                        avatar={item.avatar} 
+                        style={{ 
+                            flex: 'none',
+                            backgroundColor: '#f6f6f6',
+                            borderRadius: '8px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '24px'
+                        }} 
+                    />
+                    
+                    <Flexbox gap={12} style={{ flex: 1 }}>
+                        <Flexbox horizontal justify="space-between" align="center">
+                            <Flexbox horizontal gap={12} align="center">
+                                <Text strong style={{ fontSize: 16 }}>{item.name}</Text>
+                                <AgentTag color="green">智能应用</AgentTag>
+                            </Flexbox>
+                        </Flexbox>
+                        
+                        <Text type="secondary" style={{ marginBottom: 12 }}>
+                            {item.introduction || "无描述信息"}
+                        </Text>
+                        
+                        <Flexbox horizontal gap={8}>
+                            {item.model && (
+                                <MetaItem horizontal gap={4}>
+                                    <span style={{ fontSize: 14 }}>🤖</span>
+                                    <Text type="secondary" style={{ fontSize: 12 }}>
+                                        {item.model || "默认模型"}
+                                    </Text>
+                                </MetaItem>
+                            )}
+                        </Flexbox>
+                    </Flexbox>
+                </Flexbox>
+            </AgentItem>
+        );
     }
 
-    return <Flexbox horizontal style={{ width: '100%' }}>
-        <Workspace />
-        <Flexbox style={{
-            flex: 1,
-        }}>
-            <Flexbox style={{
-                padding: 20,
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'row-reverse',
-            }}>
-                <CreateAgentPage />
-            </Flexbox>
-            <StyledContainer horizontal>
-                {
-                    activeWorkspaceId ? (
-                        loading ? (
-                            <div style={{
-                                textAlign: 'center',
-                                width:"100%"
-                            }}>
-                                <Spin />
-                            </div>
-                        ) : (
-                            agent?.length === 0 ? (
-                                <StyledEmpty description="暂无数据" />
+    return (
+        <Flexbox horizontal style={{ width: '100%' }}>
+            <Workspace />
+            <Flexbox style={{ flex: 1 }}>
+                <PageHeader horizontal justify="space-between" align="center">
+                    <Title level={4} style={{ margin: 0 }}>应用管理</Title>
+                    <CreateAgentPage />
+                </PageHeader>
+                
+                <StyledContainer>
+                    {
+                        activeWorkspaceId ? (
+                            loading ? (
+                                <div style={{ textAlign: 'center', width: "100%", padding: "40px 0" }}>
+                                    <Spin size="large" tip="加载应用..." />
+                                </div>
                             ) : (
-                                <SpotlightCard
-                                    items={agent}
-                                    renderItem={renderItem}
-                                    style={{ margin: '10px' }}
-                                />
+                                agent?.length === 0 ? (
+                                    <StyledEmpty description="暂无应用数据" style={{ margin: "40px 0" }} />
+                                ) : (
+                                    <Flexbox gap={0}>
+                                        {agent.map((item) => renderItem(item))}
+                                    </Flexbox>
+                                )
                             )
+                        ) : (
+                            <StyledEmpty description="请先选择工作空间" style={{ margin: "40px 0" }} />
                         )
-                    ) : (
-                        <StyledEmpty description="请先选择工作空间" />
-                    )
-                }
-            </StyledContainer>
+                    }
+                </StyledContainer>
+            </Flexbox>
         </Flexbox>
-    </Flexbox>
-})
+    );
+});
+
+Agent.displayName = 'Agent';
 
 export default Agent;

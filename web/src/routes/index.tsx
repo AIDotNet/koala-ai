@@ -15,6 +15,7 @@ import KnowledgeInfo from "@/app/panel/knowledge/info";
 import File from "@/app/panel/knowledge/file";
 import Workflow from "@/app/panel/workflow";
 import WorkflowDesigner from "@/app/panel/workflow/WorkflowDesigner";
+import ModelConfigPage from "@/app/panel/model";
 
 const routes = [
     {
@@ -76,6 +77,10 @@ const routes = [
             {
                 path:'knowledge/file',
                 element: <File />
+            },
+            {
+                path: 'model',
+                element: <ModelConfigPage />
             }
         ]
     },
@@ -88,7 +93,6 @@ const routes = [
         element: <LoginPage />
     }
 ];
-
 
 const BrowserRouter = createBrowserRouter(routes);
 

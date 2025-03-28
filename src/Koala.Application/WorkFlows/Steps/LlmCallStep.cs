@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Koala.Application.WorkFlows.Steps;
 using Koala.Domain.WorkFlows.Definitions;
 using WorkflowCore.Interface;
 
@@ -95,31 +96,13 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
         typedStep.Input(s => s.ModelName, ctx => _stepConfig.ModelName)
                  .Input(s => s.Prompt, ctx => _stepConfig.PromptTemplate)
                  .Input(s => s.Temperature, ctx => _stepConfig.Temperature)
-                 .Input(s => s.MaxTokens, ctx => _stepConfig.MaxTokens);
+                 .Input(s => s.MaxTokens, ctx => _stepConfig.MaxTokens)
+                 .Input(s => s.OutputKey, ctx => _stepConfig.OutputKey);
 
         // 设置变量映射
         if (_stepConfig.VariableMappings != null && _stepConfig.VariableMappings.Count > 0)
         {
-            typedStep.Input(s => s.Variables, ctx => 
-            {
-                var variables = new Dictionary<string, object>();
-                var data = ctx.Item;
-                
-                if (data != null)
-                {
-                    foreach (var mapping in _stepConfig.VariableMappings)
-                    {
-                        // 从工作流数据中读取变量值
-                        var value = data.GetProperty<object>(mapping.Value);
-                        if (value != null)
-                        {
-                            variables[mapping.Key] = value;
-                        }
-                    }
-                }
-                
-                return variables;
-            });
+            typedStep.Input(s => s.Variables, ctx => GetVariables(ctx, _stepConfig.VariableMappings));
         }
 
         // 转换回原始接口类型
@@ -140,25 +123,33 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
         if (_stepConfig == null || string.IsNullOrEmpty(_stepConfig.OutputKey))
             return step;
 
-        // 转换为具体步骤类型
-        var typedStep = StepBuilderConverter.ConvertToTyped<TData, LlmCallStepBody>(step);
-        
-        // 将输出结果存储到工作流数据中
-        typedStep.Output(ctx => 
-        {
-            var data = ctx.Item;
-            var body = ctx.Step.Body;
-            
-            if (data != null && body != null)
-            {
-                data.SetProperty(_stepConfig.OutputKey, body.Output);
-            }
-            
-            return Task.CompletedTask;
-        });
+        // 此处暂时不实现自动输出映射，由 LlmCallStepBody 中的 RunAsync 方法手动处理输出
+        // 可通过修改 WorkflowData 类来引入事件总线或回调函数实现输出处理
 
-        // 转换回原始接口类型
-        return StepBuilderConverter.ConvertToInterface<TData, LlmCallStepBody>(typedStep);
+        return step;
+    }
+
+    /// <summary>
+    /// 获取变量映射
+    /// </summary>
+    private Dictionary<string, object> GetVariables(TData data, Dictionary<string, string> mappings)
+    {
+        var variables = new Dictionary<string, object>();
+        
+        if (data != null)
+        {
+            foreach (var mapping in mappings)
+            {
+                // 从工作流数据中读取变量值
+                var value = data.GetProperty<object>(mapping.Value);
+                if (value != null)
+                {
+                    variables[mapping.Key] = value;
+                }
+            }
+        }
+        
+        return variables;
     }
 }
 

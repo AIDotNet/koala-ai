@@ -1,0 +1,164 @@
+.modelSelector {
+  width: 100%;
+}
+
+.modelSelector :global(.ant-select-selector) {
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.modelSelector:hover :global(.ant-select-selector) {
+  border-color: #d3adf7;
+}
+
+.modelSelector:focus :global(.ant-select-selector) {
+  border-color: #d3adf7;
+  box-shadow: 0 0 0 2px rgba(211, 173, 247, 0.2);
+}
+
+.modelDropdown {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modelOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.modelIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modelName {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.modelDescription {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* LLM调用节点样式 */
+.llmCallNode {
+  width: 320px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.llmCallNode :global(.ant-card-head) {
+  background-color: #d3adf7;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 8px 16px;
+  min-height: auto;
+}
+
+.llmCallNode :global(.ant-card-head-title) {
+  padding: 0;
+}
+
+.llmCallNode :global(.ant-card-body) {
+  padding: 12px;
+}
+
+.llmCallNode :global(.ant-form-item) {
+  margin-bottom: 12px;
+}
+
+.llmCallNode :global(.ant-form-item-label) {
+  padding-bottom: 4px;
+}
+
+.llmCallNode :global(.ant-form-item-label > label) {
+  font-size: 13px;
+}
+
+.llmCallNode :global(.ant-form-item-explain) {
+  font-size: 12px;
+}
+
+/* 高级设置样式 */
+.advancedSettings {
+  margin-top: 8px;
+  border-top: 1px dashed #d9d9d9;
+  padding-top: 8px;
+}
+
+.advancedSettingsHeader {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.advancedSettingsHeader:hover {
+  color: #1677ff;
+}
+
+.advancedSettingsContent {
+  margin-top: 8px;
+}
+
+/* 模型参数样式 */
+.parameterItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.parameterLabel {
+  width: 80px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 13px;
+}
+
+.parameterControl {
+  flex: 1;
+}
+
+/* 输出区域样式 */
+.outputSection {
+  margin-top: 12px;
+}
+
+.outputContent {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  max-height: 120px;
+  overflow-y: auto;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* 暗黑模式适配 */
+:global(.dark-theme) .modelName {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+:global(.dark-theme) .modelDescription {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+:global(.dark-theme) .advancedSettingsHeader {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+:global(.dark-theme) .parameterLabel {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+:global(.dark-theme) .outputContent {
+  background-color: rgba(255, 255, 255, 0.08);
+} 

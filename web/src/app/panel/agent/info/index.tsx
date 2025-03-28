@@ -9,6 +9,7 @@ import { Button } from 'antd';
 import { SquareChevronLeft, Sparkles } from 'lucide-react';
 import Chat from '@/features/Chat';
 import Tools from './tools';
+import ModelSelector from '@/components/ModelSelector';
 
 const useStyles = createStyles(({ css, token }) => ({
     container: css`
@@ -80,11 +81,13 @@ export default function AgentInfo() {
     const navigate = useNavigate();
 
     const [agentInfo, setAgentInfo] = useState<any>(null);
+    const [selectedModel, setSelectedModel] = useState<string | undefined>(undefined);
 
     function getInfo() {
         if (!agentId) return;
         getAgentInfo(Number(agentId)).then((res: any) => {
             setAgentInfo(res.data);
+            setSelectedModel(res.data.agentConfig.model);
         });
     }
 
@@ -96,6 +99,17 @@ export default function AgentInfo() {
     function saveInfo() {
         if (!agentInfo) return;
         // updateAgentInfo(agentInfo);
+    }
+
+    function handleModelChange(value: string) {
+        setSelectedModel(value);
+        setAgentInfo({
+            ...agentInfo,
+            agentConfig: {
+                ...agentInfo?.agentConfig,
+                model: value
+            }
+        });
     }
 
     return (
@@ -135,16 +149,13 @@ export default function AgentInfo() {
                                 gap: 8,
                                 alignItems: "center"
                             }}>
-                            <Model
-                                id={agentInfo?.agentConfig.model}
-                                onSelect={(value: string) => {
-                                    setAgentInfo({
-                                        ...agentInfo,
-                                        agentConfig: {
-                                            ...agentInfo?.agentConfig,
-                                            model: value
-                                        }
-                                    });
+                            <ModelSelector
+                                value={selectedModel}
+                                onChange={handleModelChange}
+                                showFavorites={true}
+                                showUsageStats={true}
+                                onFavoriteChange={(modelId, isFavorite) => {
+                                    // 处理收藏状态变化
                                 }}
                             />
                             <Button onClick={() => {

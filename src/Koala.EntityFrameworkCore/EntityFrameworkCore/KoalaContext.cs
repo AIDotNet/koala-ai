@@ -6,6 +6,7 @@ using Koala.Domain.Knowledges.Aggregates;
 using Koala.Domain.Powers.Aggregates;
 using Koala.Domain.Shared.WorkSpaces;
 using Koala.Domain.Users.Aggregates;
+using Koala.Domain.WorkFlows.Aggregates;
 using Koala.Domain.WorkSpaces.Aggregates;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -47,6 +48,14 @@ public class KoalaContext<TContext>(DbContextOptions<TContext> options, IService
 
     public DbSet<UserRole> UserRoles { get; set; }
 
+    public DbSet<Workflow> Workflows { get; set; }
+    
+    public DbSet<WorkflowInstance> WorkflowInstances { get; set; }
+    
+    public DbSet<WorkflowConnection> WorkflowConnections { get; set; }
+    
+    public DbSet<WorkflowNode> WorkflowNodes { get; set; }
+    
     public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
         CancellationToken cancellationToken = new CancellationToken())
     {

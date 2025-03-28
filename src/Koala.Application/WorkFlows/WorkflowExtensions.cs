@@ -1,9 +1,9 @@
+using Koala.Application.Contract.WorkFlows;
 using Koala.Domain.WorkFlows.Definitions;
-using Koala.Domain.WorkFlows.Services;
 using Microsoft.Extensions.DependencyInjection;
 using WorkflowCore.Interface;
 
-namespace Koala.Domain.WorkFlows;
+namespace Koala.Application.WorkFlows;
 
 /// <summary>
 /// 工作流扩展方法

@@ -3,6 +3,7 @@ using Koala.Domain.Knowledge.Aggregates;
 using Koala.Domain.Knowledges.Aggregates;
 using Koala.Domain.Powers.Aggregates;
 using Koala.Domain.Users.Aggregates;
+using Koala.Domain.WorkFlows.Aggregates;
 using Koala.Domain.WorkSpaces.Aggregates;
 
 namespace Koala.EntityFrameworkCore.EntityFrameworkCore;
@@ -10,7 +11,7 @@ namespace Koala.EntityFrameworkCore.EntityFrameworkCore;
 public interface IContext
 {
     DbSet<TEntity> Set<TEntity>() where TEntity : class;
-    
+
     DbSet<Agent> Agents { get; set; }
 
     DbSet<AgentConfig> AgentConfigs { get; set; }
@@ -35,6 +36,14 @@ public interface IContext
 
     DbSet<UserRole> UserRoles { get; set; }
 
+    public DbSet<Workflow> Workflows { get; set; }
+
+    public DbSet<WorkflowInstance> WorkflowInstances { get; set; }
+
+    public DbSet<WorkflowConnection> WorkflowConnections { get; set; }
+
+    public DbSet<WorkflowNode> WorkflowNodes { get; set; }
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -43,5 +52,5 @@ public interface IContext
     /// <param name="serviceProvider"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task RunMigrationsAsync(IServiceProvider serviceProvider,CancellationToken cancellationToken = default);
+    Task RunMigrationsAsync(IServiceProvider serviceProvider, CancellationToken cancellationToken = default);
 }

@@ -1,315 +1,19 @@
-import { memo, useState, useCallback, useEffect } from 'react';
+import { memo, useState, useCallback, useEffect, } from 'react';
 import { Flexbox } from 'react-layout-kit';
-import { Button, Card, Drawer, Space, Tabs, Typography, Tooltip, theme, message, Input, Form, List, Select } from 'antd';
-import { ArrowLeft, Save, Play, Zap, Plus, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button, Card, Drawer, Space, Tabs, Typography, theme, message, Input, Form, List, Select } from 'antd';
+import { ArrowLeft, Save, Zap, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import styles from './WorkflowDesigner.module.css';
 import { NodePanel } from './components/NodePanel';
 import { WorkflowCanvas } from './components/WorkflowCanvas';
+import { workflowTemplates, getWorkflow, updateWorkflow, executeWorkflow } from '../../../services/WorkflowService';
+
+import NodeFormFactory from './components/forms';
 
 const { Title, Text } = Typography;
 const { TabPane } = Tabs;
 const { useToken } = theme;
 const { Option } = Select;
-
-// 示例工作流定义
-const workflowTemplates = {
-  // 空白工作流
-  'empty': {
-    nodes: [
-      {
-        id: 'node-input',
-        type: 'input',
-        position: { x: 100, y: 200 },
-        data: {
-          label: '输入',
-          nodeType: 'input',
-          inputs: {},
-          outputs: {
-            'data': 'any'
-          }
-        }
-      },
-      {
-        id: 'node-output',
-        type: 'output',
-        position: { x: 500, y: 200 },
-        data: {
-          label: '输出',
-          nodeType: 'output',
-          inputs: {
-            'result': 'any'
-          },
-          outputs: {}
-        }
-      }
-    ],
-    edges: []
-  },
-  // 聊天机器人工作流
-  'wf-1': {
-    nodes: [
-      {
-        id: 'node-1',
-        type: 'input',
-        position: { x: 100, y: 100 },
-        data: {
-          label: '用户输入',
-          nodeType: 'input',
-          inputs: {},
-          outputs: {
-            'message': 'string'
-          }
-        }
-      },
-      {
-        id: 'node-2',
-        type: 'llm-call',
-        position: { x: 400, y: 100 },
-        data: {
-          label: 'LLM调用',
-          nodeType: 'llm-call',
-          inputs: {
-            'prompt': 'string'
-          },
-          outputs: {
-            'response': 'string'
-          },
-          config: {
-            model: 'gpt-3.5-turbo',
-            temperature: 0.7,
-            maxTokens: 1000
-          }
-        }
-      },
-      {
-        id: 'node-3',
-        type: 'knowledge-query',
-        position: { x: 400, y: 300 },
-        data: {
-          label: '知识库查询',
-          nodeType: 'knowledge-query',
-          inputs: {
-            'query': 'string'
-          },
-          outputs: {
-            'result': 'string'
-          },
-          config: {
-            kb: 'default-kb',
-            topK: 3
-          }
-        }
-      },
-      {
-        id: 'node-4',
-        type: 'output',
-        position: { x: 700, y: 200 },
-        data: {
-          label: '返回结果',
-          nodeType: 'output',
-          inputs: {
-            'result': 'string'
-          },
-          outputs: {}
-        }
-      }
-    ],
-    edges: [
-      {
-        id: 'edge-1-2',
-        source: 'node-1',
-        target: 'node-2',
-        sourceHandle: 'message',
-        targetHandle: 'prompt',
-        animated: true
-      },
-      {
-        id: 'edge-1-3',
-        source: 'node-1',
-        target: 'node-3',
-        sourceHandle: 'message',
-        targetHandle: 'query'
-      },
-      {
-        id: 'edge-2-4',
-        source: 'node-2',
-        target: 'node-4',
-        sourceHandle: 'response',
-        targetHandle: 'result'
-      }
-    ]
-  },
-  // 文档摘要工作流
-  'wf-2': {
-    nodes: [
-      {
-        id: 'node-1',
-        type: 'input',
-        position: { x: 100, y: 150 },
-        data: {
-          label: '文档输入',
-          nodeType: 'input',
-          inputs: {},
-          outputs: {
-            'document': 'string'
-          }
-        }
-      },
-      {
-        id: 'node-2',
-        type: 'llm-call',
-        position: { x: 400, y: 150 },
-        data: {
-          label: '文本摘要',
-          nodeType: 'llm-call',
-          inputs: {
-            'text': 'string'
-          },
-          outputs: {
-            'summary': 'string'
-          },
-          config: {
-            model: 'gpt-4',
-            temperature: 0.3,
-            maxTokens: 500,
-            systemPrompt: "请对以下文本生成简洁的摘要，突出关键信息。"
-          }
-        }
-      },
-      {
-        id: 'node-3',
-        type: 'output',
-        position: { x: 700, y: 150 },
-        data: {
-          label: '摘要结果',
-          nodeType: 'output',
-          inputs: {
-            'summary': 'string'
-          },
-          outputs: {}
-        }
-      }
-    ],
-    edges: [
-      {
-        id: 'edge-1-2',
-        source: 'node-1',
-        target: 'node-2',
-        sourceHandle: 'document',
-        targetHandle: 'text',
-        animated: true
-      },
-      {
-        id: 'edge-2-3',
-        source: 'node-2',
-        target: 'node-3',
-        sourceHandle: 'summary',
-        targetHandle: 'summary'
-      }
-    ]
-  },
-  // 图像处理工作流
-  'wf-3': {
-    nodes: [
-      {
-        id: 'node-1',
-        type: 'input',
-        position: { x: 100, y: 200 },
-        data: {
-          label: '图像输入',
-          nodeType: 'input',
-          inputs: {},
-          outputs: {
-            'image': 'file'
-          }
-        }
-      },
-      {
-        id: 'node-2',
-        type: 'image-processing',
-        position: { x: 400, y: 100 },
-        data: {
-          label: '图像识别',
-          nodeType: 'image-processing',
-          inputs: {
-            'image': 'file'
-          },
-          outputs: {
-            'objects': 'array'
-          },
-          config: {
-            model: 'vision-model',
-            minConfidence: 0.7
-          }
-        }
-      },
-      {
-        id: 'node-3',
-        type: 'llm-call',
-        position: { x: 400, y: 300 },
-        data: {
-          label: '图像描述',
-          nodeType: 'llm-call',
-          inputs: {
-            'image': 'file'
-          },
-          outputs: {
-            'description': 'string'
-          },
-          config: {
-            model: 'gpt-4-vision',
-            maxTokens: 500
-          }
-        }
-      },
-      {
-        id: 'node-4',
-        type: 'output',
-        position: { x: 700, y: 200 },
-        data: {
-          label: '分析结果',
-          nodeType: 'output',
-          inputs: {
-            'objects': 'array',
-            'description': 'string'
-          },
-          outputs: {}
-        }
-      }
-    ],
-    edges: [
-      {
-        id: 'edge-1-2',
-        source: 'node-1',
-        target: 'node-2',
-        sourceHandle: 'image',
-        targetHandle: 'image'
-      },
-      {
-        id: 'edge-1-3',
-        source: 'node-1',
-        target: 'node-3',
-        sourceHandle: 'image',
-        targetHandle: 'image'
-      },
-      {
-        id: 'edge-2-4',
-        source: 'node-2',
-        target: 'node-4',
-        sourceHandle: 'objects',
-        targetHandle: 'objects'
-      },
-      {
-        id: 'edge-3-4',
-        source: 'node-3',
-        target: 'node-4',
-        sourceHandle: 'description',
-        targetHandle: 'description'
-      }
-    ]
-  }
-};
 
 export interface WorkflowNode {
   id: string;
@@ -344,12 +48,33 @@ export interface WorkflowEdge {
   };
 }
 
+// 自定义模型组示例
+const customModelGroups = [
+  {
+    icon: "OpenAI",
+    name: "自定义模型组 1",
+    models: [
+      {
+        id: "custom-model-1",
+        model: "custom-model-1",
+        displayName: "自定义模型 1",
+        description: "这是一个自定义模型示例"
+      },
+      {
+        id: "custom-model-2",
+        model: "custom-model-2",
+        displayName: "自定义模型 2"
+      }
+    ]
+  }
+];
+
 const WorkflowDesigner = memo(() => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const workflowId = searchParams.get('id');
   const { token } = useToken();
-  
+
   // 状态
   const [nodes, setNodes] = useState<WorkflowNode[]>([]);
   const [edges, setEdges] = useState<WorkflowEdge[]>([]);
@@ -358,22 +83,27 @@ const WorkflowDesigner = memo(() => {
   const [isNodePanelOpen, setIsNodePanelOpen] = useState(true);
   const [isNodeSettingOpen, setIsNodeSettingOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
+  const [workflowName, setWorkflowName] = useState('新工作流');
+  const [workflowDescription, setWorkflowDescription] = useState('');
+  const [workflowTags, setWorkflowTags] = useState('');
+  const [workspaceId, setWorkspaceId] = useState<number>(1); // 默认工作空间ID，实际应从上下文获取
+
   // 加载工作流数据
   useEffect(() => {
     if (workflowId) {
       setIsLoading(true);
-      
-      // 这里模拟从API加载数据
-      setTimeout(() => {
-        // 如果有预定义模板，使用模板，否则创建一个空白工作流
-        const template = workflowTemplates[workflowId as keyof typeof workflowTemplates] || workflowTemplates.empty;
-        
+
+      // 从API加载数据
+      if (workflowId.startsWith('template-')) {
+        // 如果是模板ID，使用预定义模板
+        const templateId = workflowId.replace('template-', '');
+        const template = workflowTemplates[templateId as keyof typeof workflowTemplates] || workflowTemplates.empty;
+
         // 确保工作流中至少有一个输入节点和一个输出节点
         let workflowNodes = [...template.nodes];
         let hasInput = workflowNodes.some(node => node.data.nodeType === 'input');
         let hasOutput = workflowNodes.some(node => node.data.nodeType === 'output');
-        
+
         // 如果没有输入节点，添加一个
         if (!hasInput) {
           workflowNodes.push({
@@ -390,7 +120,7 @@ const WorkflowDesigner = memo(() => {
             }
           });
         }
-        
+
         // 如果没有输出节点，添加一个
         if (!hasOutput) {
           workflowNodes.push({
@@ -407,11 +137,47 @@ const WorkflowDesigner = memo(() => {
             }
           });
         }
-        
+
         setNodes(workflowNodes);
         setEdges(template.edges);
         setIsLoading(false);
-      }, 500);
+      } else {
+        // 如果是真实ID，从API获取
+        getWorkflow(Number(workflowId))
+          .then(response => {
+            if (response && response.data) {
+              const workflow = response.data;
+              setWorkflowName(workflow.name);
+              setWorkflowDescription(workflow.description || '');
+              setWorkflowTags(workflow.tags || '');
+
+              try {
+                // 解析工作流定义
+                const definition = JSON.parse(workflow.definition);
+                setNodes(definition.nodes || []);
+                setEdges(definition.edges || []);
+              } catch (error) {
+                console.error('工作流定义解析失败:', error);
+                message.error('工作流定义格式不正确');
+                // 使用空工作流
+                const emptyTemplate = workflowTemplates.empty;
+                setNodes(emptyTemplate.nodes);
+                setEdges(emptyTemplate.edges);
+              }
+            }
+          })
+          .catch(error => {
+            console.error('获取工作流失败:', error);
+            message.error('获取工作流失败');
+            // 使用空工作流
+            const emptyTemplate = workflowTemplates.empty;
+            setNodes(emptyTemplate.nodes);
+            setEdges(emptyTemplate.edges);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
+      }
     } else {
       // 新建工作流时，默认添加输入和输出节点
       const defaultNodes = workflowTemplates.empty.nodes;
@@ -457,9 +223,9 @@ const WorkflowDesigner = memo(() => {
 
   // 连接创建处理
   const onConnect = useCallback((params: any) => {
-    setEdges((eds) => [...eds, { 
-      id: `e${params.source}-${params.target}`, 
-      source: params.source, 
+    setEdges((eds) => [...eds, {
+      id: `e${params.source}-${params.target}`,
+      source: params.source,
       target: params.target,
       sourceHandle: params.sourceHandle,
       targetHandle: params.targetHandle,
@@ -479,7 +245,7 @@ const WorkflowDesigner = memo(() => {
         ...nodeData
       }
     };
-    
+
     setNodes((nds) => [...nds, newNode]);
   }, [nodes]);
 
@@ -488,44 +254,73 @@ const WorkflowDesigner = memo(() => {
     // 找到要删除的节点
     const node = nodes.find(n => n.id === nodeId);
     if (!node) return false;
-    
+
     const nodeType = node.data.nodeType;
-    
+
     // 统计当前节点类型数量
     const nodeTypeCounts = nodes.reduce((counts, node) => {
       const type = node.data.nodeType;
       counts[type] = (counts[type] || 0) + 1;
       return counts;
     }, {} as Record<string, number>);
-    
+
     // 如果是输入节点或输出节点，且只有一个该类型的节点，则不允许删除
-    if ((nodeType === 'input' && nodeTypeCounts['input'] <= 1) || 
-        (nodeType === 'output' && nodeTypeCounts['output'] <= 1)) {
+    if ((nodeType === 'input' && nodeTypeCounts['input'] <= 1) ||
+      (nodeType === 'output' && nodeTypeCounts['output'] <= 1)) {
       return false;
     }
-    
+
     return true;
   }, [nodes]);
 
   // 保存工作流
   const saveWorkflow = () => {
-    const workflow = {
-      id: workflowId || `wf-${Date.now()}`,
-      name: '新工作流',
-      description: '',
+    // 构建工作流定义JSON
+    const definition = JSON.stringify({
       nodes,
       edges,
-    };
-    console.log('保存工作流:', workflow);
-    message.success('工作流保存成功');
-    // 在此处添加实际保存逻辑
+    });
+
+    setIsLoading(true);
+
+    if (workflowId && !workflowId.startsWith('template-')) {
+      updateWorkflow(Number(workflowId), workflowName, definition, workflowDescription, workflowTags)
+        .then(() => {
+          message.success('工作流保存成功');
+        })
+        .catch(error => {
+          console.error('保存工作流失败:', error);
+          message.error('保存工作流失败');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else {
+      message.error("抱歉，当前工作流模板不能保存");
+    }
   };
 
   // 运行工作流
   const runWorkflow = () => {
-    console.log('运行工作流');
-    message.info('工作流开始执行');
-    // 在此处添加运行逻辑
+    if (!workflowId || workflowId.startsWith('template-')) {
+      message.warning('请先保存工作流再运行');
+      return;
+    }
+
+    setIsLoading(true);
+    executeWorkflow(Number(workflowId))
+      .then(response => {
+        if (response && response.data) {
+          message.success(`工作流开始执行，实例ID: ${response.data}`);
+        }
+      })
+      .catch(error => {
+        console.error('执行工作流失败:', error);
+        message.error('执行工作流失败');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   // 返回列表
@@ -537,22 +332,31 @@ const WorkflowDesigner = memo(() => {
   const renderWorkflowName = () => {
     if (isPanelOpen) {
       return (
-        <Form 
-          layout="inline" 
-          initialValues={{ name: '新工作流', desc: '' }}
+        <Form
+          layout="inline"
+          initialValues={{ name: workflowName, desc: workflowDescription }}
           onFinish={(values) => {
-            setNodes(nodes.map(node => ({ ...node, data: { ...node.data, label: values.name } })));
+            setWorkflowName(values.name);
+            setWorkflowDescription(values.desc);
             setIsPanelOpen(false);
           }}
         >
           <Form.Item name="name" style={{ marginBottom: 0 }}>
-            <Input 
-              placeholder="工作流名称" 
-              value="新工作流"
+            <Input
+              placeholder="工作流名称"
               onChange={(e) => {
-                setNodes(nodes.map(node => ({ ...node, data: { ...node.data, label: e.target.value } })));
+                setWorkflowName(e.target.value);
               }}
               style={{ width: 200 }}
+            />
+          </Form.Item>
+          <Form.Item name="desc" style={{ marginBottom: 0 }}>
+            <Input
+              placeholder="工作流描述"
+              onChange={(e) => {
+                setWorkflowDescription(e.target.value);
+              }}
+              style={{ width: 300 }}
             />
           </Form.Item>
           <Form.Item style={{ marginBottom: 0 }}>
@@ -561,13 +365,13 @@ const WorkflowDesigner = memo(() => {
         </Form>
       );
     }
-    
+
     return (
       <Flexbox horizontal gap={8} align="center">
-        <Title level={4} style={{ margin: 0 }}>新工作流</Title>
-        <Button 
-          type="text" 
-          icon={<Settings size={14} />} 
+        <Title level={4} style={{ margin: 0 }}>{workflowName}</Title>
+        <Button
+          type="text"
+          icon={<Settings size={14} />}
           onClick={() => setIsPanelOpen(true)}
           style={{ padding: '0 4px' }}
         />
@@ -575,12 +379,28 @@ const WorkflowDesigner = memo(() => {
     );
   };
 
+  // 处理节点数据变更
+  const handleNodeDataChange = (nodeId: string, newData: any) => {
+    setNodes(nodes.map(node => {
+      if (node.id === nodeId) {
+        return {
+          ...node,
+          data: {
+            ...node.data,
+            ...newData
+          }
+        };
+      }
+      return node;
+    }));
+  };
+
   return (
     <Flexbox padding={0} className={styles.workflowDesigner}>
-      <Flexbox 
-        horizontal 
-        justify="space-between" 
-        align="center" 
+      <Flexbox
+        horizontal
+        justify="space-between"
+        align="center"
         className={styles.toolbar}
         style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }}
       >
@@ -602,18 +422,18 @@ const WorkflowDesigner = memo(() => {
 
       <Flexbox horizontal className={styles.workflowContent}>
         {isNodePanelOpen && (
-          <Card 
-            className={styles.nodePanel} 
-            title="节点类型" 
+          <Card
+            className={styles.nodePanel}
+            title="节点类型"
             size="small"
-            style={{ 
+            style={{
               borderRight: `1px solid ${token.colorBorderSecondary}`,
-              borderRadius: 0 
+              borderRadius: 0
             }}
             extra={
-              <Button 
-                type="text" 
-                icon={<ChevronLeft size={14} />} 
+              <Button
+                type="text"
+                icon={<ChevronLeft size={14} />}
                 onClick={() => setIsNodePanelOpen(false)}
               />
             }
@@ -621,23 +441,23 @@ const WorkflowDesigner = memo(() => {
             <NodePanel onAddNode={addNode} />
           </Card>
         )}
-        
+
         <Flexbox flex={1} className={styles.canvasWrapper}>
           {!isNodePanelOpen && (
-            <Button 
+            <Button
               className={styles.expandButton}
-              type="text" 
-              icon={<ChevronRight size={14} />} 
+              type="text"
+              icon={<ChevronRight size={14} />}
               onClick={() => setIsNodePanelOpen(true)}
             />
           )}
-          
-          <Card 
-            className={styles.canvasContainer} 
+
+          <Card
+            className={styles.canvasContainer}
             bodyStyle={{ padding: 0, height: '100%' }}
             bordered={false}
           >
-            <WorkflowCanvas 
+            <WorkflowCanvas
               nodes={nodes}
               edges={edges}
               onNodesChange={onNodesChange}
@@ -672,50 +492,40 @@ const WorkflowDesigner = memo(() => {
             <TabPane tab="基本设置" key="1">
               <Form layout="vertical">
                 <Form.Item label="节点名称" initialValue={selectedNode.data.label}>
-                  <Input 
+                  <Input
                     placeholder="输入节点名称"
                     onChange={(e) => {
-                      setNodes(nodes.map(node => 
-                        node.id === selectedNode.id 
-                          ? { ...node, data: { ...node.data, label: e.target.value } } 
+                      setNodes(nodes.map(node =>
+                        node.id === selectedNode.id
+                          ? { ...node, data: { ...node.data, label: e.target.value } }
                           : node
                       ));
                     }}
                   />
                 </Form.Item>
-                
+
                 <Form.Item label="节点类型">
                   <Input disabled value={selectedNode.data.nodeType} />
                 </Form.Item>
-                
-                {/* 根据不同节点类型渲染不同的配置项 */}
-                {selectedNode.data.nodeType === 'llm-call' && (
-                  <>
-                    <Form.Item label="模型">
-                      <Input placeholder="选择模型" defaultValue="gpt-3.5-turbo" />
-                    </Form.Item>
-                    <Form.Item label="提示词">
-                      <Input.TextArea rows={4} placeholder="输入提示词模板" />
-                    </Form.Item>
-                    <Form.Item label="温度">
-                      <Input type="number" placeholder="0.1-1.0" defaultValue="0.7" />
-                    </Form.Item>
-                  </>
-                )}
-                
-                {selectedNode.data.nodeType === 'knowledge-query' && (
-                  <>
-                    <Form.Item label="知识库">
-                      <Input placeholder="选择知识库" />
-                    </Form.Item>
-                    <Form.Item label="检索数量">
-                      <Input type="number" defaultValue="5" />
-                    </Form.Item>
-                  </>
-                )}
+
+                <NodeFormFactory
+                  node={selectedNode}
+                  updateNode={(nodeId, data) => {
+                    setNodes(nodes.map(node =>
+                      node.id === nodeId
+                        ? { ...node, data }
+                        : node
+                    ));
+                  }}
+                  customModelGroups={customModelGroups}
+                  knowledgeBases={[
+                    { id: 'kb1', name: '知识库1' },
+                    { id: 'kb2', name: '知识库2' }
+                  ]}
+                />
               </Form>
             </TabPane>
-            
+
             <TabPane tab="输入/输出" key="2">
               <Flexbox gap={16}>
                 {selectedNode.data.inputs && Object.keys(selectedNode.data.inputs).length > 0 && (
@@ -731,7 +541,7 @@ const WorkflowDesigner = memo(() => {
                     />
                   </Card>
                 )}
-                
+
                 {selectedNode.data.outputs && Object.keys(selectedNode.data.outputs).length > 0 && (
                   <Card size="small" title="输出参数" bordered>
                     <List
@@ -747,7 +557,7 @@ const WorkflowDesigner = memo(() => {
                 )}
               </Flexbox>
             </TabPane>
-            
+
             <TabPane tab="高级设置" key="3">
               <Card size="small" bordered>
                 <Flexbox gap={16}>
@@ -765,7 +575,7 @@ const WorkflowDesigner = memo(() => {
                   </Form>
                   <div>
                     <Typography.Title level={5}>节点数据</Typography.Title>
-                    <pre 
+                    <pre
                       style={{
                         padding: 8,
                         background: token.colorFillTertiary,

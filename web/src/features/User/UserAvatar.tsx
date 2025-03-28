@@ -66,7 +66,7 @@ const UserAvatar = forwardRef<HTMLDivElement, UserAvatarProps>(
         // background={isSignedIn && avatar ? background : undefined}
         className={cx(clickable && styles.clickable, className)}
         ref={ref}
-        avatar='🤖'
+        avatar='/logo.png'
         size={size}
         style={{ flex: 'none', ...style }}
         unoptimized

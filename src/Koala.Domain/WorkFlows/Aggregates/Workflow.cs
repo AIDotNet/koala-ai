@@ -1,3 +1,4 @@
+using Koala.Domain.Agents.Aggregates;
 using Koala.Domain.WorkFlows.Enums;
 
 namespace Koala.Domain.WorkFlows.Aggregates;
@@ -60,7 +61,7 @@ public class Workflow : AuditEntity<long>
     /// <summary>
     /// 导航属性 - 工作空间
     /// </summary>
-    public virtual WorkSpace Workspace { get; private set; } = null!;
+    public virtual WorkSpaces.Aggregates.WorkSpace Workspace { get; private set; } = null!;
 
     /// <summary>
     /// 创建工作流

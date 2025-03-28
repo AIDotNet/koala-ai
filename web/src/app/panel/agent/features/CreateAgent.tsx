@@ -6,25 +6,30 @@ import { TextArea, EmojiPicker } from '@lobehub/ui'
 import {
     useLocation
 } from 'react-router-dom'
+import { useAgentStore } from '@/store/agent';
 
 export const CreateAgentPage: React.FC = () => {
     const location = useLocation();
     const [open, setOpen] = useState(false);
     const [avatar, setAvatar] = useState('🤖')
+    const { loadAgent } = useAgentStore();
 
-    function handleSubmit(values: any) {
+    async function handleSubmit(values: any) {
         const query = new URLSearchParams(location.search);
         const workspaceId = query.get('workspaceId');
 
         // 校验
+        if (!workspaceId) return;
 
-        createAgent({
+        await createAgent({
             name: values.name,
             workSpaceId: workspaceId,
             introduction: values.introduction,
             avatar: avatar,
         })
-        console.log(values, workspaceId);
+        // 创建成功后，刷新列表
+        await loadAgent(Number(workspaceId));
+        setOpen(false);
     }
 
     return <>

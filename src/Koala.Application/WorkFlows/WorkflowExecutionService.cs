@@ -1,12 +1,15 @@
 using System.Text.Json;
+using Koala.Application.Contract.WorkFlows;
+using Koala.Application.Contract.WorkFlows.Dto;
 using Koala.Core;
 using Koala.Data.Repositories;
 using Koala.Domain.WorkFlows.Aggregates;
 using Koala.Domain.WorkFlows.Definitions;
 using Koala.Domain.WorkFlows.Enums;
+using MapsterMapper;
 using WorkflowCore.Interface;
 
-namespace Koala.Domain.WorkFlows.Services;
+namespace Koala.Application.WorkFlows;
 
 /// <summary>
 /// 工作流执行服务
@@ -17,8 +20,8 @@ public class WorkflowExecutionService : IWorkflowService
     private readonly IRepository<Workflow> _workflowRepository;
     private readonly IRepository<WorkflowInstance> _instanceRepository;
     private readonly IUserContext _userContext;
-    private readonly IServiceProvider _serviceProvider;
-    
+    private readonly IMapper _mapper;
+
     /// <summary>
     /// 初始化工作流执行服务
     /// </summary>
@@ -26,19 +29,18 @@ public class WorkflowExecutionService : IWorkflowService
     /// <param name="workflowRepository">工作流仓储</param>
     /// <param name="instanceRepository">实例仓储</param>
     /// <param name="userContext">用户上下文</param>
-    /// <param name="serviceProvider">服务提供器</param>
+    /// <param name="mapper"></param>
     public WorkflowExecutionService(
         IWorkflowHost workflowHost,
         IRepository<Workflow> workflowRepository,
         IRepository<WorkflowInstance> instanceRepository,
-        IUserContext userContext,
-        IServiceProvider serviceProvider)
+        IUserContext userContext, IMapper mapper)
     {
         _workflowHost = workflowHost;
         _workflowRepository = workflowRepository;
         _instanceRepository = instanceRepository;
         _userContext = userContext;
-        _serviceProvider = serviceProvider;
+        _mapper = mapper;
     }
 
     /// <summary>
@@ -51,11 +53,12 @@ public class WorkflowExecutionService : IWorkflowService
     /// <param name="tags">标签</param>
     /// <param name="agentId">智能体ID</param>
     /// <returns>工作流ID</returns>
-    public async Task<long> CreateWorkflowAsync(string name, string definition, long workspaceId, string? description = null, string? tags = null, long? agentId = null)
+    public async Task<long> CreateWorkflowAsync(string name, string definition, long workspaceId,
+        string? description = null, string? tags = null, long? agentId = null)
     {
         var workflow = new Workflow(name, definition, workspaceId, description, tags, agentId);
         workflow.SetCreator(_userContext.UserId);
-        
+
         await _workflowRepository.AddAsync(workflow);
         await _workflowRepository.SaveChangesAsync();
         return workflow.Id;
@@ -70,7 +73,8 @@ public class WorkflowExecutionService : IWorkflowService
     /// <param name="description">工作流描述</param>
     /// <param name="tags">标签</param>
     /// <returns>是否成功</returns>
-    public async Task<bool> UpdateWorkflowAsync(long id, string name, string definition, string? description = null, string? tags = null)
+    public async Task<bool> UpdateWorkflowAsync(long id, string name, string definition, string? description = null,
+        string? tags = null)
     {
         var workflow = await _workflowRepository.FirstOrDefaultAsync(w => w.Id == id);
         if (workflow == null)
@@ -151,9 +155,11 @@ public class WorkflowExecutionService : IWorkflowService
     /// </summary>
     /// <param name="id">工作流ID</param>
     /// <returns>工作流</returns>
-    public async Task<Workflow?> GetWorkflowAsync(long id)
+    public async Task<WorkflowDto?> GetWorkflowAsync(long id)
     {
-        return await _workflowRepository.FirstOrDefaultAsync(w => w.Id == id);
+        var value = await _workflowRepository.FirstOrDefaultAsync(w => w.Id == id);
+
+        return value == null ? null : _mapper.Map<WorkflowDto>(value);
     }
 
     /// <summary>
@@ -161,10 +167,12 @@ public class WorkflowExecutionService : IWorkflowService
     /// </summary>
     /// <param name="agentId">智能体ID</param>
     /// <returns>工作流集合</returns>
-    public async Task<IEnumerable<Workflow>> GetWorkflowsByAgentAsync(long agentId)
+    public async Task<IEnumerable<WorkflowDto>> GetWorkflowsByAgentAsync(long agentId)
     {
         // 实际实现需要根据具体的仓储接口进行调整
-        return await _workflowRepository.ListAsync(w => w.AgentId == agentId);
+        var values = await _workflowRepository.ListAsync(w => w.AgentId == agentId);
+
+        return _mapper.Map<IEnumerable<WorkflowDto>>(values);
     }
 
     /// <summary>
@@ -173,15 +181,21 @@ public class WorkflowExecutionService : IWorkflowService
     /// <param name="workspaceId">工作空间ID</param>
     /// <param name="status">工作流状态</param>
     /// <returns>工作流集合</returns>
-    public async Task<IEnumerable<Workflow>> GetWorkflowsByWorkspaceAsync(long workspaceId, WorkflowStatusEnum? status = null)
+    public async Task<IEnumerable<WorkflowDto>> GetWorkflowsByWorkspaceAsync(long workspaceId,
+        WorkflowStatusEnum? status = null)
     {
         if (status.HasValue)
         {
-            return await _workflowRepository.ListAsync(w => w.WorkspaceId == workspaceId && w.Status == status.Value);
+            var value = await _workflowRepository.ListAsync(w =>
+                w.WorkspaceId == workspaceId && w.Status == status.Value);
+
+            return _mapper.Map<IEnumerable<WorkflowDto>>(value);
         }
         else
         {
-            return await _workflowRepository.ListAsync(w => w.WorkspaceId == workspaceId);
+            var values = await _workflowRepository.ListAsync(w => w.WorkspaceId == workspaceId);
+
+            return _mapper.Map<IEnumerable<WorkflowDto>>(values);
         }
     }
 
@@ -214,7 +228,7 @@ public class WorkflowExecutionService : IWorkflowService
             // 实际的工作流启动实现需要集成到WorkflowCore
             // 此处为示例实现，需要根据实际需求调整
             string workflowCoreId;
-            
+
             // 根据JSON定义动态创建和执行工作流，实际实现需要完善
             if (!string.IsNullOrEmpty(workflow.Definition))
             {
@@ -241,10 +255,10 @@ public class WorkflowExecutionService : IWorkflowService
                 // 启动工作流，使用实例参考ID作为相关ID
                 // 实际实现需要根据工作流定义动态生成工作流
                 workflowCoreId = await _workflowHost.StartWorkflow(
-                    "SimpleWorkflow",  // 实际应使用动态生成的工作流ID
-                    1,                 // 版本号
-                    data,              // 数据
-                    referenceId);      // 相关ID
+                    "SimpleWorkflow", // 实际应使用动态生成的工作流ID
+                    1, // 版本号
+                    data, // 数据
+                    referenceId); // 相关ID
             }
             else
             {
@@ -282,12 +296,12 @@ public class WorkflowExecutionService : IWorkflowService
         try
         {
             await _workflowHost.SuspendWorkflow(instance.WorkflowCoreInstanceId);
-            
+
             instance.Suspend();
             instance.SetModifier(_userContext.UserId);
             await _instanceRepository.UpdateAsync(instance);
             await _instanceRepository.SaveChangesAsync();
-            
+
             return true;
         }
         catch
@@ -310,12 +324,12 @@ public class WorkflowExecutionService : IWorkflowService
         try
         {
             await _workflowHost.ResumeWorkflow(instance.WorkflowCoreInstanceId);
-            
+
             instance.Resume();
             instance.SetModifier(_userContext.UserId);
             await _instanceRepository.UpdateAsync(instance);
             await _instanceRepository.SaveChangesAsync();
-            
+
             return true;
         }
         catch
@@ -338,12 +352,12 @@ public class WorkflowExecutionService : IWorkflowService
         try
         {
             await _workflowHost.TerminateWorkflow(instance.WorkflowCoreInstanceId);
-            
+
             instance.Cancel();
             instance.SetModifier(_userContext.UserId);
             await _instanceRepository.UpdateAsync(instance);
             await _instanceRepository.SaveChangesAsync();
-            
+
             return true;
         }
         catch
@@ -357,9 +371,11 @@ public class WorkflowExecutionService : IWorkflowService
     /// </summary>
     /// <param name="instanceId">实例ID</param>
     /// <returns>工作流实例</returns>
-    public async Task<WorkflowInstance?> GetWorkflowInstanceAsync(string instanceId)
+    public async Task<WorkflowInstanceDto?> GetWorkflowInstanceAsync(string instanceId)
     {
-        return await GetInstanceByReferenceIdAsync(instanceId);
+        var value = await GetInstanceByReferenceIdAsync(instanceId);
+
+        return value == null ? null : _mapper.Map<WorkflowInstanceDto>(value);
     }
 
     /// <summary>
@@ -368,15 +384,21 @@ public class WorkflowExecutionService : IWorkflowService
     /// <param name="workflowId">工作流ID</param>
     /// <param name="status">实例状态</param>
     /// <returns>工作流实例集合</returns>
-    public async Task<IEnumerable<WorkflowInstance>> GetWorkflowInstancesAsync(long workflowId, WorkflowInstanceStatusEnum? status = null)
+    public async Task<IEnumerable<WorkflowInstanceDto>> GetWorkflowInstancesAsync(long workflowId,
+        WorkflowInstanceStatusEnum? status = null)
     {
         if (status.HasValue)
         {
-            return await _instanceRepository.ListAsync(i => i.WorkflowId == workflowId && i.Status == status.Value);
+            var value = await _instanceRepository.ListAsync(i =>
+                i.WorkflowId == workflowId && i.Status == status.Value);
+
+            return _mapper.Map<IEnumerable<WorkflowInstanceDto>>(value);
         }
         else
         {
-            return await _instanceRepository.ListAsync(i => i.WorkflowId == workflowId);
+            var values = await _instanceRepository.ListAsync(i => i.WorkflowId == workflowId);
+
+            return _mapper.Map<IEnumerable<WorkflowInstanceDto>>(values);
         }
     }
 
@@ -389,4 +411,4 @@ public class WorkflowExecutionService : IWorkflowService
     {
         return await _instanceRepository.FirstOrDefaultAsync(i => i.ReferenceId == referenceId);
     }
-} 
+}

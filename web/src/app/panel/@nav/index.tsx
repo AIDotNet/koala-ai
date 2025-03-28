@@ -1,13 +1,14 @@
 import UserAvatar from '@/features/User/UserAvatar';
 import { useWorkspaceStore } from '@/store/workspace';
-import { Tooltip } from 'antd';
+import { Tooltip, Dropdown } from 'antd';
 import { Flexbox } from 'react-layout-kit';
 import {
     Album,
     Box,
     Plus,
     Settings2,
-    GitBranch
+    GitBranch,
+    Brain
 } from 'lucide-react';
 import { memo, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -59,6 +60,15 @@ const Nav = memo(() => {
         setCreateWorkspaceModalOpen(true);
     };
 
+    const settingsMenuItems = [
+        {
+            key: 'model',
+            icon: <Brain size={16} />,
+            label: '模型配置管理',
+            onClick: () => navigate('/panel/model')
+        }
+    ];
+
     return (
         <Flexbox 
             style={{
@@ -97,7 +107,12 @@ const Nav = memo(() => {
             </Flexbox>
 
             {/* 导航菜单 */}
-            <Flexbox gap={8} padding={12}>
+            <Flexbox
+                gap={8}
+                style={{
+                    padding: '0 12px',
+                }}
+            >
                 {menus.map(item => (
                     <Tooltip key={item.key} title={item.title} placement="right">
                         <ActionIcon
@@ -123,16 +138,22 @@ const Nav = memo(() => {
                     padding: '12px',
                 }}
             >
-                <Tooltip title="设置" placement="right">
-                    <ActionIcon
-                        icon={Settings2}
-                        style={{
-                            color: 'rgba(255, 255, 255, 0.8)',
-                            background: 'transparent',
-                            borderRadius: '8px',
-                        }}
-                    />
-                </Tooltip>
+                <Dropdown
+                    menu={{ items: settingsMenuItems }}
+                    placement="bottomRight"
+                    trigger={['click']}
+                >
+                    <Tooltip title="设置" placement="right">
+                        <ActionIcon
+                            icon={Settings2}
+                            style={{
+                                color: 'rgba(255, 255, 255, 0.8)',
+                                background: 'transparent',
+                                borderRadius: '8px',
+                            }}
+                        />
+                    </Tooltip>
+                </Dropdown>
             </Flexbox>
         </Flexbox>
     );

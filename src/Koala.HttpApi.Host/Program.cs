@@ -3,6 +3,7 @@ using Koala.HttpApi.Extensions;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Koala.HttpApi.Host.Converter;
+using Koala.HttpApi.Host.Infrastructure;
 
 namespace Koala.HttpApi.Host;
 
@@ -12,6 +13,8 @@ internal static class Program
     {
         try
         {
+            KoalaAIStart.Start();
+            
             var builder = WebApplication.CreateBuilder(args);
 
             var log = new LoggerConfiguration()
@@ -19,8 +22,6 @@ internal static class Program
                 .CreateLogger();
 
             builder.Host.UseSerilog(log);
-
-            log.Information("KoalaAI HttpApi Host Start");
 
             builder.Services.AddEndpointsApiExplorer();
 
@@ -39,7 +40,7 @@ internal static class Program
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseScalar("Fast Wiki API Host");
+                app.UseScalar("Koala AI API Host");
             }
 
             await app.UseKoala(builder.Configuration);
@@ -51,7 +52,8 @@ internal static class Program
         }
         catch (Exception ex)
         {
-            Log.Fatal(ex, "Host terminated unexpectedly.");
+            Log.Fatal(ex, "Application start-up failed");
+            throw;
         }
         finally
         {

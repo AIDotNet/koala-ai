@@ -1,0 +1,159 @@
+.container {
+  width: 100%;
+  padding: 16px;
+}
+
+.card {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.card :global(.ant-card-head) {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 16px 24px;
+}
+
+.card :global(.ant-card-body) {
+  padding: 24px;
+}
+
+.addForm {
+  margin-bottom: 16px;
+}
+
+.templateRadioGroup {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.templateRadioGroup :global(.ant-radio-wrapper) {
+  margin-right: 16px;
+  padding: 8px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.templateRadioGroup :global(.ant-radio-wrapper-checked) {
+  background-color: #e6f7ff;
+  border-color: #1890ff;
+}
+
+.addForm :global(.ant-form-item) {
+  margin-bottom: 16px;
+}
+
+.addForm :global(.ant-input),
+.addForm :global(.ant-input-number) {
+  width: 200px;
+}
+
+.addForm :global(.ant-form-item:last-child) {
+  margin-bottom: 0;
+}
+
+.card :global(.ant-table) {
+  background: transparent;
+}
+
+.card :global(.ant-table-thead > tr > th) {
+  font-weight: 500;
+}
+
+.card :global(.ant-table-tbody > tr:hover > td) {
+}
+
+.card :global(.ant-tag) {
+  margin-right: 8px;
+}
+
+.card :global(.ant-space) {
+  gap: 8px !important;
+}
+
+.card :global(.ant-btn-text) {
+  padding: 4px 8px;
+}
+
+.card :global(.ant-btn-text:hover) {
+}
+
+.card :global(.ant-table-row:hover) {
+}
+
+.card :global(.ant-form-item-label > label) {
+  font-weight: 500;
+}
+
+.card :global(.ant-form-item-tooltip) {
+  margin-left: 4px;
+}
+
+.card :global(.ant-table-cell) {
+  padding: 12px 8px;
+}
+
+.card :global(.ant-table-cell .ant-form-item) {
+  margin-bottom: 0;
+}
+
+.card :global(.ant-table-cell .ant-input) {
+  width: 100%;
+}
+
+.card :global(.ant-table-cell .ant-input-textarea) {
+  width: 100%;
+}
+
+:global(.ant-table-wrapper) {
+  margin-top: 16px;
+}
+
+.templateCards {
+  margin-bottom: 24px;
+}
+
+.templateCard {
+  height: 120px;
+  cursor: pointer;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s;
+}
+
+.templateCard:hover {
+  border-color: #1890ff;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.15);
+}
+
+.selectedCard {
+  background-color: #e6f7ff;
+  border-color: #1890ff;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.15);
+}
+
+.templateCardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.templateIcon {
+  font-size: 24px;
+  color: #1890ff;
+  margin-bottom: 8px;
+}
+
+.templateName {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.templateDesc {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 1.5;
+} 

@@ -1,0 +1,131 @@
+{
+  "modelProvider": [
+    {
+      "icon": "OpenAI",
+      "name": "OpenAI",
+      "description": "OpenAI 是一家人工智能研究实验室，致力于研究人工智能的广泛应用。",
+      "models": [
+        {
+          "id": "gpt-4o",
+          "model": "gpt-4o",
+          "displayName": "GPT-4o",
+          "description": "OpenAI最新的多模态模型，支持文本、图像、音频输入",
+          "url": "https://openai.com/gpt-4o",
+          "maxTokens": 128000,
+          "tags": ["chat", "vision", "audio"]
+        },
+        {
+          "id": "gpt-4-turbo",
+          "model": "gpt-4-turbo",
+          "displayName": "GPT-4 Turbo",
+          "description": "GPT-4的高性能版本，平衡了性能和成本",
+          "url": "https://openai.com/gpt-4",
+          "maxTokens": 128000,
+          "tags": ["chat"]
+        },
+        {
+          "id": "gpt-3.5-turbo",
+          "model": "gpt-3.5-turbo",
+          "displayName": "GPT-3.5 Turbo",
+          "description": "性价比高的通用模型",
+          "url": "https://openai.com/gpt-3-5",
+          "maxTokens": 16385,
+          "tags": ["chat"]
+        },
+        {
+          "id": "text-embedding-3-large",
+          "model": "text-embedding-3-large",
+          "displayName": "Embedding Large",
+          "description": "OpenAI的高性能文本嵌入模型",
+          "maxTokens": 8191,
+          "tags": ["embedding"]
+        },
+        {
+          "id": "text-embedding-3-small",
+          "model": "text-embedding-3-small",
+          "displayName": "Embedding Small",
+          "description": "OpenAI的轻量级文本嵌入模型",
+          "maxTokens": 8191,
+          "tags": ["embedding"]
+        }
+      ]
+    },
+    {
+      "icon": "Anthropic",
+      "name": "Anthropic",
+      "description": "Anthropic是一家人工智能安全公司，开发的Claude模型以安全性和有用性著称。",
+      "models": [
+        {
+          "id": "claude-3-opus",
+          "model": "claude-3-opus",
+          "displayName": "Claude 3 Opus",
+          "description": "Anthropic的顶级模型，适用于复杂任务",
+          "maxTokens": 200000,
+          "tags": ["chat", "vision"]
+        },
+        {
+          "id": "claude-3-sonnet",
+          "model": "claude-3-sonnet",
+          "displayName": "Claude 3 Sonnet",
+          "description": "平衡性能和速度的通用模型",
+          "maxTokens": 200000,
+          "tags": ["chat", "vision"]
+        },
+        {
+          "id": "claude-3-haiku",
+          "model": "claude-3-haiku",
+          "displayName": "Claude 3 Haiku",
+          "description": "快速、高效的轻量级模型",
+          "maxTokens": 200000,
+          "tags": ["chat", "vision"]
+        }
+      ]
+    },
+    {
+      "icon": "Google",
+      "name": "Google",
+      "description": "Google提供的Gemini系列模型，集成了Google的先进AI技术。",
+      "models": [
+        {
+          "id": "gemini-1.5-pro",
+          "model": "gemini-1.5-pro",
+          "displayName": "Gemini 1.5 Pro",
+          "description": "Google的多模态大型模型",
+          "maxTokens": 1000000,
+          "tags": ["chat", "vision", "audio", "video"]
+        },
+        {
+          "id": "gemini-1.5-flash",
+          "model": "gemini-1.5-flash",
+          "displayName": "Gemini 1.5 Flash",
+          "description": "更快速、更经济的Gemini模型",
+          "maxTokens": 1000000,
+          "tags": ["chat", "vision"]
+        }
+      ]
+    },
+    {
+      "icon": "Zhipu",
+      "name": "智谱AI",
+      "description": "智谱AI开发的GLM系列模型，擅长中文理解与生成。",
+      "models": [
+        {
+          "id": "glm-4",
+          "model": "glm-4",
+          "displayName": "GLM-4",
+          "description": "智谱AI最新一代大模型",
+          "maxTokens": 128000,
+          "tags": ["chat", "vision"]
+        },
+        {
+          "id": "glm-3-turbo",
+          "model": "glm-3-turbo",
+          "displayName": "GLM-3-Turbo",
+          "description": "性价比高的通用模型",
+          "maxTokens": 32000,
+          "tags": ["chat"]
+        }
+      ]
+    }
+  ]
+} 

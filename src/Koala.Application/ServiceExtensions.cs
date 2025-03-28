@@ -1,8 +1,5 @@
-﻿using Koala.Jwt;
-using Lazy.Captcha.Core.Generator;
+﻿using Koala.Application.WorkFlows;
 using Mapster;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +16,8 @@ public static class ServiceExtensions
         services.AddMapster();
         
         services.AddCaptcha();
+
+        services.AddKoalaWorkflow();
         
         return services;
     }

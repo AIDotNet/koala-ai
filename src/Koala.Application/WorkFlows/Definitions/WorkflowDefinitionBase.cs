@@ -1,7 +1,8 @@
+using Koala.Domain.WorkFlows.Definitions;
 using Koala.Domain.WorkFlows.Steps;
 using WorkflowCore.Interface;
 
-namespace Koala.Domain.WorkFlows.Definitions;
+namespace Koala.Application.WorkFlows.Definitions;
 
 /// <summary>
 /// 工作流定义基类

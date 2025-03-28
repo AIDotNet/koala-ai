@@ -1,0 +1,58 @@
+.llmCallNode {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.llmCallNode :global(.ant-card-head) {
+  background-color: #d3adf7;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 8px 16px;
+  min-height: auto;
+}
+
+.llmCallNode :global(.ant-card-head-title) {
+  padding: 0;
+}
+
+.llmCallNode :global(.ant-card-body) {
+  padding: 12px;
+}
+
+.nodeForm :global(.ant-form-item) {
+  margin-bottom: 12px;
+}
+
+.nodeForm :global(.ant-form-item-label) {
+  padding-bottom: 4px;
+}
+
+.nodeForm :global(.ant-form-item-explain) {
+  font-size: 12px;
+}
+
+.outputSection {
+  margin-top: 12px;
+  border-top: 1px dashed #d9d9d9;
+  padding-top: 12px;
+}
+
+.outputContent {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  max-height: 120px;
+  overflow-y: auto;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .llmCallNode {
+    width: 100%;
+  }
+} 

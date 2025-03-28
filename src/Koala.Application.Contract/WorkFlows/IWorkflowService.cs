@@ -1,7 +1,7 @@
-using Koala.Domain.WorkFlows.Aggregates;
+using Koala.Application.Contract.WorkFlows.Dto;
 using Koala.Domain.WorkFlows.Enums;
 
-namespace Koala.Domain.WorkFlows.Services;
+namespace Koala.Application.Contract.WorkFlows;
 
 /// <summary>
 /// 工作流服务接口
@@ -59,14 +59,14 @@ public interface IWorkflowService
     /// </summary>
     /// <param name="id">工作流ID</param>
     /// <returns>工作流</returns>
-    Task<Workflow?> GetWorkflowAsync(long id);
+    Task<WorkflowDto?> GetWorkflowAsync(long id);
 
     /// <summary>
     /// 获取智能体关联的工作流
     /// </summary>
     /// <param name="agentId">智能体ID</param>
     /// <returns>工作流集合</returns>
-    Task<IEnumerable<Workflow>> GetWorkflowsByAgentAsync(long agentId);
+    Task<IEnumerable<WorkflowDto>> GetWorkflowsByAgentAsync(long agentId);
 
     /// <summary>
     /// 获取工作空间下的工作流
@@ -74,7 +74,7 @@ public interface IWorkflowService
     /// <param name="workspaceId">工作空间ID</param>
     /// <param name="status">工作流状态</param>
     /// <returns>工作流集合</returns>
-    Task<IEnumerable<Workflow>> GetWorkflowsByWorkspaceAsync(long workspaceId, WorkflowStatusEnum? status = null);
+    Task<IEnumerable<WorkflowDto>> GetWorkflowsByWorkspaceAsync(long workspaceId, WorkflowStatusEnum? status = null);
 
     /// <summary>
     /// 执行工作流实例
@@ -110,7 +110,7 @@ public interface IWorkflowService
     /// </summary>
     /// <param name="instanceId">实例ID</param>
     /// <returns>工作流实例</returns>
-    Task<WorkflowInstance?> GetWorkflowInstanceAsync(string instanceId);
+    Task<WorkflowInstanceDto?> GetWorkflowInstanceAsync(string instanceId);
 
     /// <summary>
     /// 获取工作流实例列表
@@ -118,5 +118,5 @@ public interface IWorkflowService
     /// <param name="workflowId">工作流ID</param>
     /// <param name="status">实例状态</param>
     /// <returns>工作流实例集合</returns>
-    Task<IEnumerable<WorkflowInstance>> GetWorkflowInstancesAsync(long workflowId, WorkflowInstanceStatusEnum? status = null);
+    Task<IEnumerable<WorkflowInstanceDto>> GetWorkflowInstancesAsync(long workflowId, WorkflowInstanceStatusEnum? status = null);
 } 

@@ -1,7 +1,7 @@
 using WorkflowCore.Interface;
 using WorkflowCore.Models;
 
-namespace Koala.Domain.WorkFlows.Steps;
+namespace Koala.Application.WorkFlows.Steps;
 
 /// <summary>
 /// LLM调用步骤体
@@ -39,6 +39,11 @@ public class LlmCallStepBody : IStepBody
     public Dictionary<string, object>? Variables { get; set; }
 
     /// <summary>
+    /// 输出结果存储键
+    /// </summary>
+    public string? OutputKey { get; set; }
+
+    /// <summary>
     /// 执行步骤
     /// </summary>
     /// <param name="context">执行上下文</param>
@@ -53,6 +58,12 @@ public class LlmCallStepBody : IStepBody
             // 这里是LLM调用逻辑，实际项目中需要替换为真实的API调用
             // 示例实现仅作演示
             Output = await SimulateLlmCallAsync(ModelName, processedPrompt, Temperature, MaxTokens);
+
+            // 如果有指定输出键，将结果存储到数据上下文中
+            if (!string.IsNullOrEmpty(OutputKey) && context.PersistenceData is Koala.Domain.WorkFlows.Definitions.WorkflowData data)
+            {
+                data.SetProperty(OutputKey, Output);
+            }
 
             return ExecutionResult.Next();
         }

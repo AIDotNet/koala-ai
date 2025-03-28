@@ -791,6 +791,303 @@ namespace Koala.EntityFrameworkCore.SqlServer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.Workflow", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasComment("工作流ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long?>("AgentId")
+                        .HasColumnType("bigint")
+                        .HasComment("关联的智能体ID");
+
+                    b.Property<DateTimeOffset?>("CreationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Definition")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("工作流定义（JSON格式）");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)")
+                        .HasComment("工作流描述");
+
+                    b.Property<DateTimeOffset?>("ModificationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Modifier")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("工作流名称");
+
+                    b.Property<int>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("工作流状态");
+
+                    b.Property<string>("Tags")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("标签（JSON数组格式）");
+
+                    b.Property<int>("Version")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1)
+                        .HasComment("工作流版本");
+
+                    b.Property<long>("WorkspaceId")
+                        .HasColumnType("bigint")
+                        .HasComment("工作空间ID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgentId");
+
+                    b.HasIndex("Name");
+
+                    b.HasIndex("WorkspaceId");
+
+                    b.ToTable("workflows", null, t =>
+                        {
+                            t.HasComment("工作流");
+                        });
+                });
+
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.WorkflowConnection", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasComment("连接ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Condition")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("条件表达式");
+
+                    b.Property<string>("ConnectionId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("连接ID（在工作流内唯一）");
+
+                    b.Property<int>("ConnectionType")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("连接类型");
+
+                    b.Property<DateTimeOffset?>("CreationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("ModificationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Modifier")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("连接名称");
+
+                    b.Property<long>("SourceNodeId")
+                        .HasColumnType("bigint")
+                        .HasComment("源节点ID");
+
+                    b.Property<long>("TargetNodeId")
+                        .HasColumnType("bigint")
+                        .HasComment("目标节点ID");
+
+                    b.Property<long>("WorkflowId")
+                        .HasColumnType("bigint")
+                        .HasComment("工作流ID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SourceNodeId");
+
+                    b.HasIndex("TargetNodeId");
+
+                    b.HasIndex("WorkflowId");
+
+                    b.HasIndex("WorkflowId", "ConnectionId")
+                        .IsUnique();
+
+                    b.ToTable("workflow_connections", null, t =>
+                        {
+                            t.HasComment("工作流连接");
+                        });
+                });
+
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.WorkflowInstance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasComment("实例ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset?>("CreationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CurrentNodeId")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("当前活动节点ID");
+
+                    b.Property<string>("Data")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("实例数据（JSON格式）");
+
+                    b.Property<DateTimeOffset?>("EndTime")
+                        .HasColumnType("datetimeoffset")
+                        .HasComment("结束时间");
+
+                    b.Property<string>("ErrorMessage")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("错误信息");
+
+                    b.Property<DateTimeOffset?>("ModificationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Modifier")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReferenceId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("实例参考ID");
+
+                    b.Property<DateTimeOffset>("StartTime")
+                        .HasColumnType("datetimeoffset")
+                        .HasComment("开始时间");
+
+                    b.Property<int>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("实例状态");
+
+                    b.Property<string>("WorkflowCoreInstanceId")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Workflow Core实例ID");
+
+                    b.Property<long>("WorkflowId")
+                        .HasColumnType("bigint")
+                        .HasComment("工作流ID");
+
+                    b.Property<int>("WorkflowVersion")
+                        .HasColumnType("int")
+                        .HasComment("工作流版本号");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReferenceId");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("WorkflowId");
+
+                    b.ToTable("workflow_instances", null, t =>
+                        {
+                            t.HasComment("工作流实例");
+                        });
+                });
+
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.WorkflowNode", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasComment("节点ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Configuration")
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("节点配置（JSON格式）");
+
+                    b.Property<DateTimeOffset?>("CreationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("ModificationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Modifier")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("节点名称");
+
+                    b.Property<string>("NodeId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("节点ID（在工作流内唯一）");
+
+                    b.Property<int>("NodeType")
+                        .HasColumnType("int")
+                        .HasComment("节点类型");
+
+                    b.Property<double>("PositionX")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0)
+                        .HasComment("位置X坐标");
+
+                    b.Property<double>("PositionY")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0)
+                        .HasComment("位置Y坐标");
+
+                    b.Property<long>("WorkflowId")
+                        .HasColumnType("bigint")
+                        .HasComment("工作流ID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkflowId");
+
+                    b.HasIndex("WorkflowId", "NodeId")
+                        .IsUnique();
+
+                    b.ToTable("workflow_nodes", null, t =>
+                        {
+                            t.HasComment("工作流节点");
+                        });
+                });
+
             modelBuilder.Entity("Koala.Domain.WorkSpaces.Aggregates.WorkSpace", b =>
                 {
                     b.Property<long>("Id")
@@ -1016,6 +1313,73 @@ namespace Koala.EntityFrameworkCore.SqlServer.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.Workflow", b =>
+                {
+                    b.HasOne("Koala.Domain.Agents.Aggregates.Agent", "Agent")
+                        .WithMany()
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Koala.Domain.WorkSpaces.Aggregates.WorkSpace", "Workspace")
+                        .WithMany()
+                        .HasForeignKey("WorkspaceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agent");
+
+                    b.Navigation("Workspace");
+                });
+
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.WorkflowConnection", b =>
+                {
+                    b.HasOne("Koala.Domain.WorkFlows.Aggregates.WorkflowNode", "SourceNode")
+                        .WithMany()
+                        .HasForeignKey("SourceNodeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Koala.Domain.WorkFlows.Aggregates.WorkflowNode", "TargetNode")
+                        .WithMany()
+                        .HasForeignKey("TargetNodeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Koala.Domain.WorkFlows.Aggregates.Workflow", "Workflow")
+                        .WithMany()
+                        .HasForeignKey("WorkflowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SourceNode");
+
+                    b.Navigation("TargetNode");
+
+                    b.Navigation("Workflow");
+                });
+
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.WorkflowInstance", b =>
+                {
+                    b.HasOne("Koala.Domain.WorkFlows.Aggregates.Workflow", "Workflow")
+                        .WithMany()
+                        .HasForeignKey("WorkflowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Workflow");
+                });
+
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.WorkflowNode", b =>
+                {
+                    b.HasOne("Koala.Domain.WorkFlows.Aggregates.Workflow", "Workflow")
+                        .WithMany("Nodes")
+                        .HasForeignKey("WorkflowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Workflow");
+                });
+
             modelBuilder.Entity("Koala.Domain.WorkSpaces.Aggregates.WorkSpaceMember", b =>
                 {
                     b.HasOne("Koala.Domain.Users.Aggregates.User", "User")
@@ -1033,6 +1397,11 @@ namespace Koala.EntityFrameworkCore.SqlServer.Migrations
                     b.Navigation("User");
 
                     b.Navigation("WorkSpace");
+                });
+
+            modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.Workflow", b =>
+                {
+                    b.Navigation("Nodes");
                 });
 #pragma warning restore 612, 618
         }

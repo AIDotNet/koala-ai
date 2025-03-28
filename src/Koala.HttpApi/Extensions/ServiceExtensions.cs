@@ -44,6 +44,7 @@ public static class ServiceExtensions
         endpoint.MapAgentEndpoints();
         endpoint.MapKnowledgeEndpoints();
         endpoint.MapStorageEndpoints();
+        endpoint.MapWorkflowEndpoints();
 
         return endpoint;
     }

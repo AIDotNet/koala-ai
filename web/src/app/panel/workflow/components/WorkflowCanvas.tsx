@@ -4,6 +4,7 @@ import styles from './WorkflowCanvas.module.css';
 import { CustomNode } from './nodes/CustomNode';
 import { CustomEdge } from './edges/CustomEdge';
 import { Layout } from 'lucide-react';
+import { NodeTypes } from './nodes';
 
 interface WorkflowCanvasProps {
   nodes: WorkflowNode[];
@@ -13,6 +14,7 @@ interface WorkflowCanvasProps {
   onConnect: (params: any) => void;
   onNodeClick: (event: any, node: WorkflowNode) => void;
   canDeleteNode?: (nodeId: string) => boolean;
+  children?: React.ReactNode;
 }
 
 // 由于我们实际上没有安装ReactFlow库，这里提供一个模拟版本
@@ -561,19 +563,41 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
 
         {/* 节点 */}
         <div className={styles.nodes}>
-          {nodes.map(node => (
-            <CustomNode
-              key={node.id}
-              node={node}
-              selected={selectedNodeId === node.id}
-              onClick={(e) => handleNodeClick(e, node.id)}
-              onDragStart={(e) => handleNodeDragStart(e, node.id)}
-              onConnectionStart={handleConnectionStart}
-              onConnectionEnd={handleConnectionEnd}
-              onDelete={handleNodeDelete}
-              canDelete={canDeleteNode ? canDeleteNode(node.id) : true}
-            />
-          ))}
+          {nodes.map(node => {
+            const NodeComponent = (node.data.nodeType && NodeTypes[node.data.nodeType as keyof typeof NodeTypes]) 
+              ? NodeTypes[node.data.nodeType as keyof typeof NodeTypes] 
+              : CustomNode;
+            
+            if (node.data.nodeType === 'llm-call') {
+              return (
+                <NodeComponent
+                  key={node.id}
+                  node={node}
+                  selected={selectedNodeId === node.id}
+                  onClick={(e) => handleNodeClick(e, node.id)}
+                  onDragStart={(e) => handleNodeDragStart(e, node.id)}
+                  onConnectionStart={handleConnectionStart}
+                  onConnectionEnd={handleConnectionEnd}
+                  onDelete={handleNodeDelete}
+                  canDelete={canDeleteNode ? canDeleteNode(node.id) : true}
+                />
+              );
+            }
+            
+            return (
+              <CustomNode
+                key={node.id}
+                node={node}
+                selected={selectedNodeId === node.id}
+                onClick={(e) => handleNodeClick(e, node.id)}
+                onDragStart={(e) => handleNodeDragStart(e, node.id)}
+                onConnectionStart={handleConnectionStart}
+                onConnectionEnd={handleConnectionEnd}
+                onDelete={handleNodeDelete}
+                canDelete={canDeleteNode ? canDeleteNode(node.id) : true}
+              />
+            );
+          })}
         </div>
       </div>
 

@@ -6,6 +6,7 @@ using Koala.Domain.Users.Repositories;
 using Koala.Domain.WorkSpace.Repositories;
 using Koala.EntityFrameworkCore.Repositories;
 using Gnarly.Data;
+using Koala.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Koala.EntityFrameworkCore;
@@ -20,6 +21,8 @@ public static class ServiceExtensions
         services.AddScoped<IAgentRepository, AgentRepository>();
         services.AddScoped<IKnowledgeRepository, KnowledgeRepository>();
         services.AddScoped<IFileStorageRepository, FileStorageRepository>();
+
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         return services;
     }
