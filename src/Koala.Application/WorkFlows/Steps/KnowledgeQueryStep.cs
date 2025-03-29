@@ -1,41 +1,41 @@
 using System.Text.Json;
-using Koala.Application.WorkFlows.Steps;
 using Koala.Domain.WorkFlows.Definitions;
+using Koala.Domain.WorkFlows.Steps;
 using WorkflowCore.Interface;
 
-namespace Koala.Domain.WorkFlows.Steps;
+namespace Koala.Application.WorkFlows.Steps;
 
 /// <summary>
-/// LLM调用步骤
+/// 知识库查询步骤
 /// </summary>
 /// <typeparam name="TData">工作流数据类型</typeparam>
-public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
+public class KnowledgeQueryStep<TData> : WorkflowStepBase<TData, KnowledgeQueryStepBody>
     where TData : WorkflowData, new()
 {
     /// <summary>
-    /// LLM调用步骤配置
+    /// 知识库查询步骤配置
     /// </summary>
-    public class LlmCallStepConfig
+    public class KnowledgeQueryStepConfig
     {
         /// <summary>
-        /// 模型名称
+        /// 知识库ID
         /// </summary>
-        public string ModelName { get; set; } = string.Empty;
+        public string KnowledgeBaseId { get; set; } = string.Empty;
 
         /// <summary>
-        /// 提示词模板
+        /// 查询模板
         /// </summary>
-        public string PromptTemplate { get; set; } = string.Empty;
+        public string QueryTemplate { get; set; } = string.Empty;
 
         /// <summary>
-        /// 温度
+        /// 检索条数
         /// </summary>
-        public float Temperature { get; set; } = 0.7f;
+        public int TopK { get; set; } = 5;
 
         /// <summary>
-        /// 最大生成长度
+        /// 相似度阈值
         /// </summary>
-        public int MaxTokens { get; set; } = 2000;
+        public float SimilarityThreshold { get; set; } = 0.7f;
 
         /// <summary>
         /// 输入变量映射
@@ -51,7 +51,7 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
     /// <summary>
     /// 步骤配置
     /// </summary>
-    private LlmCallStepConfig? _stepConfig;
+    private KnowledgeQueryStepConfig? _stepConfig;
 
     /// <summary>
     /// 解析配置
@@ -65,12 +65,12 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
 
         try
         {
-            _stepConfig = JsonSerializer.Deserialize<LlmCallStepConfig>(Configuration);
+            _stepConfig = JsonSerializer.Deserialize<KnowledgeQueryStepConfig>(Configuration);
         }
         catch (Exception)
         {
             // 配置解析失败，使用默认值
-            _stepConfig = new LlmCallStepConfig();
+            _stepConfig = new KnowledgeQueryStepConfig();
         }
     }
 
@@ -78,7 +78,7 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
     /// 配置输入参数
     /// </summary>
     /// <param name="step">步骤构建器</param>
-    protected override void ConfigureInputInternal(IStepBuilder<TData, LlmCallStepBody> step)
+    protected override void ConfigureInputInternal(IStepBuilder<TData, KnowledgeQueryStepBody> step)
     {
         // 确保配置已解析
         if (_stepConfig == null)
@@ -86,12 +86,12 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
 
         if (_stepConfig == null)
             return;
-
+        
         // 设置基本参数
-        step.Input(s => s.ModelName, ctx => _stepConfig.ModelName)
-             .Input(s => s.Prompt, ctx => _stepConfig.PromptTemplate)
-             .Input(s => s.Temperature, ctx => _stepConfig.Temperature)
-             .Input(s => s.MaxTokens, ctx => _stepConfig.MaxTokens)
+        step.Input(s => s.KnowledgeBaseId, ctx => _stepConfig.KnowledgeBaseId)
+             .Input(s => s.Query, ctx => _stepConfig.QueryTemplate)
+             .Input(s => s.TopK, ctx => _stepConfig.TopK)
+             .Input(s => s.SimilarityThreshold, ctx => _stepConfig.SimilarityThreshold)
              .Input(s => s.OutputKey, ctx => _stepConfig.OutputKey);
 
         // 设置变量映射
@@ -99,23 +99,6 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
         {
             step.Input(s => s.Variables, ctx => GetVariables(ctx, _stepConfig.VariableMappings));
         }
-    }
-
-    /// <summary>
-    /// 配置输出参数
-    /// </summary>
-    /// <param name="step">步骤构建器</param>
-    protected override void ConfigureOutputInternal(IStepBuilder<TData, LlmCallStepBody> step)
-    {
-        // 确保配置已解析
-        if (_stepConfig == null)
-            ParseConfiguration();
-
-        if (_stepConfig == null || string.IsNullOrEmpty(_stepConfig.OutputKey))
-            return;
-
-        // 此处暂时不实现自动输出映射，由 LlmCallStepBody 中的 RunAsync 方法手动处理输出
-        // 可通过修改 WorkflowData 类来引入事件总线或回调函数实现输出处理
     }
 
     /// <summary>

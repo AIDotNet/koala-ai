@@ -46,11 +46,11 @@
   display: flex;
   gap: 5px;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 10px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 100;
+  color: #000000;
 }
 
 .controls button {
@@ -60,7 +60,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #d9d9d9;
-  background-color: white;
+  background-color: rgb(0, 153, 255);
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
@@ -83,7 +83,7 @@
 }
 
 .autoArrangeButton svg {
-  color: #666;
+  color: #ffffff;
 }
 
 .autoArrangeButton:hover svg {
@@ -118,4 +118,19 @@
   font-size: 14px;
   pointer-events: none;
   z-index: 1;
+}
+
+.connectionLine {
+  pointer-events: none;
+  animation: dash 1s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(22, 119, 255, 0.4));
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 10;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 } 

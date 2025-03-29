@@ -307,8 +307,14 @@ const WorkflowDesigner = memo(() => {
       return;
     }
 
+    // 构建工作流定义JSON
+    const definition = JSON.stringify({
+      nodes,
+      edges,
+    });
+
     setIsLoading(true);
-    executeWorkflow(Number(workflowId))
+    executeWorkflow(Number(workflowId), definition)
       .then(response => {
         if (response && response.data) {
           message.success(`工作流开始执行，实例ID: ${response.data}`);

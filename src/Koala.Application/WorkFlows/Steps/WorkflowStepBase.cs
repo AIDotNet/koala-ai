@@ -1,8 +1,10 @@
 using System.Text.Json;
+using Koala.Application.WorkFlows.Definitions;
 using Koala.Domain.WorkFlows.Aggregates;
 using Koala.Domain.WorkFlows.Definitions;
 using WorkflowCore.Interface;
 using WorkflowCore.Models;
+using WorkflowCore.Services;
 
 namespace Koala.Domain.WorkFlows.Steps;
 
@@ -11,7 +13,7 @@ namespace Koala.Domain.WorkFlows.Steps;
 /// </summary>
 /// <typeparam name="TData">工作流数据类型</typeparam>
 /// <typeparam name="TStepBody">步骤体类型</typeparam>
-public abstract class WorkflowStepBase<TData, TStepBody> : IWorkflowStep<TData>
+public abstract class WorkflowStepBase<TData, TStepBody> : WorkflowStep<TStepBody>, IWorkflowStep<TData>
     where TData : WorkflowData, new()
     where TStepBody : IStepBody, new()
 {
@@ -60,13 +62,27 @@ public abstract class WorkflowStepBase<TData, TStepBody> : IWorkflowStep<TData>
             .Id(StepId)
             .Name(Name);
 
-        // 配置输入参数
-        step = (IStepBuilder<TData, TStepBody>)ConfigureInput((IStepBuilder<TData, IStepBody>)step);
+        // 应用输入参数配置 - 子类中实现
+        ConfigureInputInternal(step);
 
-        // 配置输出参数
-        step = (IStepBuilder<TData, TStepBody>)ConfigureOutput((IStepBuilder<TData, IStepBody>)step);
+        // 应用输出参数配置 - 子类中实现
+        ConfigureOutputInternal(step);
 
-        return (IStepBuilder<TData, IStepBody>)step;
+        return new StepBuilder<TData, IStepBody>(step.WorkflowBuilder, new WorkflowStep<IStepBody>()
+        {
+            CancelCondition = step.Step.CancelCondition,
+            Children = step.Step.Children,
+            CompensationStepId = step.Step.CompensationStepId,
+            ExternalId = step.Step.ExternalId,
+            Id = step.Step.Id,
+            Name = step.Step.Name,
+            ErrorBehavior = step.Step.ErrorBehavior,
+            Outcomes = step.Step.Outcomes,
+            RetryInterval = step.Step.RetryInterval,
+            Inputs = step.Step.Inputs,
+            Outputs = step.Step.Outputs,
+            ProceedOnCancel = step.Step.ProceedOnCancel,
+        });
     }
 
     /// <summary>
@@ -76,23 +92,23 @@ public abstract class WorkflowStepBase<TData, TStepBody> : IWorkflowStep<TData>
     public Type GetStepBodyType() => typeof(TStepBody);
 
     /// <summary>
-    /// 配置输入参数
+    /// 配置输入参数的内部实现
     /// </summary>
     /// <param name="step">步骤构建器</param>
-    /// <returns>步骤构建器</returns>
-    public virtual IStepBuilder<TData, IStepBody> ConfigureInput(IStepBuilder<TData, IStepBody> step)
+    protected virtual void ConfigureInputInternal(IStepBuilder<TData, TStepBody> step)
     {
-        return step;
+        // 这里使用正确的类型，子类可以重写此方法
+        // 默认实现为空
     }
 
     /// <summary>
-    /// 配置输出参数
+    /// 配置输出参数的内部实现
     /// </summary>
     /// <param name="step">步骤构建器</param>
-    /// <returns>步骤构建器</returns>
-    public virtual IStepBuilder<TData, IStepBody> ConfigureOutput(IStepBuilder<TData, IStepBody> step)
+    protected virtual void ConfigureOutputInternal(IStepBuilder<TData, TStepBody> step)
     {
-        return step;
+        // 这里使用正确的类型，子类可以重写此方法
+        // 默认实现为空
     }
 
     /// <summary>
@@ -133,4 +149,28 @@ public abstract class WorkflowStepBase<TData, TStepBody> : IWorkflowStep<TData>
         /// </summary>
         public Dictionary<string, string>? Outputs { get; set; }
     }
-} 
+
+    /// <summary>
+    /// 配置输入参数
+    /// </summary>
+    /// <param name="step">步骤构建器</param>
+    /// <returns>步骤构建器</returns>
+    public virtual IStepBuilder<TData, IStepBody> ConfigureInput(IStepBuilder<TData, IStepBody> step)
+    {
+        // 此方法为接口实现，但实际工作由ConfigureInputInternal处理
+        // 在实际使用中，应重写ConfigureInputInternal而非此方法
+        return step;
+    }
+
+    /// <summary>
+    /// 配置输出参数
+    /// </summary>
+    /// <param name="step">步骤构建器</param>
+    /// <returns>步骤构建器</returns>
+    public virtual IStepBuilder<TData, IStepBody> ConfigureOutput(IStepBuilder<TData, IStepBody> step)
+    {
+        // 此方法为接口实现，但实际工作由ConfigureOutputInternal处理
+        // 在实际使用中，应重写ConfigureOutputInternal而非此方法
+        return step;
+    }
+}

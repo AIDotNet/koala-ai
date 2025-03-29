@@ -13,6 +13,7 @@
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
       <PackageReference Include="Microsoft.SemanticKernel" Version="1.42.0" />
+      <PackageReference Include="WorkflowCore" Version="3.13.0" />
     </ItemGroup>
 
     <ItemGroup>

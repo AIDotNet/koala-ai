@@ -1,4 +1,5 @@
 using Koala.Domain.WorkFlows.Definitions;
+using Koala.Domain.WorkFlows.Interfaces;
 using Koala.Domain.WorkFlows.Steps;
 using WorkflowCore.Interface;
 
@@ -8,7 +9,7 @@ namespace Koala.Application.WorkFlows.Definitions;
 /// 工作流定义基类
 /// </summary>
 /// <typeparam name="TData">工作流数据类型</typeparam>
-public abstract class WorkflowDefinitionBase<TData> : IWorkflow<TData>
+public abstract class WorkflowDefinitionBase<TData> : Koala.Domain.WorkFlows.Interfaces.IWorkflow<TData>
     where TData : WorkflowData, new()
 {
     private readonly List<IWorkflowStep<TData>> _steps = new();

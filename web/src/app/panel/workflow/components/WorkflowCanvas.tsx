@@ -156,7 +156,7 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
             const handleX = node.position.x;
 
             // 增大检测半径，提高连接成功率
-            if (Math.abs(canvasX - handleX) < 20 && Math.abs(canvasY - handleY) < 20) {
+            if (Math.abs(canvasX - handleX) < 25 && Math.abs(canvasY - handleY) < 25) {
               return { nodeId: node.id, handleId: `input-${handleId}` };
             }
           }
@@ -172,7 +172,7 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
             const handleX = node.position.x + 200; // 节点宽度
 
             // 增大检测半径，提高连接成功率
-            if (Math.abs(canvasX - handleX) < 20 && Math.abs(canvasY - handleY) < 20) {
+            if (Math.abs(canvasX - handleX) < 25 && Math.abs(canvasY - handleY) < 25) {
               return { nodeId: node.id, handleId: `output-${handleId}` };
             }
           }
@@ -185,17 +185,22 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
 
   // 处理连接点mousedown
   const handleConnectionStart = (nodeId: string, handleId: string) => {
+    console.log(`Connection start: Node ${nodeId}, Handle ${handleId}`);
     setConnectionStartHandle({ nodeId, handleId });
   };
 
   // 处理连接点mouseup
   const handleConnectionEnd = (nodeId: string, handleId: string) => {
+    console.log(`Connection end: Node ${nodeId}, Handle ${handleId}`);
+    
     if (connectionStartHandle && connectionStartHandle.nodeId !== nodeId) {
       // 确定源节点和目标节点
       const sourceNodeId = connectionStartHandle.nodeId;
       const sourceHandleId = connectionStartHandle.handleId;
       const targetNodeId = nodeId;
       const targetHandleId = handleId;
+      
+      console.log(`Attempting to connect: ${sourceHandleId} -> ${targetHandleId}`);
 
       // 允许输出到输入的连接，或者输入到输出的连接
       if ((sourceHandleId.startsWith('output') && targetHandleId.startsWith('input')) || 
@@ -214,12 +219,25 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
           targetHandle = sourceHandleId.replace(/^(input|output)-/, '');
         }
         
-        onConnect({
-          source,
-          target,
-          sourceHandle,
-          targetHandle
-        });
+        // 检查是否已存在相同的连接
+        const connectionExists = edges.some(
+          edge => edge.source === source && 
+                  edge.target === target && 
+                  edge.sourceHandle === sourceHandle && 
+                  edge.targetHandle === targetHandle
+        );
+        
+        if (!connectionExists) {
+          onConnect({
+            source,
+            target,
+            sourceHandle,
+            targetHandle
+          });
+        } else {
+          // 可选：显示消息提示已存在连接
+          console.log('Connection already exists');
+        }
       }
     }
     setConnectionStartHandle(null);
@@ -293,7 +311,8 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
 
     // 使用贝塞尔曲线连接起点和鼠标位置 - 改进曲线形状
     const dx = Math.abs(mousePosition.x - sourceX);
-    const controlPointOffset = Math.max(60, dx * 0.4); // 增大偏移量，使曲线更明显
+    const dy = Math.abs(mousePosition.y - sourceY);
+    const controlPointOffset = Math.max(80, dx * 0.6); // 增大偏移量，使曲线更明显
 
     const controlPoint1X = sourceX + (isOutputHandle ? controlPointOffset : -controlPointOffset);
     const controlPoint1Y = sourceY;
@@ -312,14 +331,14 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
 
     if (nodes.length === 0) return;
 
-    // 创建节点依赖图
-    const nodeDependencies = new Map<string, Set<string>>();
-    const nodeChildren = new Map<string, Set<string>>();
+    // 创建节点依赖图 - 记录输入和输出依赖
+    const incomingEdges = new Map<string, string[]>();
+    const outgoingEdges = new Map<string, string[]>();
     
     // 初始化
     nodes.forEach(node => {
-      nodeDependencies.set(node.id, new Set());
-      nodeChildren.set(node.id, new Set());
+      incomingEdges.set(node.id, []);
+      outgoingEdges.set(node.id, []);
     });
     
     // 构建依赖关系
@@ -327,92 +346,162 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
       const sourceId = edge.source;
       const targetId = edge.target;
       
-      // 添加依赖关系
-      if (nodeDependencies.has(targetId)) {
-        nodeDependencies.get(targetId)?.add(sourceId);
-      }
-      
-      // 添加子节点关系
-      if (nodeChildren.has(sourceId)) {
-        nodeChildren.get(sourceId)?.add(targetId);
-      }
+      // 添加出入依赖关系
+      incomingEdges.get(targetId)?.push(sourceId);
+      outgoingEdges.get(sourceId)?.push(targetId);
     });
     
-    // 查找没有依赖的起始节点
+    // 查找起始节点（没有入边的节点）
     const startNodes: string[] = [];
-    nodeDependencies.forEach((deps, nodeId) => {
-      if (deps.size === 0) {
+    incomingEdges.forEach((incoming, nodeId) => {
+      if (incoming.length === 0) {
         startNodes.push(nodeId);
       }
     });
     
-    // 如果没有起始节点，则选择第一个节点
+    // 如果没有起始节点（可能存在环），则随机选一个节点作为起点
     if (startNodes.length === 0 && nodes.length > 0) {
       startNodes.push(nodes[0].id);
     }
     
-    // 层级分配
-    const nodeLevels = new Map<string, number>();
-    const assignLevels = (nodeId: string, level: number, visited: Set<string> = new Set()) => {
+    // 使用拓扑排序确定节点的水平位置（层级）
+    const horizontalLevels = new Map<string, number>();
+    const visited = new Set<string>();
+    const visiting = new Set<string>(); // 用于检测环
+    
+    const assignHorizontalLevel = (nodeId: string, level: number = 0) => {
       if (visited.has(nodeId)) return;
-      visited.add(nodeId);
+      if (visiting.has(nodeId)) {
+        // 检测到环，直接返回当前级别
+        horizontalLevels.set(nodeId, level);
+        return;
+      }
       
-      // 更新节点层级（取最大值以避免循环依赖问题）
-      const currentLevel = nodeLevels.get(nodeId) || 0;
-      nodeLevels.set(nodeId, Math.max(currentLevel, level));
+      visiting.add(nodeId);
       
-      // 递归处理子节点
-      const children = nodeChildren.get(nodeId) || new Set();
-      children.forEach(childId => {
-        assignLevels(childId, level + 1, visited);
+      // 更新节点水平级别（取最大值以处理有多个入边的情况）
+      const currentLevel = horizontalLevels.get(nodeId) || 0;
+      horizontalLevels.set(nodeId, Math.max(currentLevel, level));
+      
+      // 处理所有出边节点，递增层级
+      const nextNodes = outgoingEdges.get(nodeId) || [];
+      nextNodes.forEach(nextId => {
+        assignHorizontalLevel(nextId, level + 1);
       });
+      
+      visiting.delete(nodeId);
+      visited.add(nodeId);
     };
     
-    // 从每个起始节点开始分配层级
+    // 从每个起始节点开始分配水平层级
     startNodes.forEach(nodeId => {
-      assignLevels(nodeId, 0);
+      assignHorizontalLevel(nodeId, 0);
     });
     
-    // 按层级分组
-    const levels = new Map<number, string[]>();
-    nodeLevels.forEach((level, nodeId) => {
-      if (!levels.has(level)) {
-        levels.set(level, []);
-      }
-      levels.get(level)?.push(nodeId);
-    });
-    
-    // 对于没有分配到层级的节点，将其放在最后一层
-    const maxLevel = Math.max(...Array.from(levels.keys()), 0);
+    // 对于没有通过遍历分配到层级的节点，单独分配
     nodes.forEach(node => {
-      if (!nodeLevels.has(node.id)) {
-        if (!levels.has(maxLevel + 1)) {
-          levels.set(maxLevel + 1, []);
-        }
-        levels.get(maxLevel + 1)?.push(node.id);
+      if (!horizontalLevels.has(node.id)) {
+        // 查找最大层级，使用0作为默认值
+        const maxLevel = Math.max(...[...horizontalLevels.values()], 0);
+        horizontalLevels.set(node.id, maxLevel + 1);
       }
     });
     
-    // 计算每层的节点位置
-    const NODE_HORIZONTAL_SPACING = 300;
-    const NODE_VERTICAL_SPACING = 150;
+    // 按水平层级分组节点
+    const levelGroups = new Map<number, string[]>();
+    horizontalLevels.forEach((level, nodeId) => {
+      if (!levelGroups.has(level)) {
+        levelGroups.set(level, []);
+      }
+      levelGroups.get(level)?.push(nodeId);
+    });
+    
+    // 计算节点的垂直位置 - 使用力导向算法的简化版本
+    // 首先，在同一水平层级内，基于节点间的连接确定相对位置
+    const verticalPositions = new Map<string, number>();
+    
+    // 按水平层级处理垂直位置
+    Array.from(levelGroups.keys()).sort().forEach(level => {
+      const nodesInLevel = levelGroups.get(level) || [];
+      
+      if (nodesInLevel.length === 0) return;
+      
+      // 对于每个节点，尝试将其放置在其输入节点的垂直中心位置
+      nodesInLevel.forEach(nodeId => {
+        // 获取输入节点
+        const inputs = incomingEdges.get(nodeId) || [];
+        
+        if (inputs.length > 0) {
+          // 计算输入节点的垂直位置平均值
+          let sumY = 0;
+          let countInputsWithY = 0;
+          
+          inputs.forEach(inputId => {
+            if (verticalPositions.has(inputId)) {
+              sumY += verticalPositions.get(inputId) || 0;
+              countInputsWithY++;
+            }
+          });
+          
+          if (countInputsWithY > 0) {
+            // 将节点垂直位置设置为输入节点的平均位置
+            verticalPositions.set(nodeId, sumY / countInputsWithY);
+          } else {
+            // 如果输入节点还没有位置，使用当前节点的位置
+            const node = nodes.find(n => n.id === nodeId);
+            verticalPositions.set(nodeId, node ? node.position.y : level * 150);
+          }
+        } else {
+          // 如果没有输入节点，使用当前节点位置
+          const node = nodes.find(n => n.id === nodeId);
+          verticalPositions.set(nodeId, node ? node.position.y : level * 150);
+        }
+      });
+      
+      // 解决同一层级的垂直位置冲突
+      const MIN_VERTICAL_SPACING = 120; // 最小垂直间距
+      
+      // 对同一层级的节点按垂直位置排序
+      const sortedByY = [...nodesInLevel].sort((a, b) => {
+        const yA = verticalPositions.get(a) || 0;
+        const yB = verticalPositions.get(b) || 0;
+        return yA - yB;
+      });
+      
+      // 确保节点间有足够间距
+      for (let i = 1; i < sortedByY.length; i++) {
+        const prevNodeId = sortedByY[i - 1];
+        const currNodeId = sortedByY[i];
+        
+        const prevY = verticalPositions.get(prevNodeId) || 0;
+        const currY = verticalPositions.get(currNodeId) || 0;
+        
+        if (currY < prevY + MIN_VERTICAL_SPACING) {
+          verticalPositions.set(currNodeId, prevY + MIN_VERTICAL_SPACING);
+        }
+      }
+    });
+    
+    // 根据水平层级和垂直位置计算最终坐标
+    const HORIZONTAL_SPACING = 300; // 水平间距
     const targetPositions = new Map<string, { x: number, y: number }>();
     
-    // 计算新位置
-    levels.forEach((nodeIds, level) => {
-      const levelWidth = nodeIds.length * NODE_HORIZONTAL_SPACING;
-      const startX = -levelWidth / 2 + NODE_HORIZONTAL_SPACING / 2;
+    nodes.forEach(node => {
+      const hLevel = horizontalLevels.get(node.id) || 0;
+      // 使用计算好的垂直位置，如果没有，则使用当前位置
+      const vPos = verticalPositions.has(node.id) 
+        ? verticalPositions.get(node.id) || node.position.y
+        : node.position.y;
       
-      nodeIds.forEach((nodeId, index) => {
-        const x = startX + index * NODE_HORIZONTAL_SPACING;
-        const y = level * NODE_VERTICAL_SPACING + 100;
-        
-        targetPositions.set(nodeId, { x, y });
+      // 计算目标位置
+      targetPositions.set(node.id, {
+        x: hLevel * HORIZONTAL_SPACING + 100,
+        y: vPos
       });
     });
     
     // 应用动画效果
-    const ANIMATION_STEPS = 20;
+    const ANIMATION_STEPS = 30;
     let step = 0;
     
     // 创建初始状态的位置映射
@@ -557,6 +646,7 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
               strokeWidth={2.5}
               strokeDasharray="5,5"
               fill="none"
+              className={styles.connectionLine}
             />
           )}
         </svg>

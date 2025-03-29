@@ -1,57 +1,54 @@
 using System.Text.Json;
-using Koala.Application.WorkFlows.Steps;
 using Koala.Domain.WorkFlows.Definitions;
+using Koala.Domain.WorkFlows.Steps;
 using WorkflowCore.Interface;
+using WorkflowCore.Models;
+using WorkflowCore.Primitives;
 
-namespace Koala.Domain.WorkFlows.Steps;
+namespace Koala.Application.WorkFlows.Steps;
 
 /// <summary>
-/// LLM调用步骤
+/// 条件分支步骤
 /// </summary>
 /// <typeparam name="TData">工作流数据类型</typeparam>
-public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
+public class ConditionalBranchStep<TData> : WorkflowStepBase<TData, ConditionalBranchStepBody>
     where TData : WorkflowData, new()
 {
     /// <summary>
-    /// LLM调用步骤配置
+    /// 条件分支步骤配置
     /// </summary>
-    public class LlmCallStepConfig
+    public class ConditionalBranchStepConfig
     {
         /// <summary>
-        /// 模型名称
+        /// 条件表达式
         /// </summary>
-        public string ModelName { get; set; } = string.Empty;
+        public string Condition { get; set; } = string.Empty;
 
         /// <summary>
-        /// 提示词模板
-        /// </summary>
-        public string PromptTemplate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 温度
-        /// </summary>
-        public float Temperature { get; set; } = 0.7f;
-
-        /// <summary>
-        /// 最大生成长度
-        /// </summary>
-        public int MaxTokens { get; set; } = 2000;
-
-        /// <summary>
-        /// 输入变量映射
+        /// 条件变量映射
         /// </summary>
         public Dictionary<string, string>? VariableMappings { get; set; }
 
         /// <summary>
-        /// 输出结果存储键
+        /// 条件结果存储键
         /// </summary>
-        public string? OutputKey { get; set; }
+        public string? ResultKey { get; set; }
+
+        /// <summary>
+        /// 条件为真时的分支ID
+        /// </summary>
+        public string? TrueBranchId { get; set; }
+
+        /// <summary>
+        /// 条件为假时的分支ID
+        /// </summary>
+        public string? FalseBranchId { get; set; }
     }
 
     /// <summary>
     /// 步骤配置
     /// </summary>
-    private LlmCallStepConfig? _stepConfig;
+    private ConditionalBranchStepConfig? _stepConfig;
 
     /// <summary>
     /// 解析配置
@@ -65,12 +62,12 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
 
         try
         {
-            _stepConfig = JsonSerializer.Deserialize<LlmCallStepConfig>(Configuration);
+            _stepConfig = JsonSerializer.Deserialize<ConditionalBranchStepConfig>(Configuration);
         }
         catch (Exception)
         {
             // 配置解析失败，使用默认值
-            _stepConfig = new LlmCallStepConfig();
+            _stepConfig = new ConditionalBranchStepConfig();
         }
     }
 
@@ -78,7 +75,7 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
     /// 配置输入参数
     /// </summary>
     /// <param name="step">步骤构建器</param>
-    protected override void ConfigureInputInternal(IStepBuilder<TData, LlmCallStepBody> step)
+    protected override void ConfigureInputInternal(IStepBuilder<TData, ConditionalBranchStepBody> step)
     {
         // 确保配置已解析
         if (_stepConfig == null)
@@ -86,13 +83,12 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
 
         if (_stepConfig == null)
             return;
-
+        
         // 设置基本参数
-        step.Input(s => s.ModelName, ctx => _stepConfig.ModelName)
-             .Input(s => s.Prompt, ctx => _stepConfig.PromptTemplate)
-             .Input(s => s.Temperature, ctx => _stepConfig.Temperature)
-             .Input(s => s.MaxTokens, ctx => _stepConfig.MaxTokens)
-             .Input(s => s.OutputKey, ctx => _stepConfig.OutputKey);
+        step.Input(s => s.Condition, _ => _stepConfig.Condition)
+             .Input(s => s.ResultKey, _ => _stepConfig.ResultKey)
+             .Input(s => s.TrueBranchId, _ => _stepConfig.TrueBranchId)
+             .Input(s => s.FalseBranchId, _ => _stepConfig.FalseBranchId);
 
         // 设置变量映射
         if (_stepConfig.VariableMappings != null && _stepConfig.VariableMappings.Count > 0)
@@ -102,20 +98,28 @@ public class LlmCallStep<TData> : WorkflowStepBase<TData, LlmCallStepBody>
     }
 
     /// <summary>
-    /// 配置输出参数
+    /// 配置输出和下一步骤
     /// </summary>
     /// <param name="step">步骤构建器</param>
-    protected override void ConfigureOutputInternal(IStepBuilder<TData, LlmCallStepBody> step)
+    protected override void ConfigureOutputInternal(IStepBuilder<TData, ConditionalBranchStepBody> step)
     {
         // 确保配置已解析
         if (_stepConfig == null)
             ParseConfiguration();
 
-        if (_stepConfig == null || string.IsNullOrEmpty(_stepConfig.OutputKey))
+        if (_stepConfig == null)
             return;
 
-        // 此处暂时不实现自动输出映射，由 LlmCallStepBody 中的 RunAsync 方法手动处理输出
-        // 可通过修改 WorkflowData 类来引入事件总线或回调函数实现输出处理
+        // 配置条件分支 - 当条件步骤执行后会返回"True"或"False"的outcome
+        if (!string.IsNullOrEmpty(_stepConfig.TrueBranchId))
+        {
+            step.When("True").EndWorkflow();
+        }
+
+        if (!string.IsNullOrEmpty(_stepConfig.FalseBranchId))
+        {
+            step.When("False").EndWorkflow();
+        }
     }
 
     /// <summary>

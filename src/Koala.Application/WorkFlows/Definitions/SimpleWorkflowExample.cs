@@ -1,10 +1,11 @@
 using System.Text.Json;
 using Koala.Application.WorkFlows.Definitions;
+using Koala.Domain.WorkFlows.Definitions;
 using Koala.Domain.WorkFlows.Steps;
 using WorkflowCore.Interface;
 using WorkflowCore.Models;
 
-namespace Koala.Domain.WorkFlows.Definitions;
+namespace Koala.Application.WorkFlows.Definitions;
 
 /// <summary>
 /// 简单工作流数据
@@ -105,16 +106,13 @@ public class InlineFunctionStep<TData> : WorkflowStepBase<TData, InlineFunctionS
     /// 配置输入参数
     /// </summary>
     /// <param name="step">步骤构建器</param>
-    /// <returns>步骤构建器</returns>
-    public override IStepBuilder<TData, IStepBody> ConfigureInput(IStepBuilder<TData, IStepBody> step)
+    protected override void ConfigureInputInternal(IStepBuilder<TData, InlineFunctionStepBody<TData>> step)
     {
-        var typedStep = StepBuilderConverter.ConvertToTyped<TData, InlineFunctionStepBody<TData>>(step);
-        
         // 设置执行函数
-        typedStep.Input(s => s.ExecuteFunction, _ => Execute);
-        
-        return StepBuilderConverter.ConvertToInterface<TData, InlineFunctionStepBody<TData>>(typedStep);
+        step.Input(s => s.ExecuteFunction, _ => Execute);
     }
+
+    public override Type BodyType { get; }
 }
 
 /// <summary>

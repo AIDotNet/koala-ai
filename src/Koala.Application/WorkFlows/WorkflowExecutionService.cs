@@ -7,6 +7,7 @@ using Koala.Domain.WorkFlows.Aggregates;
 using Koala.Domain.WorkFlows.Definitions;
 using Koala.Domain.WorkFlows.Enums;
 using MapsterMapper;
+using Microsoft.Extensions.DependencyInjection;
 using WorkflowCore.Interface;
 
 namespace Koala.Application.WorkFlows;
@@ -21,6 +22,7 @@ public class WorkflowExecutionService : IWorkflowService
     private readonly IRepository<WorkflowInstance> _instanceRepository;
     private readonly IUserContext _userContext;
     private readonly IMapper _mapper;
+    private readonly IServiceProvider _serviceProvider;
 
     /// <summary>
     /// 初始化工作流执行服务
@@ -30,17 +32,19 @@ public class WorkflowExecutionService : IWorkflowService
     /// <param name="instanceRepository">实例仓储</param>
     /// <param name="userContext">用户上下文</param>
     /// <param name="mapper"></param>
+    /// <param name="serviceProvider"></param>
     public WorkflowExecutionService(
         IWorkflowHost workflowHost,
         IRepository<Workflow> workflowRepository,
         IRepository<WorkflowInstance> instanceRepository,
-        IUserContext userContext, IMapper mapper)
+        IUserContext userContext, IMapper mapper, IServiceProvider serviceProvider)
     {
         _workflowHost = workflowHost;
         _workflowRepository = workflowRepository;
         _instanceRepository = instanceRepository;
         _userContext = userContext;
         _mapper = mapper;
+        _serviceProvider = serviceProvider;
     }
 
     /// <summary>
@@ -225,47 +229,67 @@ public class WorkflowExecutionService : IWorkflowService
 
         try
         {
-            // 实际的工作流启动实现需要集成到WorkflowCore
-            // 此处为示例实现，需要根据实际需求调整
-            string workflowCoreId;
+            // 初始化工作流引擎
+            var workflowHost = _serviceProvider.GetRequiredService<IWorkflowHost>();
 
-            // 根据JSON定义动态创建和执行工作流，实际实现需要完善
-            if (!string.IsNullOrEmpty(workflow.Definition))
-            {
-                var data = new WorkflowData();
-                if (!string.IsNullOrEmpty(inputData))
-                {
-                    try
-                    {
-                        var inputDict = JsonSerializer.Deserialize<Dictionary<string, object>>(inputData);
-                        if (inputDict != null)
-                        {
-                            foreach (var item in inputDict)
-                            {
-                                data.SetProperty(item.Key, item.Value);
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        // 忽略输入数据格式错误
-                    }
-                }
+            // 确保工作流引擎已初始化
+            workflowHost.InitializeKoalaWorkflow(_serviceProvider, workflow);
 
-                // 启动工作流，使用实例参考ID作为相关ID
-                // 实际实现需要根据工作流定义动态生成工作流
-                workflowCoreId = await _workflowHost.StartWorkflow(
-                    "SimpleWorkflow", // 实际应使用动态生成的工作流ID
-                    1, // 版本号
-                    data, // 数据
-                    referenceId); // 相关ID
-            }
-            else
+            // 检查工作流定义
+            if (string.IsNullOrEmpty(workflow.Definition))
             {
+                instance.Fail("工作流定义为空");
+                await _instanceRepository.UpdateAsync(instance);
+                await _instanceRepository.SaveChangesAsync();
                 throw new InvalidOperationException("工作流定义为空");
             }
 
-            // 更新工作流实例Workflow Core ID
+            // 创建并解析工作流数据
+            var data = new WorkflowData();
+            if (!string.IsNullOrEmpty(inputData))
+            {
+                try
+                {
+                    var inputDict = JsonSerializer.Deserialize<Dictionary<string, object>>(inputData);
+                    if (inputDict != null)
+                    {
+                        foreach (var item in inputDict)
+                        {
+                            data.SetProperty(item.Key, item.Value);
+                        }
+                    }
+                }
+                catch (JsonException ex)
+                {
+                    // 记录输入数据解析错误但继续执行
+                    instance.Fail($"输入数据格式错误: {ex.Message}");
+                    await _instanceRepository.UpdateAsync(instance);
+                    await _instanceRepository.SaveChangesAsync();
+                    throw new ArgumentException($"输入数据格式错误: {ex.Message}", ex);
+                }
+            }
+
+            // 启动工作流实例
+            string workflowCoreId;
+            try
+            {
+                // 使用工作流ID和版本作为工作流标识
+                workflowCoreId = await workflowHost.StartWorkflow(
+                    workflowId.ToString(), // 工作流ID
+                    workflow.Version, // 版本号
+                    data, // 工作流数据
+                    referenceId); // 关联ID
+            }
+            catch (Exception ex)
+            {
+                // 记录工作流启动失败
+                instance.Fail($"工作流启动失败: {ex.Message}");
+                await _instanceRepository.UpdateAsync(instance);
+                await _instanceRepository.SaveChangesAsync();
+                throw new InvalidOperationException($"工作流启动失败: {ex.Message}", ex);
+            }
+
+            // 更新工作流实例的 Workflow Core 实例ID
             instance.SetWorkflowCoreInstanceId(workflowCoreId);
             await _instanceRepository.UpdateAsync(instance);
             await _instanceRepository.SaveChangesAsync();
@@ -274,10 +298,14 @@ public class WorkflowExecutionService : IWorkflowService
         }
         catch (Exception ex)
         {
-            // 标记实例失败
-            instance.Fail(ex.Message);
-            await _instanceRepository.UpdateAsync(instance);
-            await _instanceRepository.SaveChangesAsync();
+            // 如果尚未设置失败状态，则设置
+            if (instance.Status != WorkflowInstanceStatusEnum.Failed)
+            {
+                instance.Fail(ex.Message);
+                await _instanceRepository.UpdateAsync(instance);
+                await _instanceRepository.SaveChangesAsync();
+            }
+
             throw;
         }
     }

@@ -1,7 +1,9 @@
 ﻿using Koala.Application;
+using Koala.Application.WorkFlows;
 using Koala.EntityFrameworkCore.EntityFrameworkCore;
 using Koala.HttpApi.Extensions;
 using Koala.HttpApi.Middleware;
+using WorkflowCore.Interface;
 
 namespace Koala.HttpApi.Host.Extensions;
 
@@ -53,6 +55,7 @@ public static class ServiceExtensions
         builder.UseStaticFiles();
 
         builder.UseResponseCompression();
+
 
         // 启动时自动迁移数据库
         var startMigrate = configuration["StartRunMigrations"];
