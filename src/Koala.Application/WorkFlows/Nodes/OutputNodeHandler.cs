@@ -11,13 +11,13 @@ public class OutputNodeHandler : INodeHandler
     /// 获取支持的节点类型
     /// </summary>
     public string NodeType => "output";
-    
+
     /// <summary>
     /// 处理节点
     /// </summary>
     /// <param name="node">节点</param>
     /// <param name="workflowData">工作流数据</param>
-    public void HandleNode(FlowNode node, WorkflowData workflowData)
+    public Task HandleNode(FlowNode node, WorkflowData workflowData)
     {
         // 输出节点，将输入存储到result
         var result = workflowData.GetProperty("result");
@@ -25,5 +25,8 @@ public class OutputNodeHandler : INodeHandler
         {
             workflowData.SetProperty("result", result);
         }
+        
+        
+        return Task.CompletedTask;
     }
 } 

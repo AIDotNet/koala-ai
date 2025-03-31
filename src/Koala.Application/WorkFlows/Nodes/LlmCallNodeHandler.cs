@@ -11,13 +11,13 @@ public class LlmCallNodeHandler : INodeHandler
     /// 获取支持的节点类型
     /// </summary>
     public string NodeType => "llm-call";
-    
+
     /// <summary>
     /// 处理节点
     /// </summary>
     /// <param name="node">节点</param>
     /// <param name="workflowData">工作流数据</param>
-    public void HandleNode(FlowNode node, WorkflowData workflowData)
+    public Task HandleNode(FlowNode node, WorkflowData workflowData)
     {
         // var kernel = KernelFactory.GetKernel(node.)
         
@@ -32,5 +32,8 @@ public class LlmCallNodeHandler : INodeHandler
         
         // 设置输出
         workflowData.SetProperty("output", response);
+        
+        
+        return Task.CompletedTask;
     }
 } 

@@ -791,6 +791,74 @@ namespace Koala.EntityFrameworkCore.PostgreSql.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Koala.Domain.Users.Aggregates.UserModelProvider", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text")
+                        .HasComment("用户模型提供者ID");
+
+                    b.Property<string>("ApiKey")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasComment("API密钥");
+
+                    b.Property<DateTimeOffset?>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasComment("描述");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Endpoint")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasComment("API端点");
+
+                    b.Property<string>("ModelIds")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ModelType")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasComment("模型类型");
+
+                    b.Property<DateTimeOffset?>("ModificationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Modifier")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasComment("名称");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Creator");
+
+                    b.HasIndex("ModelType")
+                        .IsUnique();
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasDatabaseName("IX_UserModelProvider_Name");
+
+                    b.ToTable("user_model_providers", null, t =>
+                        {
+                            t.HasComment("用户模型提供者");
+                        });
+                });
+
             modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.Workflow", b =>
                 {
                     b.Property<long>("Id")

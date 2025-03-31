@@ -43,6 +43,8 @@ public interface IContext
     public DbSet<WorkflowConnection> WorkflowConnections { get; set; }
 
     public DbSet<WorkflowNode> WorkflowNodes { get; set; }
+    
+    public DbSet<UserModelProvider> UserModelProviders { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 

@@ -791,6 +791,74 @@ namespace Koala.EntityFrameworkCore.SqlServer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Koala.Domain.Users.Aggregates.UserModelProvider", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)")
+                        .HasComment("用户模型提供者ID");
+
+                    b.Property<string>("ApiKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("API密钥");
+
+                    b.Property<DateTimeOffset?>("CreationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("描述");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Endpoint")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("API端点");
+
+                    b.Property<string>("ModelIds")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModelType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
+                        .HasComment("模型类型");
+
+                    b.Property<DateTimeOffset?>("ModificationTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Modifier")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
+                        .HasComment("名称");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Creator");
+
+                    b.HasIndex("ModelType")
+                        .IsUnique();
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasDatabaseName("IX_UserModelProvider_Name");
+
+                    b.ToTable("user_model_providers", null, t =>
+                        {
+                            t.HasComment("用户模型提供者");
+                        });
+                });
+
             modelBuilder.Entity("Koala.Domain.WorkFlows.Aggregates.Workflow", b =>
                 {
                     b.Property<long>("Id")

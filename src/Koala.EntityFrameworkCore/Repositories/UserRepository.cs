@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Koala.EntityFrameworkCore.Repositories;
 
-public class UserRepository(IContext context) : Repository<User>(context),IUserRepository
+public class UserRepository(IContext context) : Repository<User>(context), IUserRepository
 {
     public async Task<User> GetAsync(string userName)
     {
@@ -20,6 +20,11 @@ public class UserRepository(IContext context) : Repository<User>(context),IUserR
     public async Task<User> CreateAsync(User user)
     {
         await context.Users.AddAsync(user);
+
+        var userModelProvider = UserModelProvider.CreateDefault(user.Id);
+
+        await context.UserModelProviders.AddAsync(userModelProvider);
+
         await context.SaveChangesAsync();
         return user;
     }

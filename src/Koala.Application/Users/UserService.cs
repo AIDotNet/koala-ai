@@ -65,4 +65,20 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IUserCo
 
         return mapper.Map<UserDto>(user);
     }
+    
+    /// <summary>
+    /// 获取当前用户的模型提供者
+    /// </summary>
+    /// <returns></returns>
+    public async Task<UserModelProviderDto> GetCurrentModelProviderAsync()
+    {
+        var user = await userRepository.GetAsync(Guid.Parse(userContext.UserId));
+
+        if (user == null)
+        {
+            throw new UnauthorizedAccessException();
+        }
+
+        return mapper.Map<UserModelProviderDto>(user);
+    }
 }
