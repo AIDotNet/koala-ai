@@ -80,9 +80,10 @@ public interface IWorkflowService
     /// 执行工作流实例
     /// </summary>
     /// <param name="workflowId">工作流ID</param>
+    /// <param name="input"></param>
     /// <param name="inputData">输入数据（JSON格式）</param>
     /// <returns>工作流实例ID</returns>
-    Task<string> ExecuteWorkflowAsync(long workflowId, string? inputData = null);
+    Task<string> ExecuteWorkflowAsync(long workflowId,Dictionary<string,string> input, string? inputData = null);
 
     /// <summary>
     /// 暂停工作流实例

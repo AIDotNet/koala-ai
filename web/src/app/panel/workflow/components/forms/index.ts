@@ -3,6 +3,7 @@ import KnowledgeQueryNodeForm from './KnowledgeQueryNodeForm';
 import CustomCodeNodeForm from './CustomCodeNodeForm';
 import LoopNodeForm from './LoopNodeForm';
 import SelectorNodeForm from './SelectorNodeForm';
+import InputNodeForm from './InputNodeForm';
 import NodeFormFactory from './NodeFormFactory';
 
 export {
@@ -11,6 +12,7 @@ export {
   CustomCodeNodeForm,
   LoopNodeForm,
   SelectorNodeForm,
+  InputNodeForm,
   NodeFormFactory
 };
 

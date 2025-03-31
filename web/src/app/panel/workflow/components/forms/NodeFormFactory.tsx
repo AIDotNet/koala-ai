@@ -5,6 +5,7 @@ import KnowledgeQueryNodeForm from './KnowledgeQueryNodeForm';
 import CustomCodeNodeForm from './CustomCodeNodeForm';
 import LoopNodeForm from './LoopNodeForm';
 import SelectorNodeForm from './SelectorNodeForm';
+import InputNodeForm from './InputNodeForm';
 import { Typography } from 'antd';
 
 const { Text } = Typography;
@@ -70,7 +71,12 @@ const NodeFormFactory: React.FC<NodeFormFactoryProps> = ({
       );
       
     case 'input':
-      return <Text>输入节点无需配置附加参数</Text>;
+      return (
+        <InputNodeForm
+          node={node}
+          updateNode={updateNode}
+        />
+      );
       
     case 'output':
       return <Text>输出节点无需配置附加参数</Text>;

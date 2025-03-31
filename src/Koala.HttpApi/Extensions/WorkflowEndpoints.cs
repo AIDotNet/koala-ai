@@ -56,7 +56,7 @@ public static class WorkflowEndpoints
         workflow.MapPost("{id}/execute",
             [EndpointSummary("执行工作流"), EndpointDescription("执行工作流")]
             async (IWorkflowService service, long id, ExecuteWorkflowInput input) =>
-                await service.ExecuteWorkflowAsync(id, input.InputData));
+                await service.ExecuteWorkflowAsync(id, input.InputParameters, input.InputData));
 
         workflow.MapGet("instance/{instanceId}",
             [EndpointSummary("获取工作流实例详情"), EndpointDescription("获取工作流实例详情")]

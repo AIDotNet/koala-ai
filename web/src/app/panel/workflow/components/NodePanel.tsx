@@ -37,7 +37,8 @@ const nodeTypes: NodeTypeData[] = [
     category: 'io',
     data: {
       inputs: {}, 
-      outputs: { output: 'any' }
+      outputs: { output: 'any' },
+      label: '输入'
     }
   },
   {
@@ -60,7 +61,12 @@ const nodeTypes: NodeTypeData[] = [
     description: '调用大语言模型',
     category: 'ai',
     data: {
-      inputs: { prompt: 'string' },
+      inputs: { 
+        prompt: 'string',
+        context: 'string',
+        system: 'string',
+        question: 'string'
+      },
       outputs: { output: 'string' },
       modelId: 'gpt-4o',
       label: 'LLM调用'

@@ -1,6 +1,6 @@
 import { memo, useState, useCallback, useEffect, } from 'react';
 import { Flexbox } from 'react-layout-kit';
-import { Button, Card, Drawer, Space, Tabs, Typography, theme, message, Input, Form, List, Select } from 'antd';
+import { Button, Card, Drawer, Space, Tabs, Typography, theme, message, Input, Form, List, Select, Modal, InputNumber, Switch } from 'antd';
 import { ArrowLeft, Save, Zap, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import styles from './WorkflowDesigner.module.css';
@@ -15,6 +15,9 @@ const { TabPane } = Tabs;
 const { useToken } = theme;
 const { Option } = Select;
 
+// 导入Json类型
+
+// WorkflowNode定义
 export interface WorkflowNode {
   id: string;
   type: string;
@@ -87,6 +90,8 @@ const WorkflowDesigner = memo(() => {
   const [workflowDescription, setWorkflowDescription] = useState('');
   const [workflowTags, setWorkflowTags] = useState('');
   const [workspaceId, setWorkspaceId] = useState<number>(1); // 默认工作空间ID，实际应从上下文获取
+  // 为输入参数表单创建Form实例
+  const [inputParamsForm] = Form.useForm();
 
   // 加载工作流数据
   useEffect(() => {
@@ -131,9 +136,9 @@ const WorkflowDesigner = memo(() => {
               label: '输出',
               nodeType: 'output',
               inputs: {
-                'result': 'any'
+                'text': 'string'
               },
-              outputs: {}
+              outputs: {} // 输出节点不需要输出参数
             }
           });
         }
@@ -307,26 +312,147 @@ const WorkflowDesigner = memo(() => {
       return;
     }
 
-    // 构建工作流定义JSON
-    const definition = JSON.stringify({
-      nodes,
-      edges,
+    // 查找输入节点及其参数
+    const inputNode = nodes.find(node => node.data.nodeType === 'input');
+    if (!inputNode) {
+      message.error('工作流缺少输入节点');
+      return;
+    }
+
+    // 获取输入节点的输出参数（这些是工作流的输入参数）
+    const inputParams = inputNode.data.outputs || {};
+    const paramKeys = Object.keys(inputParams);
+
+    if (paramKeys.length === 0) {
+      message.error('输入节点没有定义任何参数');
+      return;
+    }
+
+    // 创建一个初始值对象
+    const initialValues: Record<string, any> = {};
+    paramKeys.forEach(key => {
+      // 根据类型提供适当的默认值
+      const paramType = inputParams[key];
+      switch (paramType) {
+        case 'string':
+          initialValues[key] = '';
+          break;
+        case 'number':
+          initialValues[key] = 0;
+          break;
+        case 'boolean':
+          initialValues[key] = false;
+          break;
+        case 'array':
+          initialValues[key] = [];
+          break;
+        case 'object':
+          initialValues[key] = {};
+          break;
+        default:
+          initialValues[key] = null;
+      }
     });
 
-    setIsLoading(true);
-    executeWorkflow(Number(workflowId), definition)
-      .then(response => {
-        if (response && response.data) {
-          message.success(`工作流开始执行，实例ID: ${response.data}`);
+    // 使用组件顶层定义的表单实例，重置表单并设置初始值
+    inputParamsForm.resetFields();
+    inputParamsForm.setFieldsValue(initialValues);
+
+    // 显示输入参数表单弹窗
+    Modal.confirm({
+      title: '输入工作流参数',
+      icon: null,
+      content: (
+        <Form form={inputParamsForm} layout="vertical">
+          {paramKeys.map(key => {
+            const paramType = inputParams[key];
+            // 根据参数类型渲染不同的表单控件
+            switch (paramType) {
+              case 'string':
+                return (
+                  <Form.Item key={key} name={key} label={key}>
+                    <Input placeholder={`请输入${key}`} />
+                  </Form.Item>
+                );
+              case 'number':
+                return (
+                  <Form.Item key={key} name={key} label={key}>
+                    <InputNumber placeholder={`请输入${key}`} style={{ width: '100%' }} />
+                  </Form.Item>
+                );
+              case 'boolean':
+                return (
+                  <Form.Item key={key} name={key} label={key} valuePropName="checked">
+                    <Switch />
+                  </Form.Item>
+                );
+              default:
+                return (
+                  <Form.Item key={key} name={key} label={key}>
+                    <Input.TextArea placeholder={`请输入${key} (JSON格式)`} rows={4} />
+                  </Form.Item>
+                );
+            }
+          })}
+        </Form>
+      ),
+      width: 500,
+      okText: '执行',
+      cancelText: '取消',
+      onOk: async () => {
+        try {
+          // 获取表单值
+          const values = await inputParamsForm.validateFields();
+
+          // 处理特殊类型的输入值
+          const processedValues: Record<string, any> = {};
+          
+          Object.keys(values).forEach(key => {
+            const paramType = inputParams[key];
+            const value = values[key];
+            debugger;
+
+            if (paramType === 'array' || paramType === 'object') {
+              try {
+                // 尝试将字符串解析为JSON对象或数组
+                processedValues[key] = typeof value === 'string' ? JSON.parse(value) : value;
+              } catch (error) {
+                // 如果解析失败，使用原始值
+                processedValues[key] = value;
+              }
+            } else {
+              processedValues[key] = value;
+            }
+          });
+
+          // 执行工作流
+          setIsLoading(true);
+          
+          // 调用API执行工作流
+          executeWorkflow(Number(workflowId), {
+            inputData:JSON.stringify({
+              nodes,
+              edges,
+            }),
+            inputParameters:processedValues
+          })
+            .then(response => {
+              if (response && response.data) {
+                message.success(`工作流开始执行，实例ID: ${response.data}`);
+              }
+            })
+            .catch(error => {
+              console.error('执行工作流失败:', error);
+              message.error('执行工作流失败: ' + (error.message || '未知错误'));
+            })
+            .finally(() => {
+              setIsLoading(false);
+            });
+        } catch (error) {
+          console.error('表单验证失败:', error);
         }
-      })
-      .catch(error => {
-        console.error('执行工作流失败:', error);
-        message.error('执行工作流失败');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      }
+    });
   };
 
   // 返回列表

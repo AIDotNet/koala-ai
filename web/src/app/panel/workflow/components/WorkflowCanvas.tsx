@@ -608,6 +608,11 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
     onNodesChange([{ id: nodeId, type: 'remove' }]);
   };
 
+  // 添加handleEdgeDelete函数
+  const handleEdgeDelete = (edgeId: string) => {
+    onEdgesChange([{ id: edgeId, type: 'remove' }]);
+  };
+
   return (
     <div
       className={styles.canvas}
@@ -635,6 +640,7 @@ export const WorkflowCanvas = memo<WorkflowCanvasProps>((props) => {
               key={edge.id}
               edge={edge}
               nodes={nodes}
+              onEdgeDelete={handleEdgeDelete}
             />
           ))}
 

@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Form, Input, Typography } from 'antd';
+import { Form, Input, Typography, Alert } from 'antd';
 import { WorkflowNode } from '../../WorkflowDesigner';
-import ModelSelector from '@/components/ModelSelector';
-import ModelConfigManager from '../../components/ModelSelector';
-import { ModelGroup } from '@/components/ModelSelector';
+import ModelSelector, { ModelGroup } from '@/components/ModelSelector';
 import { initModelConfig } from '@/utils/modelConfigHelper';
 
 const { Text } = Typography;
@@ -23,6 +21,7 @@ const LLMCallNodeForm: React.FC<LLMCallNodeFormProps> = ({
   const [modelGroups, setModelGroups] = useState<ModelGroup[]>([]);
   const [forceUpdateKey, setForceUpdateKey] = useState(0);
   const [selectedModelId, setSelectedModelId] = useState(node.data.modelId || '');
+  const [availableParams, setAvailableParams] = useState<string[]>([]);
 
   // 初始化模型数据和selectedModelId
   useEffect(() => {
@@ -37,6 +36,13 @@ const LLMCallNodeForm: React.FC<LLMCallNodeFormProps> = ({
       setSelectedModelId(node.data.modelId || '');
     }
   }, [node.data.modelId]);
+
+  // 获取输入参数列表
+  useEffect(() => {
+    if (node.data.inputs) {
+      setAvailableParams(Object.keys(node.data.inputs));
+    }
+  }, [node.data.inputs]);
 
   // 处理表单值变化
   const handleValuesChange = (_changedValues: any, allValues: any) => {
@@ -100,10 +106,28 @@ const LLMCallNodeForm: React.FC<LLMCallNodeFormProps> = ({
         />
       </Form.Item>
       
-      <Form.Item label="提示词">
+      <Form.Item label="提示词模板">
         <Input.TextArea 
           rows={4} 
-          placeholder="输入提示词模板"
+          placeholder="输入提示词模板，可以使用 {{参数名}} 引用输入参数"
+        />
+        {availableParams.length > 0 && (
+          <div style={{ marginTop: 8 }}>
+            <Text type="secondary">
+              可用参数: {availableParams.map(param => (
+                <Text key={param} code style={{ marginRight: 8 }}>
+                  {`{{${param}}}`}
+                </Text>
+              ))}
+            </Text>
+          </div>
+        )}
+        <Alert
+          style={{ marginTop: 8 }}
+          message="提示词模板支持动态参数"
+          description="您可以使用 {{参数名}} 格式引用已连接的输入参数。例如：'请总结以下内容：{{context}}'"
+          type="info"
+          showIcon
         />
       </Form.Item>
       

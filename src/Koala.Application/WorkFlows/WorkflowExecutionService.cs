@@ -4,22 +4,116 @@ using Koala.Application.Contract.WorkFlows.Dto;
 using Koala.Core;
 using Koala.Data.Repositories;
 using Koala.Domain.WorkFlows.Aggregates;
-using Koala.Domain.WorkFlows.Definitions;
 using Koala.Domain.WorkFlows.Enums;
 using MapsterMapper;
 using Microsoft.Extensions.DependencyInjection;
 using WorkflowCore.Interface;
+using WorkflowCore.Models;
+using StepInstance = Koala.Domain.WorkFlows.Aggregates.WorkflowInstance;
+using System.Reflection;
 
 namespace Koala.Application.WorkFlows;
+
+/// <summary>
+/// 工作流数据类，用于存储工作流执行过程中的数据
+/// </summary>
+public class WorkflowData
+{
+    private readonly Dictionary<string, object> _properties = new();
+    private readonly Dictionary<string, string> _inputs = new();
+
+    /// <summary>
+    /// 获取属性值
+    /// </summary>
+    /// <param name="name">属性名</param>
+    /// <returns>属性值</returns>
+    public object? GetProperty(string name)
+    {
+        return _properties.GetValueOrDefault(name);
+    }
+
+    /// <summary>
+    /// 设置属性值
+    /// </summary>
+    /// <param name="name">属性名</param>
+    /// <param name="value">属性值</param>
+    public void SetProperty(string name, object value)
+    {
+        _properties[name] = value;
+    }
+
+    public void SetInput(string name, object value)
+    {
+        _inputs[name] = value.ToString() ?? "";
+    }
+
+    public Dictionary<string, string> GetInputs()
+    {
+        return _inputs;
+    }
+}
+
+/// <summary>
+/// 工作流定义类
+/// </summary>
+public class FlowDefinition
+{
+    public List<FlowNode> Nodes { get; set; } = new();
+    public List<FlowEdge> Edges { get; set; } = new();
+}
+
+/// <summary>
+/// 工作流节点
+/// </summary>
+public class FlowNode
+{
+    public string Id { get; set; } = null!;
+    public string Type { get; set; } = null!;
+    public FlowPosition Position { get; set; } = new();
+    public FlowNodeData Data { get; set; } = new();
+}
+
+/// <summary>
+/// 工作流节点数据
+/// </summary>
+public class FlowNodeData
+{
+    public string Label { get; set; } = null!;
+    public string NodeType { get; set; } = null!;
+    public Dictionary<string, string> Inputs { get; set; } = new();
+    public Dictionary<string, string> Outputs { get; set; } = new();
+    public string? ModelId { get; set; }
+}
+
+/// <summary>
+/// 工作流节点位置
+/// </summary>
+public class FlowPosition
+{
+    public double X { get; set; }
+    public double Y { get; set; }
+}
+
+/// <summary>
+/// 工作流连接
+/// </summary>
+public class FlowEdge
+{
+    public string Id { get; set; } = null!;
+    public string Source { get; set; } = null!;
+    public string Target { get; set; } = null!;
+    public string? SourceHandle { get; set; }
+    public string? TargetHandle { get; set; }
+    public bool Animated { get; set; }
+}
 
 /// <summary>
 /// 工作流执行服务
 /// </summary>
 public class WorkflowExecutionService : IWorkflowService
 {
-    private readonly IWorkflowHost _workflowHost;
     private readonly IRepository<Workflow> _workflowRepository;
-    private readonly IRepository<WorkflowInstance> _instanceRepository;
+    private readonly IRepository<StepInstance> _instanceRepository;
     private readonly IUserContext _userContext;
     private readonly IMapper _mapper;
     private readonly IServiceProvider _serviceProvider;
@@ -34,12 +128,10 @@ public class WorkflowExecutionService : IWorkflowService
     /// <param name="mapper"></param>
     /// <param name="serviceProvider"></param>
     public WorkflowExecutionService(
-        IWorkflowHost workflowHost,
         IRepository<Workflow> workflowRepository,
-        IRepository<WorkflowInstance> instanceRepository,
+        IRepository<StepInstance> instanceRepository,
         IUserContext userContext, IMapper mapper, IServiceProvider serviceProvider)
     {
-        _workflowHost = workflowHost;
         _workflowRepository = workflowRepository;
         _instanceRepository = instanceRepository;
         _userContext = userContext;
@@ -207,9 +299,11 @@ public class WorkflowExecutionService : IWorkflowService
     /// 执行工作流实例
     /// </summary>
     /// <param name="workflowId">工作流ID</param>
+    /// <param name="input"></param>
     /// <param name="inputData">输入数据（JSON格式）</param>
     /// <returns>工作流实例ID</returns>
-    public async Task<string> ExecuteWorkflowAsync(long workflowId, string? inputData = null)
+    public async Task<string> ExecuteWorkflowAsync(long workflowId, Dictionary<string, string> input,
+        string? inputData = null)
     {
         var workflow = await _workflowRepository.FirstOrDefaultAsync(w => w.Id == workflowId);
         if (workflow == null)
@@ -222,75 +316,23 @@ public class WorkflowExecutionService : IWorkflowService
         var referenceId = Guid.NewGuid().ToString();
 
         // 创建工作流实例记录
-        var instance = new WorkflowInstance(referenceId, workflowId, workflow.Version, inputData);
+        var instance = new StepInstance(referenceId, workflowId, workflow.Version, inputData);
         instance.SetCreator(_userContext.UserId);
         await _instanceRepository.AddAsync(instance);
         await _instanceRepository.SaveChangesAsync();
 
         try
         {
-            // 初始化工作流引擎
-            var workflowHost = _serviceProvider.GetRequiredService<IWorkflowHost>();
+            // 直接执行工作流，使用WorkflowExecutor
+            var result =
+                WorkflowExecutor.ProcessFlowDefinition(_serviceProvider, workflow.Definition, inputData, input);
 
-            // 确保工作流引擎已初始化
-            workflowHost.InitializeKoalaWorkflow(_serviceProvider, workflow);
+            // 将执行结果转换成JSON
+            var resultJson = JsonSerializer.Serialize(result);
 
-            // 检查工作流定义
-            if (string.IsNullOrEmpty(workflow.Definition))
-            {
-                instance.Fail("工作流定义为空");
-                await _instanceRepository.UpdateAsync(instance);
-                await _instanceRepository.SaveChangesAsync();
-                throw new InvalidOperationException("工作流定义为空");
-            }
-
-            // 创建并解析工作流数据
-            var data = new WorkflowData();
-            if (!string.IsNullOrEmpty(inputData))
-            {
-                try
-                {
-                    var inputDict = JsonSerializer.Deserialize<Dictionary<string, object>>(inputData);
-                    if (inputDict != null)
-                    {
-                        foreach (var item in inputDict)
-                        {
-                            data.SetProperty(item.Key, item.Value);
-                        }
-                    }
-                }
-                catch (JsonException ex)
-                {
-                    // 记录输入数据解析错误但继续执行
-                    instance.Fail($"输入数据格式错误: {ex.Message}");
-                    await _instanceRepository.UpdateAsync(instance);
-                    await _instanceRepository.SaveChangesAsync();
-                    throw new ArgumentException($"输入数据格式错误: {ex.Message}", ex);
-                }
-            }
-
-            // 启动工作流实例
-            string workflowCoreId;
-            try
-            {
-                // 使用工作流ID和版本作为工作流标识
-                workflowCoreId = await workflowHost.StartWorkflow(
-                    workflowId.ToString(), // 工作流ID
-                    workflow.Version, // 版本号
-                    data, // 工作流数据
-                    referenceId); // 关联ID
-            }
-            catch (Exception ex)
-            {
-                // 记录工作流启动失败
-                instance.Fail($"工作流启动失败: {ex.Message}");
-                await _instanceRepository.UpdateAsync(instance);
-                await _instanceRepository.SaveChangesAsync();
-                throw new InvalidOperationException($"工作流启动失败: {ex.Message}", ex);
-            }
-
-            // 更新工作流实例的 Workflow Core 实例ID
-            instance.SetWorkflowCoreInstanceId(workflowCoreId);
+            // 更新工作流实例状态
+            instance.UpdateData(resultJson);
+            instance.Complete();
             await _instanceRepository.UpdateAsync(instance);
             await _instanceRepository.SaveChangesAsync();
 
@@ -318,24 +360,15 @@ public class WorkflowExecutionService : IWorkflowService
     public async Task<bool> SuspendWorkflowInstanceAsync(string instanceId)
     {
         var instance = await GetInstanceByReferenceIdAsync(instanceId);
-        if (instance == null || string.IsNullOrEmpty(instance.WorkflowCoreInstanceId))
+        if (instance == null)
             return false;
 
-        try
-        {
-            await _workflowHost.SuspendWorkflow(instance.WorkflowCoreInstanceId);
+        instance.Suspend();
+        instance.SetModifier(_userContext.UserId);
+        await _instanceRepository.UpdateAsync(instance);
+        await _instanceRepository.SaveChangesAsync();
 
-            instance.Suspend();
-            instance.SetModifier(_userContext.UserId);
-            await _instanceRepository.UpdateAsync(instance);
-            await _instanceRepository.SaveChangesAsync();
-
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
+        return true;
     }
 
     /// <summary>
@@ -346,24 +379,15 @@ public class WorkflowExecutionService : IWorkflowService
     public async Task<bool> ResumeWorkflowInstanceAsync(string instanceId)
     {
         var instance = await GetInstanceByReferenceIdAsync(instanceId);
-        if (instance == null || string.IsNullOrEmpty(instance.WorkflowCoreInstanceId))
+        if (instance == null)
             return false;
 
-        try
-        {
-            await _workflowHost.ResumeWorkflow(instance.WorkflowCoreInstanceId);
+        instance.Resume();
+        instance.SetModifier(_userContext.UserId);
+        await _instanceRepository.UpdateAsync(instance);
+        await _instanceRepository.SaveChangesAsync();
 
-            instance.Resume();
-            instance.SetModifier(_userContext.UserId);
-            await _instanceRepository.UpdateAsync(instance);
-            await _instanceRepository.SaveChangesAsync();
-
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
+        return true;
     }
 
     /// <summary>
@@ -374,24 +398,15 @@ public class WorkflowExecutionService : IWorkflowService
     public async Task<bool> CancelWorkflowInstanceAsync(string instanceId)
     {
         var instance = await GetInstanceByReferenceIdAsync(instanceId);
-        if (instance == null || string.IsNullOrEmpty(instance.WorkflowCoreInstanceId))
+        if (instance == null)
             return false;
 
-        try
-        {
-            await _workflowHost.TerminateWorkflow(instance.WorkflowCoreInstanceId);
+        instance.Cancel();
+        instance.SetModifier(_userContext.UserId);
+        await _instanceRepository.UpdateAsync(instance);
+        await _instanceRepository.SaveChangesAsync();
 
-            instance.Cancel();
-            instance.SetModifier(_userContext.UserId);
-            await _instanceRepository.UpdateAsync(instance);
-            await _instanceRepository.SaveChangesAsync();
-
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
+        return true;
     }
 
     /// <summary>
@@ -431,11 +446,11 @@ public class WorkflowExecutionService : IWorkflowService
     }
 
     /// <summary>
-    /// 根据参考ID获取实例
+    /// 根据参考ID获取工作流实例
     /// </summary>
     /// <param name="referenceId">参考ID</param>
     /// <returns>实例</returns>
-    private async Task<WorkflowInstance?> GetInstanceByReferenceIdAsync(string referenceId)
+    private async Task<StepInstance?> GetInstanceByReferenceIdAsync(string referenceId)
     {
         return await _instanceRepository.FirstOrDefaultAsync(i => i.ReferenceId == referenceId);
     }
