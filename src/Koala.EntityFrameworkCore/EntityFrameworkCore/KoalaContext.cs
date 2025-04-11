@@ -11,7 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Koala.EntityFrameworkCore.EntityFrameworkCore;
 
-public class KoalaContext<TContext>(DbContextOptions<TContext> options, IServiceProvider serviceProvider) : DbContext(options), IContext
+public class KoalaContext<TContext>(DbContextOptions<TContext> options, IServiceProvider serviceProvider)
+    : DbContext(options), IContext
     where TContext : DbContext
 {
     protected IUserContext UserContext => serviceProvider.GetRequiredService<IUserContext>();
@@ -48,13 +49,15 @@ public class KoalaContext<TContext>(DbContextOptions<TContext> options, IService
     public DbSet<UserRole> UserRoles { get; set; }
 
     public DbSet<Workflow> Workflows { get; set; }
-    
+
     public DbSet<WorkflowInstance> WorkflowInstances { get; set; }
-    
+
     public DbSet<WorkflowConnection> WorkflowConnections { get; set; }
-    
+
     public DbSet<WorkflowNode> WorkflowNodes { get; set; }
-    
+
+    public DbSet<UserModelProvider> UserModelProviders { get; set; }
+
     public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
         CancellationToken cancellationToken = new CancellationToken())
     {
@@ -91,11 +94,14 @@ public class KoalaContext<TContext>(DbContextOptions<TContext> options, IService
             }
             else if (entry.State == EntityState.Modified)
             {
-                var lastModificationTimeProperty = entry.Entity.GetType().GetProperty(nameof(IModifier.ModificationTime));
-                if (lastModificationTimeProperty != null && lastModificationTimeProperty.PropertyType == typeof(DateTimeOffset?))
+                var lastModificationTimeProperty =
+                    entry.Entity.GetType().GetProperty(nameof(IModifier.ModificationTime));
+                if (lastModificationTimeProperty != null &&
+                    lastModificationTimeProperty.PropertyType == typeof(DateTimeOffset?))
                 {
                     lastModificationTimeProperty.SetValue(entry.Entity, DateTimeOffset.Now);
                 }
+
                 var modifierProperty = entry.Entity.GetType().GetProperty(nameof(IModifier.Modifier));
                 if (modifierProperty != null)
                 {
@@ -144,7 +150,7 @@ public class KoalaContext<TContext>(DbContextOptions<TContext> options, IService
 
             var workSpace = new WorkSpace("默认个人空间", "默认的个人空间");
             workSpace.SetCreator(user.Id);
-            
+
             workSpace = (await context.WorkSpaces.AddAsync(workSpace, cancellationToken)).Entity;
 
             await context.SaveChangesAsync(cancellationToken);
@@ -153,6 +159,15 @@ public class KoalaContext<TContext>(DbContextOptions<TContext> options, IService
             await context.WorkSpaceMembers.AddAsync(workSpaceMember, cancellationToken);
 
             #endregion
+
+            #region 初始化模型提供者
+
+            var userModelProvider = UserModelProvider.CreateDefault(user.Id);
+
+            await context.UserModelProviders.AddAsync(userModelProvider, cancellationToken);
+
+            #endregion
+
 
             await context.SaveChangesAsync(cancellationToken);
         }

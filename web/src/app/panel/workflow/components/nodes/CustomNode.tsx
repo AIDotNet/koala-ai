@@ -75,6 +75,7 @@ export const CustomNode = memo<CustomNodeProps>(({
   const handleConnectionHandleMouseDown = (e: React.MouseEvent, handleId: string) => {
     e.stopPropagation();
     e.preventDefault();
+    setIsDragging(false); // 确保拖动状态被重置
     onConnectionStart(node.id, handleId);
   };
 
@@ -90,13 +91,14 @@ export const CustomNode = memo<CustomNodeProps>(({
   
   // 处理节点拖动
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    // 记录初始鼠标位置，用于判断是点击还是拖动
-    setMouseDownPos({ x: e.clientX, y: e.clientY });
-    
-    // 检查点击的是否是节点连接点，如果是则不触发拖动
-    if ((e.target as HTMLElement).closest(`.${styles.nodeHandle}`)) {
+    // 如果点击的是连接点，不处理拖动
+    if ((e.target as HTMLElement).closest(`.${styles.nodeHandle}`) ||
+        (e.target as HTMLElement).closest(`.${styles.nodeHandle}::after`)) {
       return;
     }
+    
+    // 记录初始鼠标位置，用于判断是点击还是拖动
+    setMouseDownPos({ x: e.clientX, y: e.clientY });
     
     // 只有当点击的是节点头部时才能拖动
     if ((e.target as HTMLElement).closest(`.${styles.nodeHeader}`)) {
@@ -169,6 +171,8 @@ export const CustomNode = memo<CustomNodeProps>(({
                   <div 
                     className={`${styles.nodeHandle} ${hoveredHandle === `input-${id}` ? styles.nodeHandleHovered : ''}`} 
                     data-handle-id={`input-${id}`}
+                    data-testid={`handle-input-${id}`}
+                    onClick={(e) => e.stopPropagation()}
                     onMouseDown={(e) => handleConnectionHandleMouseDown(e, `input-${id}`)}
                     onMouseEnter={() => handleConnectionHandleMouseEnter(`input-${id}`)}
                     onMouseLeave={handleConnectionHandleMouseLeave}
@@ -188,6 +192,8 @@ export const CustomNode = memo<CustomNodeProps>(({
                   <div 
                     className={`${styles.nodeHandle} ${hoveredHandle === `output-${id}` ? styles.nodeHandleHovered : ''}`} 
                     data-handle-id={`output-${id}`}
+                    data-testid={`handle-output-${id}`}
+                    onClick={(e) => e.stopPropagation()}
                     onMouseDown={(e) => handleConnectionHandleMouseDown(e, `output-${id}`)}
                     onMouseEnter={() => handleConnectionHandleMouseEnter(`output-${id}`)}
                     onMouseLeave={handleConnectionHandleMouseLeave}

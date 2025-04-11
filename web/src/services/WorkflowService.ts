@@ -14,7 +14,7 @@ export const workflowTemplates = {
           nodeType: 'input',
           inputs: {},
           outputs: {
-            'data': 'any'
+            'text': 'string',
           }
         }
       },
@@ -26,7 +26,7 @@ export const workflowTemplates = {
           label: '输出',
           nodeType: 'output',
           inputs: {
-            'result': 'any'
+            'text': 'string'
           },
           outputs: {}
         }
@@ -102,8 +102,7 @@ export const unbindAgent = (workflowId: number) => {
 };
 
 // 执行工作流
-export const executeWorkflow = (workflowId: number, inputData?: string) => {
-  const data = inputData ? { inputData } : {};
+export const executeWorkflow = (workflowId: number, data:any) => {
 
   return post(`/api/v1/workflow/${workflowId}/execute`, {
     headers: {

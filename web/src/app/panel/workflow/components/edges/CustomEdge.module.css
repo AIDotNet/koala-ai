@@ -33,4 +33,28 @@
 
 .marker {
   fill: currentColor;
+}
+
+.edgeDeleteButton {
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  transform-origin: center;
+  pointer-events: all;
+}
+
+.edgeGroup:hover .edgeDeleteButton {
+  opacity: 1;
+}
+
+.edgeDeleteButton:hover {
+  transform: scale(1.2);
+  fill: #ff4d4f;
+}
+
+.edgeDeleteButtonBackground {
+  fill: #fff;
+  stroke: #ff4d4f;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
 } 

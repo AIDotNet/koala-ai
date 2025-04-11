@@ -1,5 +1,5 @@
 @echo off
-set MIGRATION_NAME=UpdateWorkflow
+set MIGRATION_NAME=UserModelProvider
 
 set DbType=postgresql
 dotnet ef migrations add --project src\EFCore\Koala.EntityFrameworkCore.PostgreSql\Koala.EntityFrameworkCore.PostgreSql.csproj --startup-project src\Koala.HttpApi.Host\Koala.HttpApi.Host.csproj --context Koala.EntityFrameworkCore.PostgreSql.PostgreSqlDbContext --configuration Debug  %MIGRATION_NAME%  --output-dir Migrations\
