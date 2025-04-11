@@ -1,5 +1,4 @@
-﻿using Koala.Domain.Knowledges.Aggregates;
-using Koala.Domain.Shared.Knowledge;
+﻿using Koala.Domain.Shared.Knowledge;
 
 namespace Koala.Domain.Knowledge.Aggregates;
 

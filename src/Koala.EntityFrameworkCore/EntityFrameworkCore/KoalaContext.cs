@@ -2,7 +2,6 @@
 using Koala.Data.Auditing;
 using Koala.Domain.Agents.Aggregates;
 using Koala.Domain.Knowledge.Aggregates;
-using Koala.Domain.Knowledges.Aggregates;
 using Koala.Domain.Powers.Aggregates;
 using Koala.Domain.Shared.WorkSpaces;
 using Koala.Domain.Users.Aggregates;

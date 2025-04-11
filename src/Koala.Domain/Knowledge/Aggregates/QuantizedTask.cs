@@ -1,7 +1,6 @@
-﻿using Koala.Domain.Knowledge.Aggregates;
-using Koala.Domain.Shared.Knowledge;
+﻿using Koala.Domain.Shared.Knowledge;
 
-namespace Koala.Domain.Knowledges.Aggregates;
+namespace Koala.Domain.Knowledge.Aggregates;
 
 public class QuantizedTask : AuditEntity<long>
 {

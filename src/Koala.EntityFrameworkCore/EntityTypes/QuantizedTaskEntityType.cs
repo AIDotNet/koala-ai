@@ -1,4 +1,4 @@
-﻿using Koala.Domain.Knowledges.Aggregates;
+﻿using Koala.Domain.Knowledge.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
