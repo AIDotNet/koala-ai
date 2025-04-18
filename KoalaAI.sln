@@ -38,11 +38,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		migrations.bat = migrations.bat
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "koala-memory", "koala-memory", "{873CAB98-1E67-4DA4-8F6E-F8EB3AF3D10B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "koalamemory", "koalamemory", "{873CAB98-1E67-4DA4-8F6E-F8EB3AF3D10B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koala-Memory.Document", "kolala-memory\Koala-Memory.Document\Koala-Memory.Document.csproj", "{AAA3B416-4819-40CF-BA11-C5C325868BAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaMemory.Document", "kolala-memory\KoalaMemory.Document\KoalaMemory.Document.csproj", "{AAA3B416-4819-40CF-BA11-C5C325868BAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koala-Memory", "kolala-memory\Koala-Memory\Koala-Memory.csproj", "{28B519FA-7CAF-4802-A1A2-9C4D14E4459D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaMemory", "kolala-memory\KoalaMemory\KoalaMemory.csproj", "{28B519FA-7CAF-4802-A1A2-9C4D14E4459D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
